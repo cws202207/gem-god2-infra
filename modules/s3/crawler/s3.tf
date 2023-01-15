@@ -10,6 +10,15 @@ resource "aws_s3_bucket" "c" {
   }
 }
 
+resource "aws_s3_bucket_versioning" "v" {
+  bucket = aws_s3_bucket.c.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+
+
 resource "null_resource" "remove" {
   triggers = {
     bucket = aws_s3_bucket.c.bucket
@@ -55,19 +64,19 @@ resource "aws_vpc_endpoint" "crawler_endpoint" {
     "Statement" : [
       {
         Action = [
-	"s3:*"
-#          "s3:PutObject",
-#          "s3:GetObject",
-#          "s3:DeleteObject",
-#          "s3:RutObjectAcl",
-#          "s3:ListObject",
-#          "s3:ListBucket"
+          "s3:*"
+          #          "s3:PutObject",
+          #          "s3:GetObject",
+          #          "s3:DeleteObject",
+          #          "s3:RutObjectAcl",
+          #          "s3:ListObject",
+          #          "s3:ListBucket"
         ]
         "Effect" : "Allow",
         "Resource" : [
-	"*"
-#          "arn:aws:s3:::${local.name_prefix}-${var.bucket}-data",
-#          "arn:aws:s3:::${local.name_prefix}-${var.bucket}-data/*"
+          "*"
+          #          "arn:aws:s3:::${local.name_prefix}-${var.bucket}-data",
+          #          "arn:aws:s3:::${local.name_prefix}-${var.bucket}-data/*"
         ],
         "Principal" : "*"
       }
@@ -85,5 +94,5 @@ resource "aws_vpc_endpoint_route_table_association" "private_s3" {
 }
 
 output "aws_vpc_endpoint_id" {
-	value = aws_vpc_endpoint.crawler_endpoint.id
+  value = aws_vpc_endpoint.crawler_endpoint.id
 }

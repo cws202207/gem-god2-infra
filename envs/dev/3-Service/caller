@@ -1,0 +1,3093 @@
+[0m[1mmodule.services.module.s3-awslogs.data.aws_caller_identity.self: Reading...[0m[0m
+[0m[1mmodule.services.module.s3-awslogs.data.aws_elb_service_account.current: Reading...[0m[0m
+[0m[1mmodule.services.module.s3-awslogs.data.aws_elb_service_account.current: Read complete after 0s [id=582318560864][0m
+[0m[1mmodule.services.module.s3-awslogs.data.aws_caller_identity.self: Read complete after 1s [id=660506286494][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create
+[0m
+Terraform will perform the following actions:
+
+[1m  # module.services.aws_security_group.alb-ec2[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_security_group" "alb-ec2" {
+      [32m+[0m [0m[1m[0marn[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m            = "managed by terraform"
+      [32m+[0m [0m[1m[0megress[0m[0m                 = [
+          [32m+[0m [0m{
+              [32m+[0m [0mcidr_blocks      = [
+                  [32m+[0m [0m"0.0.0.0/0",
+                ]
+              [32m+[0m [0mdescription      = ""
+              [32m+[0m [0mfrom_port        = 0
+              [32m+[0m [0mipv6_cidr_blocks = []
+              [32m+[0m [0mprefix_list_ids  = []
+              [32m+[0m [0mprotocol         = "-1"
+              [32m+[0m [0msecurity_groups  = []
+              [32m+[0m [0mself             = false
+              [32m+[0m [0mto_port          = 0
+            },
+        ]
+      [32m+[0m [0m[1m[0mid[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mingress[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                   = "ALB-EC2"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mowner_id[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mrevoke_rules_on_delete[0m[0m = false
+      [32m+[0m [0m[1m[0mtags[0m[0m                   = {
+          [32m+[0m [0m"Name" = "ALB-EC2"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m               = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"Name"   = "ALB-EC2"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                 = "vpc-0f87f05c0fc32ced6"
+    }
+
+[1m  # module.services.aws_security_group.web-alb[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_security_group" "web-alb" {
+      [32m+[0m [0m[1m[0marn[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m            = "managed by terraform"
+      [32m+[0m [0m[1m[0megress[0m[0m                 = [
+          [32m+[0m [0m{
+              [32m+[0m [0mcidr_blocks      = [
+                  [32m+[0m [0m"0.0.0.0/0",
+                ]
+              [32m+[0m [0mdescription      = ""
+              [32m+[0m [0mfrom_port        = 0
+              [32m+[0m [0mipv6_cidr_blocks = []
+              [32m+[0m [0mprefix_list_ids  = []
+              [32m+[0m [0mprotocol         = "-1"
+              [32m+[0m [0msecurity_groups  = []
+              [32m+[0m [0mself             = false
+              [32m+[0m [0mto_port          = 0
+            },
+        ]
+      [32m+[0m [0m[1m[0mid[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mingress[0m[0m                = [
+          [32m+[0m [0m{
+              [32m+[0m [0mcidr_blocks      = [
+                  [32m+[0m [0m"0.0.0.0/0",
+                ]
+              [32m+[0m [0mdescription      = "http"
+              [32m+[0m [0mfrom_port        = 80
+              [32m+[0m [0mipv6_cidr_blocks = []
+              [32m+[0m [0mprefix_list_ids  = []
+              [32m+[0m [0mprotocol         = "tcp"
+              [32m+[0m [0msecurity_groups  = []
+              [32m+[0m [0mself             = false
+              [32m+[0m [0mto_port          = 80
+            },
+          [32m+[0m [0m{
+              [32m+[0m [0mcidr_blocks      = [
+                  [32m+[0m [0m"0.0.0.0/0",
+                ]
+              [32m+[0m [0mdescription      = "https"
+              [32m+[0m [0mfrom_port        = 443
+              [32m+[0m [0mipv6_cidr_blocks = []
+              [32m+[0m [0mprefix_list_ids  = []
+              [32m+[0m [0mprotocol         = "tcp"
+              [32m+[0m [0msecurity_groups  = []
+              [32m+[0m [0mself             = false
+              [32m+[0m [0mto_port          = 443
+            },
+        ]
+      [32m+[0m [0m[1m[0mname[0m[0m                   = "Web-ALB"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mowner_id[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mrevoke_rules_on_delete[0m[0m = false
+      [32m+[0m [0m[1m[0mtags[0m[0m                   = {
+          [32m+[0m [0m"Name" = "Web-ALB"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m               = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"Name"   = "Web-ALB"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                 = "vpc-0f87f05c0fc32ced6"
+    }
+
+[1m  # module.services.aws_security_group.web-alb2[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_security_group" "web-alb2" {
+      [32m+[0m [0m[1m[0marn[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m            = "managed by terraform"
+      [32m+[0m [0m[1m[0megress[0m[0m                 = [
+          [32m+[0m [0m{
+              [32m+[0m [0mcidr_blocks      = [
+                  [32m+[0m [0m"0.0.0.0/0",
+                ]
+              [32m+[0m [0mdescription      = ""
+              [32m+[0m [0mfrom_port        = 0
+              [32m+[0m [0mipv6_cidr_blocks = []
+              [32m+[0m [0mprefix_list_ids  = []
+              [32m+[0m [0mprotocol         = "-1"
+              [32m+[0m [0msecurity_groups  = []
+              [32m+[0m [0mself             = false
+              [32m+[0m [0mto_port          = 0
+            },
+        ]
+      [32m+[0m [0m[1m[0mid[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mingress[0m[0m                = [
+          [32m+[0m [0m{
+              [32m+[0m [0mcidr_blocks      = [
+                  [32m+[0m [0m"0.0.0.0/0",
+                ]
+              [32m+[0m [0mdescription      = "http"
+              [32m+[0m [0mfrom_port        = 80
+              [32m+[0m [0mipv6_cidr_blocks = []
+              [32m+[0m [0mprefix_list_ids  = []
+              [32m+[0m [0mprotocol         = "tcp"
+              [32m+[0m [0msecurity_groups  = []
+              [32m+[0m [0mself             = false
+              [32m+[0m [0mto_port          = 80
+            },
+        ]
+      [32m+[0m [0m[1m[0mname[0m[0m                   = "Web-ALB2"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mowner_id[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mrevoke_rules_on_delete[0m[0m = false
+      [32m+[0m [0m[1m[0mtags[0m[0m                   = {
+          [32m+[0m [0m"Name" = "Web-ALB2"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m               = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"Name"   = "Web-ALB2"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                 = "vpc-0f87f05c0fc32ced6"
+    }
+
+[1m  # module.services.local_file.alb-crawler[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "alb-crawler" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "644"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../alb-crawler.sh"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.aws_alb[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "aws_alb" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "0755"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/alb.sh"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.crawl-data_my_cnf[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "crawl-data_my_cnf" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "0600"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../../../appconfig/fadev/etc/crawl-data.my.cnf"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.crawler-provisioning[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "crawler-provisioning" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "644"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../crawler_ssh_cmd.sh"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.crawler_ssh_config[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "crawler_ssh_config" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "644"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../../../appconfig/fadev/etc/ssh/crawler/config"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.debug-crawler-aurora-mysql[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "debug-crawler-aurora-mysql" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (sensitive)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "600"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../etc/debug-crawl_data-aurora-mysql.yaml"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.debug-ec2-api2[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "debug-ec2-api2" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "600"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../etc/debug-ec2-api.yaml"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.debug-ec2-crawler[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "debug-ec2-crawler" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "600"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../etc/debug-ec2-crawler.yaml"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.debug-ec2-mgmt[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "debug-ec2-mgmt" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "600"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../etc/debug-ec2-mgmt.yaml"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.debug-ec2-unity[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "debug-ec2-unity" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "600"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../etc/debug-ec2-unity.yaml"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.debug-ipmaster-aurora-mysql[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "debug-ipmaster-aurora-mysql" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (sensitive)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "600"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../etc/debug-ip_master-aurora-mysql.yaml"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.ip-master_my_cnf[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "ip-master_my_cnf" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "0600"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../../../appconfig/fadev/etc/ip-master.my.cnf"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.known_hosts[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "known_hosts" {
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "644"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../../../appconfig/fadev/etc/ssh/known_hosts"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.mgmt-provisioning[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "mgmt-provisioning" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "644"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../mgmt_ssh_cmd.sh"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.mgmt_ssh_config[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "mgmt_ssh_config" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "644"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../../../appconfig/fadev/etc/ssh/mgmt/config"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.mode_infra_yaml[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "mode_infra_yaml" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "0644"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../../../appconfig/fadev/etc/infra.yaml"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.pre[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "pre" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (sensitive)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "644"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/pre.aurora-mysql.sh"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.pre-ip-master_my_cnf[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "pre-ip-master_my_cnf" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "0600"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../../../appconfig/fadev/etc/pre-ip-master.my.cnf"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.provisioning[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "provisioning" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "644"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../ssh_cmd.sh"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.rule[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "rule" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "0755"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../etc/alb-ec2-rule.yaml"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.s3-awslogs[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "s3-awslogs" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "0600"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../s3.sh"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.s3-crawler[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "s3-crawler" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "644"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/s3-crawler.sh"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.ssh-api-cmd[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "ssh-api-cmd" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = <<-EOT
+            #!/bin/bash
+            set -eu
+            exec ssh -F "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../../../appconfig/fadev/etc/ssh/config" api2.fadev.gem-dev $@
+        EOT
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "755"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../../../appconfig/fadev/bin/ssh-api2.sh"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.ssh_config[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "ssh_config" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "644"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../../../appconfig/fadev/etc/ssh/config"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.unity-provisioning[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "unity-provisioning" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "644"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../unity_ssh_cmd.sh"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.local_file.unity_ssh_config[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "unity_ssh_config" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "644"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/../../../appconfig/fadev/etc/ssh/unity/config"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.module.alb-api2.aws_lb.l[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_lb" "l" {
+      [32m+[0m [0m[1m[0marn[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0marn_suffix[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mdesync_mitigation_mode[0m[0m     = "defensive"
+      [32m+[0m [0m[1m[0mdns_name[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mdrop_invalid_header_fields[0m[0m = false
+      [32m+[0m [0m[1m[0menable_deletion_protection[0m[0m = false
+      [32m+[0m [0m[1m[0menable_http2[0m[0m               = true
+      [32m+[0m [0m[1m[0menable_waf_fail_open[0m[0m       = false
+      [32m+[0m [0m[1m[0mid[0m[0m                         = (known after apply)
+      [32m+[0m [0m[1m[0midle_timeout[0m[0m               = 60
+      [32m+[0m [0m[1m[0minternal[0m[0m                   = false
+      [32m+[0m [0m[1m[0mip_address_type[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mload_balancer_type[0m[0m         = "application"
+      [32m+[0m [0m[1m[0mname[0m[0m                       = "api2"
+      [32m+[0m [0m[1m[0msecurity_groups[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0msubnets[0m[0m                    = [
+          [32m+[0m [0m"subnet-0781987c1119ebfc1",
+          [32m+[0m [0m"subnet-0794a77fad5b692bb",
+          [32m+[0m [0m"subnet-0c34be65680830ceb",
+        ]
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                   = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mzone_id[0m[0m                    = (known after apply)
+
+      [32m+[0m [0maccess_logs {
+          [32m+[0m [0m[1m[0mbucket[0m[0m  = "awslogs.s3.gem-entertainment-standard-dev.net.aws-alb-log"
+          [32m+[0m [0m[1m[0menabled[0m[0m = true
+          [32m+[0m [0m[1m[0mprefix[0m[0m  = "api2"
+        }
+
+      [32m+[0m [0msubnet_mapping {
+          [32m+[0m [0m[1m[0mallocation_id[0m[0m        = (known after apply)
+          [32m+[0m [0m[1m[0mipv6_address[0m[0m         = (known after apply)
+          [32m+[0m [0m[1m[0moutpost_id[0m[0m           = (known after apply)
+          [32m+[0m [0m[1m[0mprivate_ipv4_address[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0msubnet_id[0m[0m            = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.alb-api2.aws_lb_listener.http[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_lb_listener" "http" {
+      [32m+[0m [0m[1m[0marn[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0mload_balancer_arn[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mport[0m[0m              = 80
+      [32m+[0m [0m[1m[0mprotocol[0m[0m          = "HTTP"
+      [32m+[0m [0m[1m[0mssl_policy[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m          = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+
+      [32m+[0m [0mdefault_action {
+          [32m+[0m [0m[1m[0morder[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mtype[0m[0m  = "redirect"
+
+          [32m+[0m [0mredirect {
+              [32m+[0m [0m[1m[0mhost[0m[0m        = "#{host}"
+              [32m+[0m [0m[1m[0mpath[0m[0m        = "/#{path}"
+              [32m+[0m [0m[1m[0mport[0m[0m        = "443"
+              [32m+[0m [0m[1m[0mprotocol[0m[0m    = "HTTPS"
+              [32m+[0m [0m[1m[0mquery[0m[0m       = "#{query}"
+              [32m+[0m [0m[1m[0mstatus_code[0m[0m = "HTTP_301"
+            }
+        }
+    }
+
+[1m  # module.services.module.alb-api2.aws_lb_listener.https[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_lb_listener" "https" {
+      [32m+[0m [0m[1m[0marn[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mcertificate_arn[0m[0m   = "arn:aws:acm:ap-northeast-1:660506286494:certificate/a834c7c2-a848-4eba-8fc0-ae0770ac64d9"
+      [32m+[0m [0m[1m[0mid[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0mload_balancer_arn[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mport[0m[0m              = 443
+      [32m+[0m [0m[1m[0mprotocol[0m[0m          = "HTTPS"
+      [32m+[0m [0m[1m[0mssl_policy[0m[0m        = "ELBSecurityPolicy-2015-05"
+      [32m+[0m [0m[1m[0mtags_all[0m[0m          = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+
+      [32m+[0m [0mdefault_action {
+          [32m+[0m [0m[1m[0morder[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mtype[0m[0m  = "fixed-response"
+
+          [32m+[0m [0mfixed_response {
+              [32m+[0m [0m[1m[0mcontent_type[0m[0m = "text/plain"
+              [32m+[0m [0m[1m[0mmessage_body[0m[0m = "Not Found"
+              [32m+[0m [0m[1m[0mstatus_code[0m[0m  = "404"
+            }
+        }
+    }
+
+[1m  # module.services.module.alb-api2.aws_lb_listener_rule.dest[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_lb_listener_rule" "dest" {
+      [32m+[0m [0m[1m[0marn[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mlistener_arn[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mpriority[0m[0m     = 60
+      [32m+[0m [0m[1m[0mtags_all[0m[0m     = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+
+      [32m+[0m [0maction {
+          [32m+[0m [0m[1m[0morder[0m[0m            = (known after apply)
+          [32m+[0m [0m[1m[0mtarget_group_arn[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mtype[0m[0m             = "forward"
+        }
+
+      [32m+[0m [0mcondition {
+          [32m+[0m [0mhost_header {
+              [32m+[0m [0m[1m[0mvalues[0m[0m = [
+                  [32m+[0m [0m"api2.gem-entertainment-standard-dev.net",
+                ]
+            }
+        }
+    }
+
+[1m  # module.services.module.alb-api2.aws_lb_target_group.l[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_lb_target_group" "l" {
+      [32m+[0m [0m[1m[0marn[0m[0m                                = (known after apply)
+      [32m+[0m [0m[1m[0marn_suffix[0m[0m                         = (known after apply)
+      [32m+[0m [0m[1m[0mconnection_termination[0m[0m             = false
+      [32m+[0m [0m[1m[0mderegistration_delay[0m[0m               = "300"
+      [32m+[0m [0m[1m[0mid[0m[0m                                 = (known after apply)
+      [32m+[0m [0m[1m[0mlambda_multi_value_headers_enabled[0m[0m = false
+      [32m+[0m [0m[1m[0mload_balancing_algorithm_type[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                               = "api2-api2"
+      [32m+[0m [0m[1m[0mport[0m[0m                               = 80
+      [32m+[0m [0m[1m[0mpreserve_client_ip[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mprotocol[0m[0m                           = "HTTP"
+      [32m+[0m [0m[1m[0mprotocol_version[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mproxy_protocol_v2[0m[0m                  = false
+      [32m+[0m [0m[1m[0mslow_start[0m[0m                         = 0
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                           = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mtarget_type[0m[0m                        = "instance"
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                             = "vpc-0f87f05c0fc32ced6"
+
+      [32m+[0m [0mhealth_check {
+          [32m+[0m [0m[1m[0menabled[0m[0m             = true
+          [32m+[0m [0m[1m[0mhealthy_threshold[0m[0m   = 3
+          [32m+[0m [0m[1m[0minterval[0m[0m            = 60
+          [32m+[0m [0m[1m[0mmatcher[0m[0m             = "200"
+          [32m+[0m [0m[1m[0mpath[0m[0m                = "/health_check.txt"
+          [32m+[0m [0m[1m[0mport[0m[0m                = "80"
+          [32m+[0m [0m[1m[0mprotocol[0m[0m            = "HTTP"
+          [32m+[0m [0m[1m[0mtimeout[0m[0m             = 5
+          [32m+[0m [0m[1m[0munhealthy_threshold[0m[0m = 2
+        }
+
+      [32m+[0m [0mstickiness {
+          [32m+[0m [0m[1m[0mcookie_duration[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mcookie_name[0m[0m     = (known after apply)
+          [32m+[0m [0m[1m[0menabled[0m[0m         = (known after apply)
+          [32m+[0m [0m[1m[0mtype[0m[0m            = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.alb-api2.aws_lb_target_group_attachment.l[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_lb_target_group_attachment" "l" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mport[0m[0m             = 80
+      [32m+[0m [0m[1m[0mtarget_group_arn[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mtarget_id[0m[0m        = (known after apply)
+    }
+
+[1m  # module.services.module.alb-api2.aws_route53_record.dest[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_record" "dest" {
+      [32m+[0m [0m[1m[0mallow_overwrite[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mfqdn[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m            = "api2.gem-entertainment-standard-dev.net"
+      [32m+[0m [0m[1m[0mtype[0m[0m            = "A"
+      [32m+[0m [0m[1m[0mzone_id[0m[0m         = "Z07624343DRZIGKOSQQI2"
+
+      [32m+[0m [0malias {
+          [32m+[0m [0m[1m[0mevaluate_target_health[0m[0m = true
+          [32m+[0m [0m[1m[0mname[0m[0m                   = (known after apply)
+          [32m+[0m [0m[1m[0mzone_id[0m[0m                = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.alb-api2.aws_security_group_rule.ec2[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_security_group_rule" "ec2" {
+      [32m+[0m [0m[1m[0mfrom_port[0m[0m                = 80
+      [32m+[0m [0m[1m[0mid[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mprotocol[0m[0m                 = "tcp"
+      [32m+[0m [0m[1m[0msecurity_group_id[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mself[0m[0m                     = false
+      [32m+[0m [0m[1m[0msource_security_group_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mto_port[0m[0m                  = 80
+      [32m+[0m [0m[1m[0mtype[0m[0m                     = "ingress"
+    }
+
+[1m  # module.services.module.alb-crawler.aws_lb.l[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_lb" "l" {
+      [32m+[0m [0m[1m[0marn[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0marn_suffix[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mdesync_mitigation_mode[0m[0m     = "defensive"
+      [32m+[0m [0m[1m[0mdns_name[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mdrop_invalid_header_fields[0m[0m = false
+      [32m+[0m [0m[1m[0menable_deletion_protection[0m[0m = false
+      [32m+[0m [0m[1m[0menable_http2[0m[0m               = true
+      [32m+[0m [0m[1m[0menable_waf_fail_open[0m[0m       = false
+      [32m+[0m [0m[1m[0mid[0m[0m                         = (known after apply)
+      [32m+[0m [0m[1m[0midle_timeout[0m[0m               = 60
+      [32m+[0m [0m[1m[0minternal[0m[0m                   = false
+      [32m+[0m [0m[1m[0mip_address_type[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mload_balancer_type[0m[0m         = "application"
+      [32m+[0m [0m[1m[0mname[0m[0m                       = "crawler"
+      [32m+[0m [0m[1m[0msecurity_groups[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0msubnets[0m[0m                    = [
+          [32m+[0m [0m"subnet-0781987c1119ebfc1",
+          [32m+[0m [0m"subnet-0794a77fad5b692bb",
+          [32m+[0m [0m"subnet-0c34be65680830ceb",
+        ]
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                   = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mzone_id[0m[0m                    = (known after apply)
+
+      [32m+[0m [0msubnet_mapping {
+          [32m+[0m [0m[1m[0mallocation_id[0m[0m        = (known after apply)
+          [32m+[0m [0m[1m[0mipv6_address[0m[0m         = (known after apply)
+          [32m+[0m [0m[1m[0moutpost_id[0m[0m           = (known after apply)
+          [32m+[0m [0m[1m[0mprivate_ipv4_address[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0msubnet_id[0m[0m            = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.alb-crawler.aws_lb_listener.http[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_lb_listener" "http" {
+      [32m+[0m [0m[1m[0marn[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0mload_balancer_arn[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mport[0m[0m              = 80
+      [32m+[0m [0m[1m[0mprotocol[0m[0m          = "HTTP"
+      [32m+[0m [0m[1m[0mssl_policy[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m          = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+
+      [32m+[0m [0mdefault_action {
+          [32m+[0m [0m[1m[0morder[0m[0m            = (known after apply)
+          [32m+[0m [0m[1m[0mtarget_group_arn[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mtype[0m[0m             = "forward"
+        }
+    }
+
+[1m  # module.services.module.alb-crawler.aws_lb_target_group.l[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_lb_target_group" "l" {
+      [32m+[0m [0m[1m[0marn[0m[0m                                = (known after apply)
+      [32m+[0m [0m[1m[0marn_suffix[0m[0m                         = (known after apply)
+      [32m+[0m [0m[1m[0mconnection_termination[0m[0m             = false
+      [32m+[0m [0m[1m[0mderegistration_delay[0m[0m               = "300"
+      [32m+[0m [0m[1m[0mid[0m[0m                                 = (known after apply)
+      [32m+[0m [0m[1m[0mlambda_multi_value_headers_enabled[0m[0m = false
+      [32m+[0m [0m[1m[0mload_balancing_algorithm_type[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                               = "crawler-crawler"
+      [32m+[0m [0m[1m[0mport[0m[0m                               = 80
+      [32m+[0m [0m[1m[0mpreserve_client_ip[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mprotocol[0m[0m                           = "HTTP"
+      [32m+[0m [0m[1m[0mprotocol_version[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mproxy_protocol_v2[0m[0m                  = false
+      [32m+[0m [0m[1m[0mslow_start[0m[0m                         = 0
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                           = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mtarget_type[0m[0m                        = "instance"
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                             = "vpc-0f87f05c0fc32ced6"
+
+      [32m+[0m [0mhealth_check {
+          [32m+[0m [0m[1m[0menabled[0m[0m             = true
+          [32m+[0m [0m[1m[0mhealthy_threshold[0m[0m   = 3
+          [32m+[0m [0m[1m[0minterval[0m[0m            = 60
+          [32m+[0m [0m[1m[0mmatcher[0m[0m             = "200"
+          [32m+[0m [0m[1m[0mpath[0m[0m                = "/health_check.txt"
+          [32m+[0m [0m[1m[0mport[0m[0m                = "80"
+          [32m+[0m [0m[1m[0mprotocol[0m[0m            = "HTTP"
+          [32m+[0m [0m[1m[0mtimeout[0m[0m             = 5
+          [32m+[0m [0m[1m[0munhealthy_threshold[0m[0m = 2
+        }
+
+      [32m+[0m [0mstickiness {
+          [32m+[0m [0m[1m[0mcookie_duration[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mcookie_name[0m[0m     = (known after apply)
+          [32m+[0m [0m[1m[0menabled[0m[0m         = (known after apply)
+          [32m+[0m [0m[1m[0mtype[0m[0m            = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.alb-crawler.aws_lb_target_group_attachment.l[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_lb_target_group_attachment" "l" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mport[0m[0m             = 80
+      [32m+[0m [0m[1m[0mtarget_group_arn[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mtarget_id[0m[0m        = (known after apply)
+    }
+
+[1m  # module.services.module.alb-crawler.aws_security_group_rule.ec2-crawler[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_security_group_rule" "ec2-crawler" {
+      [32m+[0m [0m[1m[0mfrom_port[0m[0m                = 80
+      [32m+[0m [0m[1m[0mid[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mprotocol[0m[0m                 = "tcp"
+      [32m+[0m [0m[1m[0msecurity_group_id[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mself[0m[0m                     = false
+      [32m+[0m [0m[1m[0msource_security_group_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mto_port[0m[0m                  = 80
+      [32m+[0m [0m[1m[0mtype[0m[0m                     = "ingress"
+    }
+
+[1m  # module.services.module.crawl-aurora-mysql.aws_db_parameter_group.d[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_db_parameter_group" "d" {
+      [32m+[0m [0m[1m[0marn[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m = "Managed by Terraform"
+      [32m+[0m [0m[1m[0mfamily[0m[0m      = "aurora-mysql5.7"
+      [32m+[0m [0m[1m[0mid[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m        = "crawl-data"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m    = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+    }
+
+[1m  # module.services.module.crawl-aurora-mysql.aws_db_subnet_group.private[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_db_subnet_group" "private" {
+      [32m+[0m [0m[1m[0marn[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m = "Managed by Terraform"
+      [32m+[0m [0m[1m[0mid[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m        = "crawl-data-private"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0msubnet_ids[0m[0m  = [
+          [32m+[0m [0m"subnet-0781987c1119ebfc1",
+          [32m+[0m [0m"subnet-0794a77fad5b692bb",
+          [32m+[0m [0m"subnet-0c34be65680830ceb",
+        ]
+      [32m+[0m [0m[1m[0mtags[0m[0m        = {
+          [32m+[0m [0m"Name" = "Private DB Subnet group"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m    = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"Name"   = "Private DB Subnet group"
+          [32m+[0m [0m"System" = "gem"
+        }
+    }
+
+[1m  # module.services.module.crawl-aurora-mysql.aws_iam_role.emon[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_iam_role" "emon" {
+      [32m+[0m [0m[1m[0marn[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0massume_role_policy[0m[0m    = jsonencode(
+            {
+              [32m+[0m [0mStatement = [
+                  [32m+[0m [0m{
+                      [32m+[0m [0mAction    = "sts:AssumeRole"
+                      [32m+[0m [0mEffect    = "Allow"
+                      [32m+[0m [0mPrincipal = {
+                          [32m+[0m [0mService = "monitoring.rds.amazonaws.com"
+                        }
+                      [32m+[0m [0mSid       = ""
+                    },
+                ]
+              [32m+[0m [0mVersion   = "2012-10-17"
+            }
+        )
+      [32m+[0m [0m[1m[0mcreate_date[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mforce_detach_policies[0m[0m = false
+      [32m+[0m [0m[1m[0mid[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mmanaged_policy_arns[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mmax_session_duration[0m[0m  = 3600
+      [32m+[0m [0m[1m[0mname[0m[0m                  = "crawl-data-rds_emon"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mpath[0m[0m                  = "/"
+      [32m+[0m [0m[1m[0mtags_all[0m[0m              = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0munique_id[0m[0m             = (known after apply)
+
+      [32m+[0m [0minline_policy {
+          [32m+[0m [0m[1m[0mname[0m[0m   = (known after apply)
+          [32m+[0m [0m[1m[0mpolicy[0m[0m = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.crawl-aurora-mysql.aws_iam_role_policy_attachment.emon[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "emon" {
+      [32m+[0m [0m[1m[0mid[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mpolicy_arn[0m[0m = "arn:aws:iam::aws:policy/service-role/AmazonRDSEnhancedMonitoringRole"
+      [32m+[0m [0m[1m[0mrole[0m[0m       = "crawl-data-rds_emon"
+    }
+
+[1m  # module.services.module.crawl-aurora-mysql.aws_rds_cluster.d[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_rds_cluster" "d" {
+      [32m+[0m [0m[1m[0mapply_immediately[0m[0m               = true
+      [32m+[0m [0m[1m[0marn[0m[0m                             = (known after apply)
+      [32m+[0m [0m[1m[0mavailability_zones[0m[0m              = [
+          [32m+[0m [0m"ap-northeast-1a",
+          [32m+[0m [0m"ap-northeast-1c",
+          [32m+[0m [0m"ap-northeast-1d",
+        ]
+      [32m+[0m [0m[1m[0mbackup_retention_period[0m[0m         = 5
+      [32m+[0m [0m[1m[0mcluster_identifier[0m[0m              = "crawl-data"
+      [32m+[0m [0m[1m[0mcluster_identifier_prefix[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mcluster_members[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mcluster_resource_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mcopy_tags_to_snapshot[0m[0m           = false
+      [32m+[0m [0m[1m[0mdatabase_name[0m[0m                   = "master"
+      [32m+[0m [0m[1m[0mdb_cluster_parameter_group_name[0m[0m = "crawl-data"
+      [32m+[0m [0m[1m[0mdb_subnet_group_name[0m[0m            = "crawl-data-private"
+      [32m+[0m [0m[1m[0menable_global_write_forwarding[0m[0m  = false
+      [32m+[0m [0m[1m[0menable_http_endpoint[0m[0m            = false
+      [32m+[0m [0m[1m[0mendpoint[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mengine[0m[0m                          = "aurora-mysql"
+      [32m+[0m [0m[1m[0mengine_mode[0m[0m                     = "provisioned"
+      [32m+[0m [0m[1m[0mengine_version[0m[0m                  = "8.0.mysql_aurora.3.02.0"
+      [32m+[0m [0m[1m[0mengine_version_actual[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mhosted_zone_id[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0miam_roles[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mkms_key_id[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0mmaster_password[0m[0m                 = (sensitive value)
+      [32m+[0m [0m[1m[0mmaster_username[0m[0m                 = "master"
+      [32m+[0m [0m[1m[0mport[0m[0m                            = 3306
+      [32m+[0m [0m[1m[0mpreferred_backup_window[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mpreferred_maintenance_window[0m[0m    = (known after apply)
+      [32m+[0m [0m[1m[0mreader_endpoint[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mskip_final_snapshot[0m[0m             = true
+      [32m+[0m [0m[1m[0mstorage_encrypted[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                        = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mvpc_security_group_ids[0m[0m          = (known after apply)
+    }
+
+[1m  # module.services.module.crawl-aurora-mysql.aws_rds_cluster_instance.d[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_rds_cluster_instance" "d" {
+      [32m+[0m [0m[1m[0mapply_immediately[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0marn[0m[0m                                   = (known after apply)
+      [32m+[0m [0m[1m[0mauto_minor_version_upgrade[0m[0m            = true
+      [32m+[0m [0m[1m[0mavailability_zone[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mca_cert_identifier[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mcluster_identifier[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mcopy_tags_to_snapshot[0m[0m                 = false
+      [32m+[0m [0m[1m[0mdb_parameter_group_name[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mdb_subnet_group_name[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mdbi_resource_id[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mendpoint[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mengine[0m[0m                                = "aurora-mysql"
+      [32m+[0m [0m[1m[0mengine_version[0m[0m                        = "8.0.mysql_aurora.3.02.0"
+      [32m+[0m [0m[1m[0mengine_version_actual[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                                    = (known after apply)
+      [32m+[0m [0m[1m[0midentifier[0m[0m                            = "crawl-data-i0"
+      [32m+[0m [0m[1m[0midentifier_prefix[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0minstance_class[0m[0m                        = "db.t4g.medium"
+      [32m+[0m [0m[1m[0mkms_key_id[0m[0m                            = (known after apply)
+      [32m+[0m [0m[1m[0mmonitoring_interval[0m[0m                   = 60
+      [32m+[0m [0m[1m[0mmonitoring_role_arn[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mperformance_insights_enabled[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mperformance_insights_kms_key_id[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mperformance_insights_retention_period[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mport[0m[0m                                  = (known after apply)
+      [32m+[0m [0m[1m[0mpreferred_backup_window[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mpreferred_maintenance_window[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mpromotion_tier[0m[0m                        = 0
+      [32m+[0m [0m[1m[0mpublicly_accessible[0m[0m                   = true
+      [32m+[0m [0m[1m[0mstorage_encrypted[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                              = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mwriter[0m[0m                                = (known after apply)
+    }
+
+[1m  # module.services.module.crawl-aurora-mysql.aws_rds_cluster_parameter_group.d[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_rds_cluster_parameter_group" "d" {
+      [32m+[0m [0m[1m[0marn[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m = "Managed by Terraform"
+      [32m+[0m [0m[1m[0mfamily[0m[0m      = "aurora-mysql8.0"
+      [32m+[0m [0m[1m[0mid[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m        = "crawl-data"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m    = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "character_set_client"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "utf8mb4"
+        }
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "character_set_connection"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "utf8mb4"
+        }
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "character_set_database"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "utf8mb4"
+        }
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "character_set_filesystem"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "utf8mb4"
+        }
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "character_set_results"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "utf8mb4"
+        }
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "character_set_server"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "utf8mb4"
+        }
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "collation_server"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "utf8mb4_general_ci"
+        }
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "time_zone"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "Asia/Tokyo"
+        }
+    }
+
+[1m  # module.services.module.crawl-aurora-mysql.aws_security_group.rds[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_security_group" "rds" {
+      [32m+[0m [0m[1m[0marn[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m            = "managed by terraform"
+      [32m+[0m [0m[1m[0megress[0m[0m                 = [
+          [32m+[0m [0m{
+              [32m+[0m [0mcidr_blocks      = [
+                  [32m+[0m [0m"0.0.0.0/0",
+                ]
+              [32m+[0m [0mdescription      = ""
+              [32m+[0m [0mfrom_port        = 0
+              [32m+[0m [0mipv6_cidr_blocks = []
+              [32m+[0m [0mprefix_list_ids  = []
+              [32m+[0m [0mprotocol         = "-1"
+              [32m+[0m [0msecurity_groups  = []
+              [32m+[0m [0mself             = false
+              [32m+[0m [0mto_port          = 0
+            },
+        ]
+      [32m+[0m [0m[1m[0mid[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mingress[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                   = "crawl-data-DB-RDS"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mowner_id[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mrevoke_rules_on_delete[0m[0m = false
+      [32m+[0m [0m[1m[0mtags[0m[0m                   = {
+          [32m+[0m [0m"Name" = "crawl-data-DB-RDS"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m               = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"Name"   = "crawl-data-DB-RDS"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                 = "vpc-0f87f05c0fc32ced6"
+    }
+
+[1m  # module.services.module.crawl-aurora-mysql.aws_security_group_rule.mysql[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_security_group_rule" "mysql" {
+      [32m+[0m [0m[1m[0mcidr_blocks[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m              = "crawler"
+      [32m+[0m [0m[1m[0mfrom_port[0m[0m                = 3306
+      [32m+[0m [0m[1m[0mid[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mprotocol[0m[0m                 = "tcp"
+      [32m+[0m [0m[1m[0msecurity_group_id[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mself[0m[0m                     = false
+      [32m+[0m [0m[1m[0msource_security_group_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mto_port[0m[0m                  = 3306
+      [32m+[0m [0m[1m[0mtype[0m[0m                     = "ingress"
+    }
+
+[1m  # module.services.module.crawl-aurora-mysql.aws_security_group_rule.mysql[1][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_security_group_rule" "mysql" {
+      [32m+[0m [0m[1m[0mcidr_blocks[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m              = "api2"
+      [32m+[0m [0m[1m[0mfrom_port[0m[0m                = 3306
+      [32m+[0m [0m[1m[0mid[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mprotocol[0m[0m                 = "tcp"
+      [32m+[0m [0m[1m[0msecurity_group_id[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mself[0m[0m                     = false
+      [32m+[0m [0m[1m[0msource_security_group_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mto_port[0m[0m                  = 3306
+      [32m+[0m [0m[1m[0mtype[0m[0m                     = "ingress"
+    }
+
+[1m  # module.services.module.crawl-aurora-mysql.random_integer.backup[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "random_integer" "backup" {
+      [32m+[0m [0m[1m[0mid[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mkeepers[0m[0m = {
+          [32m+[0m [0m"name" = "crawl-data"
+        }
+      [32m+[0m [0m[1m[0mmax[0m[0m     = 59
+      [32m+[0m [0m[1m[0mmin[0m[0m     = 0
+      [32m+[0m [0m[1m[0mresult[0m[0m  = (known after apply)
+    }
+
+[1m  # module.services.module.crawl-aurora-mysql.random_integer.maintenance[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "random_integer" "maintenance" {
+      [32m+[0m [0m[1m[0mid[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mkeepers[0m[0m = {
+          [32m+[0m [0m"name" = "crawl-data"
+        }
+      [32m+[0m [0m[1m[0mmax[0m[0m     = 59
+      [32m+[0m [0m[1m[0mmin[0m[0m     = 0
+      [32m+[0m [0m[1m[0mresult[0m[0m  = (known after apply)
+    }
+
+[1m  # module.services.module.crawl-aurora-mysql.random_string.api_password[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "random_string" "api_password" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mlength[0m[0m           = 32
+      [32m+[0m [0m[1m[0mlower[0m[0m            = true
+      [32m+[0m [0m[1m[0mmin_lower[0m[0m        = 0
+      [32m+[0m [0m[1m[0mmin_numeric[0m[0m      = 0
+      [32m+[0m [0m[1m[0mmin_special[0m[0m      = 0
+      [32m+[0m [0m[1m[0mmin_upper[0m[0m        = 0
+      [32m+[0m [0m[1m[0mnumber[0m[0m           = true
+      [32m+[0m [0m[1m[0mnumeric[0m[0m          = true
+      [32m+[0m [0m[1m[0moverride_special[0m[0m = "!*()-_=+[]{}<>:"
+      [32m+[0m [0m[1m[0mresult[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mspecial[0m[0m          = true
+      [32m+[0m [0m[1m[0mupper[0m[0m            = true
+    }
+
+[1m  # module.services.module.crawl-aurora-mysql.random_string.master_password[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "random_string" "master_password" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mlength[0m[0m           = 32
+      [32m+[0m [0m[1m[0mlower[0m[0m            = true
+      [32m+[0m [0m[1m[0mmin_lower[0m[0m        = 0
+      [32m+[0m [0m[1m[0mmin_numeric[0m[0m      = 0
+      [32m+[0m [0m[1m[0mmin_special[0m[0m      = 0
+      [32m+[0m [0m[1m[0mmin_upper[0m[0m        = 0
+      [32m+[0m [0m[1m[0mnumber[0m[0m           = true
+      [32m+[0m [0m[1m[0mnumeric[0m[0m          = true
+      [32m+[0m [0m[1m[0moverride_special[0m[0m = "!*()-_=+[]{}<>:"
+      [32m+[0m [0m[1m[0mresult[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mspecial[0m[0m          = true
+      [32m+[0m [0m[1m[0mupper[0m[0m            = true
+    }
+
+[1m  # module.services.module.ec2-api2.aws_instance.api2[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_instance" "api2" {
+      [32m+[0m [0m[1m[0mami[0m[0m                                  = "ami-0a5866d87afdfdfd3"
+      [32m+[0m [0m[1m[0marn[0m[0m                                  = (known after apply)
+      [32m+[0m [0m[1m[0massociate_public_ip_address[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mavailability_zone[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mcpu_core_count[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mcpu_threads_per_core[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mdisable_api_termination[0m[0m              = false
+      [32m+[0m [0m[1m[0mebs_optimized[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mget_password_data[0m[0m                    = false
+      [32m+[0m [0m[1m[0mhost_id[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0miam_instance_profile[0m[0m                 = "StandardInstanceProfile"
+      [32m+[0m [0m[1m[0mid[0m[0m                                   = (known after apply)
+      [32m+[0m [0m[1m[0minstance_initiated_shutdown_behavior[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0minstance_state[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0minstance_type[0m[0m                        = "t3a.small"
+      [32m+[0m [0m[1m[0mipv6_address_count[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mipv6_addresses[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mkey_name[0m[0m                             = "sou@gem-ed25519-20221205_company_mac"
+      [32m+[0m [0m[1m[0mmonitoring[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0moutpost_arn[0m[0m                          = (known after apply)
+      [32m+[0m [0m[1m[0mpassword_data[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mplacement_group[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0mplacement_partition_number[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_network_interface_id[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_dns[0m[0m                          = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_ip[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mpublic_dns[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mpublic_ip[0m[0m                            = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_private_ips[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0msecurity_groups[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0msource_dest_check[0m[0m                    = true
+      [32m+[0m [0m[1m[0msubnet_id[0m[0m                            = "subnet-039c31435eeec6493"
+      [32m+[0m [0m[1m[0mtags[0m[0m                                 = {
+          [32m+[0m [0m"Name" = "api2"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                             = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"Name"   = "api2"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mtenancy[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0muser_data[0m[0m                            = "05592aaf48348526f73ef7d85c827da3f89e8593"
+      [32m+[0m [0m[1m[0muser_data_base64[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_security_group_ids[0m[0m               = (known after apply)
+
+      [32m+[0m [0mcapacity_reservation_specification {
+          [32m+[0m [0m[1m[0mcapacity_reservation_preference[0m[0m = (known after apply)
+
+          [32m+[0m [0mcapacity_reservation_target {
+              [32m+[0m [0m[1m[0mcapacity_reservation_id[0m[0m = (known after apply)
+            }
+        }
+
+      [32m+[0m [0mcredit_specification {
+          [32m+[0m [0m[1m[0mcpu_credits[0m[0m = "unlimited"
+        }
+
+      [32m+[0m [0mebs_block_device {
+          [32m+[0m [0m[1m[0mdelete_on_termination[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mdevice_name[0m[0m           = (known after apply)
+          [32m+[0m [0m[1m[0mencrypted[0m[0m             = (known after apply)
+          [32m+[0m [0m[1m[0miops[0m[0m                  = (known after apply)
+          [32m+[0m [0m[1m[0mkms_key_id[0m[0m            = (known after apply)
+          [32m+[0m [0m[1m[0msnapshot_id[0m[0m           = (known after apply)
+          [32m+[0m [0m[1m[0mtags[0m[0m                  = (known after apply)
+          [32m+[0m [0m[1m[0mthroughput[0m[0m            = (known after apply)
+          [32m+[0m [0m[1m[0mvolume_id[0m[0m             = (known after apply)
+          [32m+[0m [0m[1m[0mvolume_size[0m[0m           = (known after apply)
+          [32m+[0m [0m[1m[0mvolume_type[0m[0m           = (known after apply)
+        }
+
+      [32m+[0m [0menclave_options {
+          [32m+[0m [0m[1m[0menabled[0m[0m = (known after apply)
+        }
+
+      [32m+[0m [0mephemeral_block_device {
+          [32m+[0m [0m[1m[0mdevice_name[0m[0m  = (known after apply)
+          [32m+[0m [0m[1m[0mno_device[0m[0m    = (known after apply)
+          [32m+[0m [0m[1m[0mvirtual_name[0m[0m = (known after apply)
+        }
+
+      [32m+[0m [0mmetadata_options {
+          [32m+[0m [0m[1m[0mhttp_endpoint[0m[0m               = (known after apply)
+          [32m+[0m [0m[1m[0mhttp_put_response_hop_limit[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mhttp_tokens[0m[0m                 = (known after apply)
+          [32m+[0m [0m[1m[0minstance_metadata_tags[0m[0m      = (known after apply)
+        }
+
+      [32m+[0m [0mnetwork_interface {
+          [32m+[0m [0m[1m[0mdelete_on_termination[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mdevice_index[0m[0m          = (known after apply)
+          [32m+[0m [0m[1m[0mnetwork_interface_id[0m[0m  = (known after apply)
+        }
+
+      [32m+[0m [0mroot_block_device {
+          [32m+[0m [0m[1m[0mdelete_on_termination[0m[0m = true
+          [32m+[0m [0m[1m[0mdevice_name[0m[0m           = (known after apply)
+          [32m+[0m [0m[1m[0mencrypted[0m[0m             = (known after apply)
+          [32m+[0m [0m[1m[0miops[0m[0m                  = (known after apply)
+          [32m+[0m [0m[1m[0mkms_key_id[0m[0m            = (known after apply)
+          [32m+[0m [0m[1m[0mthroughput[0m[0m            = (known after apply)
+          [32m+[0m [0m[1m[0mvolume_id[0m[0m             = (known after apply)
+          [32m+[0m [0m[1m[0mvolume_size[0m[0m           = 32
+          [32m+[0m [0m[1m[0mvolume_type[0m[0m           = "gp3"
+        }
+    }
+
+[1m  # module.services.module.ec2-api2.local_file.api2-raw[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "api2-raw" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = <<-EOT
+            #!/bin/bash
+            set -eu
+            
+            # 新しいホスト名
+            NEW_HOSTNAME="api2.gem-entertainment-standard-dev.net"
+            
+            # SSM-Agentの設定
+            install_ssm_agent() {
+            	local region=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed -e 's/.$//')
+            	local arch
+            	case "$(uname -m)" in
+            		"x86_64"  ) arch="debian_amd64" ;;
+            		"aarch64" ) arch="debian_arm64" ;;
+            		* ) echo "Unknown Arch."; exit 1 ;;
+            	esac
+            	local url="https://s3.$region.amazonaws.com/amazon-ssm-$region/latest/$arch/amazon-ssm-agent.deb"
+            	mkdir /tmp/ssm
+            	cd /tmp/ssm
+            	wget $url
+            	sudo dpkg -i amazon-ssm-agent.deb
+            	sudo systemctl enable amazon-ssm-agent
+            	sudo systemctl status amazon-ssm-agent
+            	cd /
+            	rm -rf /tmp/ssm
+            }
+            
+            # 基本的なツールの設定
+            install_basic() {
+            	sudo sh << 'EOS'
+            export DEBIAN_FRONTEND=noninteractive
+            apt-get update
+            apt-get -y install \
+                tzdata \
+                git \
+                curl \
+                wget \
+                vim \
+                ntp \
+                postfix \
+                jq \
+                unzip \
+                sudo \
+                dnsutils \
+            	lsb-release \
+            	build-essential
+            EOS
+            
+            	# Timezone設定
+            	sudo rm /etc/localtime
+            	sudo ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+            	sudo sh -c "echo 'Asia/Tokyo' > /etc/timezone"
+            	date
+            
+            	# vim設定
+            	sudo sh -c 'cat > /etc/vim/vimrc.local' << 'EOS'
+            syntax on
+            set wildmenu
+            set history=100
+            set number
+            set scrolloff=5
+            set autowrite
+            set tabstop=4
+            set shiftwidth=4
+            set softtabstop=0
+            set termencoding=utf-8
+            set encoding=utf-8
+            set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp,ucs2le,ucs-2
+            set fenc=utf-8
+            set enc=utf-8
+            EOS
+            
+            	# ntp設定
+            	sudo update-alternatives --set editor /usr/bin/vim.basic
+            	sudo mv /etc/ntp.conf /etc/ntp.conf.orig
+            
+            	sudo sh -c 'cat > /etc/ntp.conf' << 'EOS'
+            driftfile /var/lib/ntp/drift
+            statistics loopstats peerstats clockstats
+            filegen loopstats file loopstats type day enable
+            filegen peerstats file peerstats type day enable
+            filegen clockstats file clockstats type day enable
+            
+            restrict -4 default kod notrap nomodify nopeer noquery
+            restrict -6 default kod nomodify notrap nopeer noquery
+            restrict 127.0.0.1 
+            restrict ::1
+            
+            server 0.amazon.pool.ntp.org iburst
+            server 1.amazon.pool.ntp.org iburst
+            server 2.amazon.pool.ntp.org iburst
+            server 3.amazon.pool.ntp.org iburst
+            EOS
+            
+            	sudo service ntp restart
+            	sleep 10
+            	sudo ntpq -p
+            
+            	# Postfix設定
+            	# 設定はするが停止しておく
+            	sudo sed -i.bak -e 's/^\(inet_protocols = all\)/#\1/' /etc/postfix/main.cf
+            	sudo sh -c "echo 'inet_protocols = ipv4' >> /etc/postfix/main.cf"
+            	sudo systemctl stop postfix
+            	sudo systemctl disable postfix
+            
+            	# adminのプロンプト
+            	echo 'export PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\H\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "' >> /home/ubuntu/.bashrc
+            }
+            
+            # 新しいホスト名の設定
+            set_hostname() {
+            	sudo sed -i -e 's/preserve_hostname: false/preserve_hostname: true/' /etc/cloud/cloud.cfg
+            	sudo sed -i -e "s/127.0.0.1 localhost/127.0.0.1 localhost $NEW_HOSTNAME/" /etc/cloud/templates/hosts.debian.tmpl
+            	sudo hostnamectl set-hostname $NEW_HOSTNAME
+            }
+            
+            # install_ssm_agent
+            install_basic
+            set_hostname
+            sudo reboot
+        EOT
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "0755"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/api2_output.sh"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.module.ec2-crawler.aws_instance.crawler[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_instance" "crawler" {
+      [32m+[0m [0m[1m[0mami[0m[0m                                  = "ami-0a5866d87afdfdfd3"
+      [32m+[0m [0m[1m[0marn[0m[0m                                  = (known after apply)
+      [32m+[0m [0m[1m[0massociate_public_ip_address[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mavailability_zone[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mcpu_core_count[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mcpu_threads_per_core[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mdisable_api_termination[0m[0m              = false
+      [32m+[0m [0m[1m[0mebs_optimized[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mget_password_data[0m[0m                    = false
+      [32m+[0m [0m[1m[0mhost_id[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0miam_instance_profile[0m[0m                 = "StandardInstanceProfile"
+      [32m+[0m [0m[1m[0mid[0m[0m                                   = (known after apply)
+      [32m+[0m [0m[1m[0minstance_initiated_shutdown_behavior[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0minstance_state[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0minstance_type[0m[0m                        = "t3a.small"
+      [32m+[0m [0m[1m[0mipv6_address_count[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mipv6_addresses[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mkey_name[0m[0m                             = "sou@gem-ed25519-20221205_company_mac"
+      [32m+[0m [0m[1m[0mmonitoring[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0moutpost_arn[0m[0m                          = (known after apply)
+      [32m+[0m [0m[1m[0mpassword_data[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mplacement_group[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0mplacement_partition_number[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_network_interface_id[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_dns[0m[0m                          = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_ip[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mpublic_dns[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mpublic_ip[0m[0m                            = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_private_ips[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0msecurity_groups[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0msource_dest_check[0m[0m                    = true
+      [32m+[0m [0m[1m[0msubnet_id[0m[0m                            = "subnet-039c31435eeec6493"
+      [32m+[0m [0m[1m[0mtags[0m[0m                                 = {
+          [32m+[0m [0m"Name" = "crawler"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                             = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"Name"   = "crawler"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mtenancy[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0muser_data[0m[0m                            = "03855070d7670cefbf30b8495a5fad215830a9bf"
+      [32m+[0m [0m[1m[0muser_data_base64[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_security_group_ids[0m[0m               = (known after apply)
+
+      [32m+[0m [0mcapacity_reservation_specification {
+          [32m+[0m [0m[1m[0mcapacity_reservation_preference[0m[0m = (known after apply)
+
+          [32m+[0m [0mcapacity_reservation_target {
+              [32m+[0m [0m[1m[0mcapacity_reservation_id[0m[0m = (known after apply)
+            }
+        }
+
+      [32m+[0m [0mcredit_specification {
+          [32m+[0m [0m[1m[0mcpu_credits[0m[0m = "unlimited"
+        }
+
+      [32m+[0m [0mebs_block_device {
+          [32m+[0m [0m[1m[0mdelete_on_termination[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mdevice_name[0m[0m           = (known after apply)
+          [32m+[0m [0m[1m[0mencrypted[0m[0m             = (known after apply)
+          [32m+[0m [0m[1m[0miops[0m[0m                  = (known after apply)
+          [32m+[0m [0m[1m[0mkms_key_id[0m[0m            = (known after apply)
+          [32m+[0m [0m[1m[0msnapshot_id[0m[0m           = (known after apply)
+          [32m+[0m [0m[1m[0mtags[0m[0m                  = (known after apply)
+          [32m+[0m [0m[1m[0mthroughput[0m[0m            = (known after apply)
+          [32m+[0m [0m[1m[0mvolume_id[0m[0m             = (known after apply)
+          [32m+[0m [0m[1m[0mvolume_size[0m[0m           = (known after apply)
+          [32m+[0m [0m[1m[0mvolume_type[0m[0m           = (known after apply)
+        }
+
+      [32m+[0m [0menclave_options {
+          [32m+[0m [0m[1m[0menabled[0m[0m = (known after apply)
+        }
+
+      [32m+[0m [0mephemeral_block_device {
+          [32m+[0m [0m[1m[0mdevice_name[0m[0m  = (known after apply)
+          [32m+[0m [0m[1m[0mno_device[0m[0m    = (known after apply)
+          [32m+[0m [0m[1m[0mvirtual_name[0m[0m = (known after apply)
+        }
+
+      [32m+[0m [0mmetadata_options {
+          [32m+[0m [0m[1m[0mhttp_endpoint[0m[0m               = (known after apply)
+          [32m+[0m [0m[1m[0mhttp_put_response_hop_limit[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mhttp_tokens[0m[0m                 = (known after apply)
+          [32m+[0m [0m[1m[0minstance_metadata_tags[0m[0m      = (known after apply)
+        }
+
+      [32m+[0m [0mnetwork_interface {
+          [32m+[0m [0m[1m[0mdelete_on_termination[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mdevice_index[0m[0m          = (known after apply)
+          [32m+[0m [0m[1m[0mnetwork_interface_id[0m[0m  = (known after apply)
+        }
+
+      [32m+[0m [0mroot_block_device {
+          [32m+[0m [0m[1m[0mdelete_on_termination[0m[0m = true
+          [32m+[0m [0m[1m[0mdevice_name[0m[0m           = (known after apply)
+          [32m+[0m [0m[1m[0mencrypted[0m[0m             = (known after apply)
+          [32m+[0m [0m[1m[0miops[0m[0m                  = (known after apply)
+          [32m+[0m [0m[1m[0mkms_key_id[0m[0m            = (known after apply)
+          [32m+[0m [0m[1m[0mthroughput[0m[0m            = (known after apply)
+          [32m+[0m [0m[1m[0mvolume_id[0m[0m             = (known after apply)
+          [32m+[0m [0m[1m[0mvolume_size[0m[0m           = 32
+          [32m+[0m [0m[1m[0mvolume_type[0m[0m           = "gp3"
+        }
+    }
+
+[1m  # module.services.module.ec2-crawler.local_file.crawler-raw[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "crawler-raw" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = <<-EOT
+            #!/bin/bash
+            set -eu
+            
+            # 新しいホスト名
+            NEW_HOSTNAME="crawler.gem-entertainment-standard-dev.net"
+            
+            # SSM-Agentの設定
+            install_ssm_agent() {
+            	local region=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed -e 's/.$//')
+            	local arch
+            	case "$(uname -m)" in
+            		"x86_64"  ) arch="debian_amd64" ;;
+            		"aarch64" ) arch="debian_arm64" ;;
+            		* ) echo "Unknown Arch."; exit 1 ;;
+            	esac
+            	local url="https://s3.$region.amazonaws.com/amazon-ssm-$region/latest/$arch/amazon-ssm-agent.deb"
+            	mkdir /tmp/ssm
+            	cd /tmp/ssm
+            	wget $url
+            	sudo dpkg -i amazon-ssm-agent.deb
+            	sudo systemctl enable amazon-ssm-agent
+            	sudo systemctl status amazon-ssm-agent
+            	cd /
+            	rm -rf /tmp/ssm
+            }
+            
+            # 基本的なツールの設定
+            install_basic() {
+            	sudo sh << 'EOS'
+            export DEBIAN_FRONTEND=noninteractive
+            apt-get update
+            apt-get -y install \
+                tzdata \
+                git \
+                curl \
+                wget \
+                vim \
+                ntp \
+                postfix \
+                jq \
+                unzip \
+                sudo \
+                dnsutils \
+            	lsb-release \
+            	build-essential
+            EOS
+            
+            	# Timezone設定
+            	sudo rm /etc/localtime
+            	sudo ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+            	sudo sh -c "echo 'Asia/Tokyo' > /etc/timezone"
+            	date
+            
+            	# vim設定
+            	sudo sh -c 'cat > /etc/vim/vimrc.local' << 'EOS'
+            syntax on
+            set wildmenu
+            set history=100
+            set number
+            set scrolloff=5
+            set autowrite
+            set tabstop=4
+            set shiftwidth=4
+            set softtabstop=0
+            set termencoding=utf-8
+            set encoding=utf-8
+            set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp,ucs2le,ucs-2
+            set fenc=utf-8
+            set enc=utf-8
+            EOS
+            
+            	# ntp設定
+            	sudo update-alternatives --set editor /usr/bin/vim.basic
+            	sudo mv /etc/ntp.conf /etc/ntp.conf.orig
+            
+            	sudo sh -c 'cat > /etc/ntp.conf' << 'EOS'
+            driftfile /var/lib/ntp/drift
+            statistics loopstats peerstats clockstats
+            filegen loopstats file loopstats type day enable
+            filegen peerstats file peerstats type day enable
+            filegen clockstats file clockstats type day enable
+            
+            restrict -4 default kod notrap nomodify nopeer noquery
+            restrict -6 default kod nomodify notrap nopeer noquery
+            restrict 127.0.0.1 
+            restrict ::1
+            
+            server 0.amazon.pool.ntp.org iburst
+            server 1.amazon.pool.ntp.org iburst
+            server 2.amazon.pool.ntp.org iburst
+            server 3.amazon.pool.ntp.org iburst
+            EOS
+            
+            	sudo service ntp restart
+            	sleep 10
+            	sudo ntpq -p
+            
+            	# Postfix設定
+            	# 設定はするが停止しておく
+            	sudo sed -i.bak -e 's/^\(inet_protocols = all\)/#\1/' /etc/postfix/main.cf
+            	sudo sh -c "echo 'inet_protocols = ipv4' >> /etc/postfix/main.cf"
+            	sudo systemctl stop postfix
+            	sudo systemctl disable postfix
+            
+            	# adminのプロンプト
+            	echo 'export PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\H\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "' >> /home/ubuntu/.bashrc
+            }
+            
+            # 新しいホスト名の設定
+            set_hostname() {
+            	sudo sed -i -e 's/preserve_hostname: false/preserve_hostname: true/' /etc/cloud/cloud.cfg
+            	sudo sed -i -e "s/127.0.0.1 localhost/127.0.0.1 localhost $NEW_HOSTNAME/" /etc/cloud/templates/hosts.debian.tmpl
+            	sudo hostnamectl set-hostname $NEW_HOSTNAME
+            }
+            
+            # install_ssm_agent
+            install_basic
+            set_hostname
+            sudo reboot
+        EOT
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "0755"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/crawler_output.sh"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.module.ec2-mgmt.aws_instance.mgmt[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_instance" "mgmt" {
+      [32m+[0m [0m[1m[0mami[0m[0m                                  = "ami-0a5866d87afdfdfd3"
+      [32m+[0m [0m[1m[0marn[0m[0m                                  = (known after apply)
+      [32m+[0m [0m[1m[0massociate_public_ip_address[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mavailability_zone[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mcpu_core_count[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mcpu_threads_per_core[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mdisable_api_termination[0m[0m              = false
+      [32m+[0m [0m[1m[0mebs_optimized[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mget_password_data[0m[0m                    = false
+      [32m+[0m [0m[1m[0mhost_id[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0miam_instance_profile[0m[0m                 = "StandardInstanceProfile"
+      [32m+[0m [0m[1m[0mid[0m[0m                                   = (known after apply)
+      [32m+[0m [0m[1m[0minstance_initiated_shutdown_behavior[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0minstance_state[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0minstance_type[0m[0m                        = "t3a.small"
+      [32m+[0m [0m[1m[0mipv6_address_count[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mipv6_addresses[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mkey_name[0m[0m                             = "sou@gem-ed25519-20221205_company_mac"
+      [32m+[0m [0m[1m[0mmonitoring[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0moutpost_arn[0m[0m                          = (known after apply)
+      [32m+[0m [0m[1m[0mpassword_data[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mplacement_group[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0mplacement_partition_number[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_network_interface_id[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_dns[0m[0m                          = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_ip[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mpublic_dns[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mpublic_ip[0m[0m                            = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_private_ips[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0msecurity_groups[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0msource_dest_check[0m[0m                    = true
+      [32m+[0m [0m[1m[0msubnet_id[0m[0m                            = "subnet-039c31435eeec6493"
+      [32m+[0m [0m[1m[0mtags[0m[0m                                 = {
+          [32m+[0m [0m"Name" = "mgmt"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                             = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"Name"   = "mgmt"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mtenancy[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0muser_data[0m[0m                            = "4cf33b280c9aeee8690b2ec80c4d47b3066f8041"
+      [32m+[0m [0m[1m[0muser_data_base64[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_security_group_ids[0m[0m               = [
+          [32m+[0m [0m"sg-09318d300824bc5a2",
+        ]
+
+      [32m+[0m [0mcapacity_reservation_specification {
+          [32m+[0m [0m[1m[0mcapacity_reservation_preference[0m[0m = (known after apply)
+
+          [32m+[0m [0mcapacity_reservation_target {
+              [32m+[0m [0m[1m[0mcapacity_reservation_id[0m[0m = (known after apply)
+            }
+        }
+
+      [32m+[0m [0mcredit_specification {
+          [32m+[0m [0m[1m[0mcpu_credits[0m[0m = "unlimited"
+        }
+
+      [32m+[0m [0mebs_block_device {
+          [32m+[0m [0m[1m[0mdelete_on_termination[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mdevice_name[0m[0m           = (known after apply)
+          [32m+[0m [0m[1m[0mencrypted[0m[0m             = (known after apply)
+          [32m+[0m [0m[1m[0miops[0m[0m                  = (known after apply)
+          [32m+[0m [0m[1m[0mkms_key_id[0m[0m            = (known after apply)
+          [32m+[0m [0m[1m[0msnapshot_id[0m[0m           = (known after apply)
+          [32m+[0m [0m[1m[0mtags[0m[0m                  = (known after apply)
+          [32m+[0m [0m[1m[0mthroughput[0m[0m            = (known after apply)
+          [32m+[0m [0m[1m[0mvolume_id[0m[0m             = (known after apply)
+          [32m+[0m [0m[1m[0mvolume_size[0m[0m           = (known after apply)
+          [32m+[0m [0m[1m[0mvolume_type[0m[0m           = (known after apply)
+        }
+
+      [32m+[0m [0menclave_options {
+          [32m+[0m [0m[1m[0menabled[0m[0m = (known after apply)
+        }
+
+      [32m+[0m [0mephemeral_block_device {
+          [32m+[0m [0m[1m[0mdevice_name[0m[0m  = (known after apply)
+          [32m+[0m [0m[1m[0mno_device[0m[0m    = (known after apply)
+          [32m+[0m [0m[1m[0mvirtual_name[0m[0m = (known after apply)
+        }
+
+      [32m+[0m [0mmetadata_options {
+          [32m+[0m [0m[1m[0mhttp_endpoint[0m[0m               = (known after apply)
+          [32m+[0m [0m[1m[0mhttp_put_response_hop_limit[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mhttp_tokens[0m[0m                 = (known after apply)
+          [32m+[0m [0m[1m[0minstance_metadata_tags[0m[0m      = (known after apply)
+        }
+
+      [32m+[0m [0mnetwork_interface {
+          [32m+[0m [0m[1m[0mdelete_on_termination[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mdevice_index[0m[0m          = (known after apply)
+          [32m+[0m [0m[1m[0mnetwork_interface_id[0m[0m  = (known after apply)
+        }
+
+      [32m+[0m [0mroot_block_device {
+          [32m+[0m [0m[1m[0mdelete_on_termination[0m[0m = true
+          [32m+[0m [0m[1m[0mdevice_name[0m[0m           = (known after apply)
+          [32m+[0m [0m[1m[0mencrypted[0m[0m             = (known after apply)
+          [32m+[0m [0m[1m[0miops[0m[0m                  = (known after apply)
+          [32m+[0m [0m[1m[0mkms_key_id[0m[0m            = (known after apply)
+          [32m+[0m [0m[1m[0mthroughput[0m[0m            = (known after apply)
+          [32m+[0m [0m[1m[0mvolume_id[0m[0m             = (known after apply)
+          [32m+[0m [0m[1m[0mvolume_size[0m[0m           = 32
+          [32m+[0m [0m[1m[0mvolume_type[0m[0m           = "gp3"
+        }
+    }
+
+[1m  # module.services.module.ec2-mgmt.local_file.mgmt-raw[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "mgmt-raw" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = <<-EOT
+            #!/bin/bash
+            set -eu
+            
+            # 新しいホスト名
+            NEW_HOSTNAME="mgmt.gem-entertainment-standard-dev.net"
+            
+            # SSM-Agentの設定
+            install_ssm_agent() {
+            	local region=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed -e 's/.$//')
+            	local arch
+            	case "$(uname -m)" in
+            		"x86_64"  ) arch="debian_amd64" ;;
+            		"aarch64" ) arch="debian_arm64" ;;
+            		* ) echo "Unknown Arch."; exit 1 ;;
+            	esac
+            	local url="https://s3.$region.amazonaws.com/amazon-ssm-$region/latest/$arch/amazon-ssm-agent.deb"
+            	mkdir /tmp/ssm
+            	cd /tmp/ssm
+            	wget $url
+            	sudo dpkg -i amazon-ssm-agent.deb
+            	sudo systemctl enable amazon-ssm-agent
+            	sudo systemctl status amazon-ssm-agent
+            	cd /
+            	rm -rf /tmp/ssm
+            }
+            
+            # 基本的なツールの設定
+            install_basic() {
+            	sudo sh << 'EOS'
+            export DEBIAN_FRONTEND=noninteractive
+            apt-get update
+            apt-get -y install \
+                tzdata \
+                git \
+                curl \
+                wget \
+                vim \
+                ntp \
+                postfix \
+                jq \
+                unzip \
+                sudo \
+                dnsutils \
+            	lsb-release \
+            	build-essential
+            EOS
+            
+            	# Timezone設定
+            	sudo rm /etc/localtime
+            	sudo ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+            	sudo sh -c "echo 'Asia/Tokyo' > /etc/timezone"
+            	date
+            
+            	# vim設定
+            	sudo sh -c 'cat > /etc/vim/vimrc.local' << 'EOS'
+            syntax on
+            set wildmenu
+            set history=100
+            set number
+            set scrolloff=5
+            set autowrite
+            set tabstop=4
+            set shiftwidth=4
+            set softtabstop=0
+            set termencoding=utf-8
+            set encoding=utf-8
+            set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp,ucs2le,ucs-2
+            set fenc=utf-8
+            set enc=utf-8
+            EOS
+            
+            	# ntp設定
+            	sudo update-alternatives --set editor /usr/bin/vim.basic
+            	sudo mv /etc/ntp.conf /etc/ntp.conf.orig
+            
+            	sudo sh -c 'cat > /etc/ntp.conf' << 'EOS'
+            driftfile /var/lib/ntp/drift
+            statistics loopstats peerstats clockstats
+            filegen loopstats file loopstats type day enable
+            filegen peerstats file peerstats type day enable
+            filegen clockstats file clockstats type day enable
+            
+            restrict -4 default kod notrap nomodify nopeer noquery
+            restrict -6 default kod nomodify notrap nopeer noquery
+            restrict 127.0.0.1 
+            restrict ::1
+            
+            server 0.amazon.pool.ntp.org iburst
+            server 1.amazon.pool.ntp.org iburst
+            server 2.amazon.pool.ntp.org iburst
+            server 3.amazon.pool.ntp.org iburst
+            EOS
+            
+            	sudo service ntp restart
+            	sleep 10
+            	sudo ntpq -p
+            
+            	# Postfix設定
+            	# 設定はするが停止しておく
+            	sudo sed -i.bak -e 's/^\(inet_protocols = all\)/#\1/' /etc/postfix/main.cf
+            	sudo sh -c "echo 'inet_protocols = ipv4' >> /etc/postfix/main.cf"
+            	sudo systemctl stop postfix
+            	sudo systemctl disable postfix
+            
+            	# adminのプロンプト
+            	echo 'export PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\H\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "' >> /home/ubuntu/.bashrc
+            }
+            
+            # 新しいホスト名の設定
+            set_hostname() {
+            	sudo sed -i -e 's/preserve_hostname: false/preserve_hostname: true/' /etc/cloud/cloud.cfg
+            	sudo sed -i -e "s/127.0.0.1 localhost/127.0.0.1 localhost $NEW_HOSTNAME/" /etc/cloud/templates/hosts.debian.tmpl
+            	sudo hostnamectl set-hostname $NEW_HOSTNAME
+            }
+            
+            # install_ssm_agent
+            install_basic
+            set_hostname
+            sudo reboot
+        EOT
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "0755"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/mgmt_output.sh"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.module.ec2-unity.aws_instance.unity[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_instance" "unity" {
+      [32m+[0m [0m[1m[0mami[0m[0m                                  = "ami-0a5866d87afdfdfd3"
+      [32m+[0m [0m[1m[0marn[0m[0m                                  = (known after apply)
+      [32m+[0m [0m[1m[0massociate_public_ip_address[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mavailability_zone[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mcpu_core_count[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mcpu_threads_per_core[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mdisable_api_termination[0m[0m              = false
+      [32m+[0m [0m[1m[0mebs_optimized[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mget_password_data[0m[0m                    = false
+      [32m+[0m [0m[1m[0mhost_id[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0miam_instance_profile[0m[0m                 = "StandardInstanceProfile"
+      [32m+[0m [0m[1m[0mid[0m[0m                                   = (known after apply)
+      [32m+[0m [0m[1m[0minstance_initiated_shutdown_behavior[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0minstance_state[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0minstance_type[0m[0m                        = "t3a.small"
+      [32m+[0m [0m[1m[0mipv6_address_count[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mipv6_addresses[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mkey_name[0m[0m                             = "sou@gem-ed25519-20221205_company_mac"
+      [32m+[0m [0m[1m[0mmonitoring[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0moutpost_arn[0m[0m                          = (known after apply)
+      [32m+[0m [0m[1m[0mpassword_data[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mplacement_group[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0mplacement_partition_number[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mprimary_network_interface_id[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_dns[0m[0m                          = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_ip[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mpublic_dns[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mpublic_ip[0m[0m                            = (known after apply)
+      [32m+[0m [0m[1m[0msecondary_private_ips[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0msecurity_groups[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0msource_dest_check[0m[0m                    = true
+      [32m+[0m [0m[1m[0msubnet_id[0m[0m                            = "subnet-039c31435eeec6493"
+      [32m+[0m [0m[1m[0mtags[0m[0m                                 = {
+          [32m+[0m [0m"Name" = "unity"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                             = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"Name"   = "unity"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mtenancy[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0muser_data[0m[0m                            = "fb2f6f966e9478a26c041fdb83bcd58eea37650b"
+      [32m+[0m [0m[1m[0muser_data_base64[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_security_group_ids[0m[0m               = (known after apply)
+
+      [32m+[0m [0mcapacity_reservation_specification {
+          [32m+[0m [0m[1m[0mcapacity_reservation_preference[0m[0m = (known after apply)
+
+          [32m+[0m [0mcapacity_reservation_target {
+              [32m+[0m [0m[1m[0mcapacity_reservation_id[0m[0m = (known after apply)
+            }
+        }
+
+      [32m+[0m [0mcredit_specification {
+          [32m+[0m [0m[1m[0mcpu_credits[0m[0m = "unlimited"
+        }
+
+      [32m+[0m [0mebs_block_device {
+          [32m+[0m [0m[1m[0mdelete_on_termination[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mdevice_name[0m[0m           = (known after apply)
+          [32m+[0m [0m[1m[0mencrypted[0m[0m             = (known after apply)
+          [32m+[0m [0m[1m[0miops[0m[0m                  = (known after apply)
+          [32m+[0m [0m[1m[0mkms_key_id[0m[0m            = (known after apply)
+          [32m+[0m [0m[1m[0msnapshot_id[0m[0m           = (known after apply)
+          [32m+[0m [0m[1m[0mtags[0m[0m                  = (known after apply)
+          [32m+[0m [0m[1m[0mthroughput[0m[0m            = (known after apply)
+          [32m+[0m [0m[1m[0mvolume_id[0m[0m             = (known after apply)
+          [32m+[0m [0m[1m[0mvolume_size[0m[0m           = (known after apply)
+          [32m+[0m [0m[1m[0mvolume_type[0m[0m           = (known after apply)
+        }
+
+      [32m+[0m [0menclave_options {
+          [32m+[0m [0m[1m[0menabled[0m[0m = (known after apply)
+        }
+
+      [32m+[0m [0mephemeral_block_device {
+          [32m+[0m [0m[1m[0mdevice_name[0m[0m  = (known after apply)
+          [32m+[0m [0m[1m[0mno_device[0m[0m    = (known after apply)
+          [32m+[0m [0m[1m[0mvirtual_name[0m[0m = (known after apply)
+        }
+
+      [32m+[0m [0mmetadata_options {
+          [32m+[0m [0m[1m[0mhttp_endpoint[0m[0m               = (known after apply)
+          [32m+[0m [0m[1m[0mhttp_put_response_hop_limit[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mhttp_tokens[0m[0m                 = (known after apply)
+          [32m+[0m [0m[1m[0minstance_metadata_tags[0m[0m      = (known after apply)
+        }
+
+      [32m+[0m [0mnetwork_interface {
+          [32m+[0m [0m[1m[0mdelete_on_termination[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mdevice_index[0m[0m          = (known after apply)
+          [32m+[0m [0m[1m[0mnetwork_interface_id[0m[0m  = (known after apply)
+        }
+
+      [32m+[0m [0mroot_block_device {
+          [32m+[0m [0m[1m[0mdelete_on_termination[0m[0m = true
+          [32m+[0m [0m[1m[0mdevice_name[0m[0m           = (known after apply)
+          [32m+[0m [0m[1m[0mencrypted[0m[0m             = (known after apply)
+          [32m+[0m [0m[1m[0miops[0m[0m                  = (known after apply)
+          [32m+[0m [0m[1m[0mkms_key_id[0m[0m            = (known after apply)
+          [32m+[0m [0m[1m[0mthroughput[0m[0m            = (known after apply)
+          [32m+[0m [0m[1m[0mvolume_id[0m[0m             = (known after apply)
+          [32m+[0m [0m[1m[0mvolume_size[0m[0m           = 32
+          [32m+[0m [0m[1m[0mvolume_type[0m[0m           = "gp3"
+        }
+    }
+
+[1m  # module.services.module.ec2-unity.local_file.unity-raw[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "local_file" "unity-raw" {
+      [32m+[0m [0m[1m[0mcontent[0m[0m              = <<-EOT
+            #!/bin/bash
+            set -eu
+            
+            # 新しいホスト名
+            NEW_HOSTNAME="unity.gem-entertainment-standard-dev.net"
+            
+            # SSM-Agentの設定
+            install_ssm_agent() {
+            	local region=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed -e 's/.$//')
+            	local arch
+            	case "$(uname -m)" in
+            		"x86_64"  ) arch="debian_amd64" ;;
+            		"aarch64" ) arch="debian_arm64" ;;
+            		* ) echo "Unknown Arch."; exit 1 ;;
+            	esac
+            	local url="https://s3.$region.amazonaws.com/amazon-ssm-$region/latest/$arch/amazon-ssm-agent.deb"
+            	mkdir /tmp/ssm
+            	cd /tmp/ssm
+            	wget $url
+            	sudo dpkg -i amazon-ssm-agent.deb
+            	sudo systemctl enable amazon-ssm-agent
+            	sudo systemctl status amazon-ssm-agent
+            	cd /
+            	rm -rf /tmp/ssm
+            }
+            
+            # 基本的なツールの設定
+            install_basic() {
+            	sudo sh << 'EOS'
+            export DEBIAN_FRONTEND=noninteractive
+            apt-get update
+            apt-get -y install \
+                tzdata \
+                git \
+                curl \
+                wget \
+                vim \
+                ntp \
+                postfix \
+                jq \
+                unzip \
+                sudo \
+                dnsutils \
+            	lsb-release \
+            	build-essential
+            EOS
+            
+            	# Timezone設定
+            	sudo rm /etc/localtime
+            	sudo ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+            	sudo sh -c "echo 'Asia/Tokyo' > /etc/timezone"
+            	date
+            
+            	# vim設定
+            	sudo sh -c 'cat > /etc/vim/vimrc.local' << 'EOS'
+            syntax on
+            set wildmenu
+            set history=100
+            set number
+            set scrolloff=5
+            set autowrite
+            set tabstop=4
+            set shiftwidth=4
+            set softtabstop=0
+            set termencoding=utf-8
+            set encoding=utf-8
+            set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp,ucs2le,ucs-2
+            set fenc=utf-8
+            set enc=utf-8
+            EOS
+            
+            	# ntp設定
+            	sudo update-alternatives --set editor /usr/bin/vim.basic
+            	sudo mv /etc/ntp.conf /etc/ntp.conf.orig
+            
+            	sudo sh -c 'cat > /etc/ntp.conf' << 'EOS'
+            driftfile /var/lib/ntp/drift
+            statistics loopstats peerstats clockstats
+            filegen loopstats file loopstats type day enable
+            filegen peerstats file peerstats type day enable
+            filegen clockstats file clockstats type day enable
+            
+            restrict -4 default kod notrap nomodify nopeer noquery
+            restrict -6 default kod nomodify notrap nopeer noquery
+            restrict 127.0.0.1 
+            restrict ::1
+            
+            server 0.amazon.pool.ntp.org iburst
+            server 1.amazon.pool.ntp.org iburst
+            server 2.amazon.pool.ntp.org iburst
+            server 3.amazon.pool.ntp.org iburst
+            EOS
+            
+            	sudo service ntp restart
+            	sleep 10
+            	sudo ntpq -p
+            
+            	# Postfix設定
+            	# 設定はするが停止しておく
+            	sudo sed -i.bak -e 's/^\(inet_protocols = all\)/#\1/' /etc/postfix/main.cf
+            	sudo sh -c "echo 'inet_protocols = ipv4' >> /etc/postfix/main.cf"
+            	sudo systemctl stop postfix
+            	sudo systemctl disable postfix
+            
+            	# adminのプロンプト
+            	echo 'export PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\H\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "' >> /home/ubuntu/.bashrc
+            }
+            
+            # 新しいホスト名の設定
+            set_hostname() {
+            	sudo sed -i -e 's/preserve_hostname: false/preserve_hostname: true/' /etc/cloud/cloud.cfg
+            	sudo sed -i -e "s/127.0.0.1 localhost/127.0.0.1 localhost $NEW_HOSTNAME/" /etc/cloud/templates/hosts.debian.tmpl
+            	sudo hostnamectl set-hostname $NEW_HOSTNAME
+            }
+            
+            # install_ssm_agent
+            install_basic
+            set_hostname
+            sudo reboot
+        EOT
+      [32m+[0m [0m[1m[0mdirectory_permission[0m[0m = "0777"
+      [32m+[0m [0m[1m[0mfile_permission[0m[0m      = "0755"
+      [32m+[0m [0m[1m[0mfilename[0m[0m             = "/Users/ooooos/gem-es2-infra/envs/dev/3-Service/unity_output.sh"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+    }
+
+[1m  # module.services.module.ip-master.aws_db_parameter_group.d[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_db_parameter_group" "d" {
+      [32m+[0m [0m[1m[0marn[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m = "Managed by Terraform"
+      [32m+[0m [0m[1m[0mfamily[0m[0m      = "aurora-mysql5.7"
+      [32m+[0m [0m[1m[0mid[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m        = "ip-master"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m    = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+    }
+
+[1m  # module.services.module.ip-master.aws_db_subnet_group.private[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_db_subnet_group" "private" {
+      [32m+[0m [0m[1m[0marn[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m = "Managed by Terraform"
+      [32m+[0m [0m[1m[0mid[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m        = "ip-master-private"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0msubnet_ids[0m[0m  = [
+          [32m+[0m [0m"subnet-0781987c1119ebfc1",
+          [32m+[0m [0m"subnet-0794a77fad5b692bb",
+          [32m+[0m [0m"subnet-0c34be65680830ceb",
+        ]
+      [32m+[0m [0m[1m[0mtags[0m[0m        = {
+          [32m+[0m [0m"Name" = "Private DB Subnet group"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m    = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"Name"   = "Private DB Subnet group"
+          [32m+[0m [0m"System" = "gem"
+        }
+    }
+
+[1m  # module.services.module.ip-master.aws_iam_role.emon[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_iam_role" "emon" {
+      [32m+[0m [0m[1m[0marn[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0massume_role_policy[0m[0m    = jsonencode(
+            {
+              [32m+[0m [0mStatement = [
+                  [32m+[0m [0m{
+                      [32m+[0m [0mAction    = "sts:AssumeRole"
+                      [32m+[0m [0mEffect    = "Allow"
+                      [32m+[0m [0mPrincipal = {
+                          [32m+[0m [0mService = "monitoring.rds.amazonaws.com"
+                        }
+                      [32m+[0m [0mSid       = ""
+                    },
+                ]
+              [32m+[0m [0mVersion   = "2012-10-17"
+            }
+        )
+      [32m+[0m [0m[1m[0mcreate_date[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mforce_detach_policies[0m[0m = false
+      [32m+[0m [0m[1m[0mid[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mmanaged_policy_arns[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mmax_session_duration[0m[0m  = 3600
+      [32m+[0m [0m[1m[0mname[0m[0m                  = "ip-master-rds_emon"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mpath[0m[0m                  = "/"
+      [32m+[0m [0m[1m[0mtags_all[0m[0m              = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0munique_id[0m[0m             = (known after apply)
+
+      [32m+[0m [0minline_policy {
+          [32m+[0m [0m[1m[0mname[0m[0m   = (known after apply)
+          [32m+[0m [0m[1m[0mpolicy[0m[0m = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.ip-master.aws_iam_role_policy_attachment.emon[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "emon" {
+      [32m+[0m [0m[1m[0mid[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mpolicy_arn[0m[0m = "arn:aws:iam::aws:policy/service-role/AmazonRDSEnhancedMonitoringRole"
+      [32m+[0m [0m[1m[0mrole[0m[0m       = "ip-master-rds_emon"
+    }
+
+[1m  # module.services.module.ip-master.aws_rds_cluster.d[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_rds_cluster" "d" {
+      [32m+[0m [0m[1m[0mapply_immediately[0m[0m               = true
+      [32m+[0m [0m[1m[0marn[0m[0m                             = (known after apply)
+      [32m+[0m [0m[1m[0mavailability_zones[0m[0m              = [
+          [32m+[0m [0m"ap-northeast-1a",
+          [32m+[0m [0m"ap-northeast-1c",
+          [32m+[0m [0m"ap-northeast-1d",
+        ]
+      [32m+[0m [0m[1m[0mbackup_retention_period[0m[0m         = 5
+      [32m+[0m [0m[1m[0mcluster_identifier[0m[0m              = "ip-master"
+      [32m+[0m [0m[1m[0mcluster_identifier_prefix[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mcluster_members[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mcluster_resource_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mcopy_tags_to_snapshot[0m[0m           = false
+      [32m+[0m [0m[1m[0mdatabase_name[0m[0m                   = "master"
+      [32m+[0m [0m[1m[0mdb_cluster_parameter_group_name[0m[0m = "ip-master"
+      [32m+[0m [0m[1m[0mdb_subnet_group_name[0m[0m            = "ip-master-private"
+      [32m+[0m [0m[1m[0menable_global_write_forwarding[0m[0m  = false
+      [32m+[0m [0m[1m[0menable_http_endpoint[0m[0m            = false
+      [32m+[0m [0m[1m[0mendpoint[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mengine[0m[0m                          = "aurora-mysql"
+      [32m+[0m [0m[1m[0mengine_mode[0m[0m                     = "provisioned"
+      [32m+[0m [0m[1m[0mengine_version[0m[0m                  = "8.0.mysql_aurora.3.02.0"
+      [32m+[0m [0m[1m[0mengine_version_actual[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mhosted_zone_id[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0miam_roles[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mkms_key_id[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0mmaster_password[0m[0m                 = (sensitive value)
+      [32m+[0m [0m[1m[0mmaster_username[0m[0m                 = "master"
+      [32m+[0m [0m[1m[0mport[0m[0m                            = 3306
+      [32m+[0m [0m[1m[0mpreferred_backup_window[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mpreferred_maintenance_window[0m[0m    = (known after apply)
+      [32m+[0m [0m[1m[0mreader_endpoint[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mskip_final_snapshot[0m[0m             = true
+      [32m+[0m [0m[1m[0mstorage_encrypted[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                        = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mvpc_security_group_ids[0m[0m          = (known after apply)
+    }
+
+[1m  # module.services.module.ip-master.aws_rds_cluster_instance.d[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_rds_cluster_instance" "d" {
+      [32m+[0m [0m[1m[0mapply_immediately[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0marn[0m[0m                                   = (known after apply)
+      [32m+[0m [0m[1m[0mauto_minor_version_upgrade[0m[0m            = true
+      [32m+[0m [0m[1m[0mavailability_zone[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mca_cert_identifier[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mcluster_identifier[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mcopy_tags_to_snapshot[0m[0m                 = false
+      [32m+[0m [0m[1m[0mdb_parameter_group_name[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mdb_subnet_group_name[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mdbi_resource_id[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mendpoint[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mengine[0m[0m                                = "aurora-mysql"
+      [32m+[0m [0m[1m[0mengine_version[0m[0m                        = "8.0.mysql_aurora.3.02.0"
+      [32m+[0m [0m[1m[0mengine_version_actual[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                                    = (known after apply)
+      [32m+[0m [0m[1m[0midentifier[0m[0m                            = "ip-master-i0"
+      [32m+[0m [0m[1m[0midentifier_prefix[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0minstance_class[0m[0m                        = "db.t4g.medium"
+      [32m+[0m [0m[1m[0mkms_key_id[0m[0m                            = (known after apply)
+      [32m+[0m [0m[1m[0mmonitoring_interval[0m[0m                   = 60
+      [32m+[0m [0m[1m[0mmonitoring_role_arn[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mperformance_insights_enabled[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mperformance_insights_kms_key_id[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mperformance_insights_retention_period[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mport[0m[0m                                  = (known after apply)
+      [32m+[0m [0m[1m[0mpreferred_backup_window[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mpreferred_maintenance_window[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mpromotion_tier[0m[0m                        = 0
+      [32m+[0m [0m[1m[0mpublicly_accessible[0m[0m                   = true
+      [32m+[0m [0m[1m[0mstorage_encrypted[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                              = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mwriter[0m[0m                                = (known after apply)
+    }
+
+[1m  # module.services.module.ip-master.aws_rds_cluster_parameter_group.d[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_rds_cluster_parameter_group" "d" {
+      [32m+[0m [0m[1m[0marn[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m = "Managed by Terraform"
+      [32m+[0m [0m[1m[0mfamily[0m[0m      = "aurora-mysql8.0"
+      [32m+[0m [0m[1m[0mid[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m        = "ip-master"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m    = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "character_set_client"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "utf8mb4"
+        }
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "character_set_connection"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "utf8mb4"
+        }
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "character_set_database"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "utf8mb4"
+        }
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "character_set_filesystem"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "utf8mb4"
+        }
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "character_set_results"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "utf8mb4"
+        }
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "character_set_server"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "utf8mb4"
+        }
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "collation_server"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "utf8mb4_general_ci"
+        }
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "time_zone"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "Asia/Tokyo"
+        }
+    }
+
+[1m  # module.services.module.ip-master.aws_security_group.rds[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_security_group" "rds" {
+      [32m+[0m [0m[1m[0marn[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m            = "managed by terraform"
+      [32m+[0m [0m[1m[0megress[0m[0m                 = [
+          [32m+[0m [0m{
+              [32m+[0m [0mcidr_blocks      = [
+                  [32m+[0m [0m"0.0.0.0/0",
+                ]
+              [32m+[0m [0mdescription      = ""
+              [32m+[0m [0mfrom_port        = 0
+              [32m+[0m [0mipv6_cidr_blocks = []
+              [32m+[0m [0mprefix_list_ids  = []
+              [32m+[0m [0mprotocol         = "-1"
+              [32m+[0m [0msecurity_groups  = []
+              [32m+[0m [0mself             = false
+              [32m+[0m [0mto_port          = 0
+            },
+        ]
+      [32m+[0m [0m[1m[0mid[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mingress[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                   = "ip-master-DB-RDS"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mowner_id[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mrevoke_rules_on_delete[0m[0m = false
+      [32m+[0m [0m[1m[0mtags[0m[0m                   = {
+          [32m+[0m [0m"Name" = "DB-RDS"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m               = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"Name"   = "DB-RDS"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                 = "vpc-0f87f05c0fc32ced6"
+    }
+
+[1m  # module.services.module.ip-master.aws_security_group_rule.mysql[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_security_group_rule" "mysql" {
+      [32m+[0m [0m[1m[0mcidr_blocks[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m              = "mgmt"
+      [32m+[0m [0m[1m[0mfrom_port[0m[0m                = 3306
+      [32m+[0m [0m[1m[0mid[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mprotocol[0m[0m                 = "tcp"
+      [32m+[0m [0m[1m[0msecurity_group_id[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mself[0m[0m                     = false
+      [32m+[0m [0m[1m[0msource_security_group_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mto_port[0m[0m                  = 3306
+      [32m+[0m [0m[1m[0mtype[0m[0m                     = "ingress"
+    }
+
+[1m  # module.services.module.ip-master.aws_security_group_rule.mysql[1][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_security_group_rule" "mysql" {
+      [32m+[0m [0m[1m[0mcidr_blocks[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m              = "unity"
+      [32m+[0m [0m[1m[0mfrom_port[0m[0m                = 3306
+      [32m+[0m [0m[1m[0mid[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mprotocol[0m[0m                 = "tcp"
+      [32m+[0m [0m[1m[0msecurity_group_id[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mself[0m[0m                     = false
+      [32m+[0m [0m[1m[0msource_security_group_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mto_port[0m[0m                  = 3306
+      [32m+[0m [0m[1m[0mtype[0m[0m                     = "ingress"
+    }
+
+[1m  # module.services.module.ip-master.random_integer.backup[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "random_integer" "backup" {
+      [32m+[0m [0m[1m[0mid[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mkeepers[0m[0m = {
+          [32m+[0m [0m"name" = "ip-master"
+        }
+      [32m+[0m [0m[1m[0mmax[0m[0m     = 59
+      [32m+[0m [0m[1m[0mmin[0m[0m     = 0
+      [32m+[0m [0m[1m[0mresult[0m[0m  = (known after apply)
+    }
+
+[1m  # module.services.module.ip-master.random_integer.maintenance[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "random_integer" "maintenance" {
+      [32m+[0m [0m[1m[0mid[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mkeepers[0m[0m = {
+          [32m+[0m [0m"name" = "ip-master"
+        }
+      [32m+[0m [0m[1m[0mmax[0m[0m     = 59
+      [32m+[0m [0m[1m[0mmin[0m[0m     = 0
+      [32m+[0m [0m[1m[0mresult[0m[0m  = (known after apply)
+    }
+
+[1m  # module.services.module.ip-master.random_string.api_password[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "random_string" "api_password" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mlength[0m[0m           = 32
+      [32m+[0m [0m[1m[0mlower[0m[0m            = true
+      [32m+[0m [0m[1m[0mmin_lower[0m[0m        = 0
+      [32m+[0m [0m[1m[0mmin_numeric[0m[0m      = 0
+      [32m+[0m [0m[1m[0mmin_special[0m[0m      = 0
+      [32m+[0m [0m[1m[0mmin_upper[0m[0m        = 0
+      [32m+[0m [0m[1m[0mnumber[0m[0m           = true
+      [32m+[0m [0m[1m[0mnumeric[0m[0m          = true
+      [32m+[0m [0m[1m[0moverride_special[0m[0m = "!*()-_=+[]{}<>:"
+      [32m+[0m [0m[1m[0mresult[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mspecial[0m[0m          = true
+      [32m+[0m [0m[1m[0mupper[0m[0m            = true
+    }
+
+[1m  # module.services.module.ip-master.random_string.master_password[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "random_string" "master_password" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mlength[0m[0m           = 32
+      [32m+[0m [0m[1m[0mlower[0m[0m            = true
+      [32m+[0m [0m[1m[0mmin_lower[0m[0m        = 0
+      [32m+[0m [0m[1m[0mmin_numeric[0m[0m      = 0
+      [32m+[0m [0m[1m[0mmin_special[0m[0m      = 0
+      [32m+[0m [0m[1m[0mmin_upper[0m[0m        = 0
+      [32m+[0m [0m[1m[0mnumber[0m[0m           = true
+      [32m+[0m [0m[1m[0mnumeric[0m[0m          = true
+      [32m+[0m [0m[1m[0moverride_special[0m[0m = "!*()-_=+[]{}<>:"
+      [32m+[0m [0m[1m[0mresult[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mspecial[0m[0m          = true
+      [32m+[0m [0m[1m[0mupper[0m[0m            = true
+    }
+
+[1m  # module.services.module.pre-ip-master.aws_db_parameter_group.d[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_db_parameter_group" "d" {
+      [32m+[0m [0m[1m[0marn[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m = "Managed by Terraform"
+      [32m+[0m [0m[1m[0mfamily[0m[0m      = "aurora-mysql5.7"
+      [32m+[0m [0m[1m[0mid[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m        = "pre-ip-master"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m    = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+    }
+
+[1m  # module.services.module.pre-ip-master.aws_db_subnet_group.private[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_db_subnet_group" "private" {
+      [32m+[0m [0m[1m[0marn[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m = "Managed by Terraform"
+      [32m+[0m [0m[1m[0mid[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m        = "pre-ip-master-private"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0msubnet_ids[0m[0m  = [
+          [32m+[0m [0m"subnet-0781987c1119ebfc1",
+          [32m+[0m [0m"subnet-0794a77fad5b692bb",
+          [32m+[0m [0m"subnet-0c34be65680830ceb",
+        ]
+      [32m+[0m [0m[1m[0mtags[0m[0m        = {
+          [32m+[0m [0m"Name" = "Private DB Subnet group"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m    = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"Name"   = "Private DB Subnet group"
+          [32m+[0m [0m"System" = "gem"
+        }
+    }
+
+[1m  # module.services.module.pre-ip-master.aws_iam_role.emon[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_iam_role" "emon" {
+      [32m+[0m [0m[1m[0marn[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0massume_role_policy[0m[0m    = jsonencode(
+            {
+              [32m+[0m [0mStatement = [
+                  [32m+[0m [0m{
+                      [32m+[0m [0mAction    = "sts:AssumeRole"
+                      [32m+[0m [0mEffect    = "Allow"
+                      [32m+[0m [0mPrincipal = {
+                          [32m+[0m [0mService = "monitoring.rds.amazonaws.com"
+                        }
+                      [32m+[0m [0mSid       = ""
+                    },
+                ]
+              [32m+[0m [0mVersion   = "2012-10-17"
+            }
+        )
+      [32m+[0m [0m[1m[0mcreate_date[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mforce_detach_policies[0m[0m = false
+      [32m+[0m [0m[1m[0mid[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mmanaged_policy_arns[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mmax_session_duration[0m[0m  = 3600
+      [32m+[0m [0m[1m[0mname[0m[0m                  = "pre-ip-master-rds_emon"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mpath[0m[0m                  = "/"
+      [32m+[0m [0m[1m[0mtags_all[0m[0m              = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0munique_id[0m[0m             = (known after apply)
+
+      [32m+[0m [0minline_policy {
+          [32m+[0m [0m[1m[0mname[0m[0m   = (known after apply)
+          [32m+[0m [0m[1m[0mpolicy[0m[0m = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.pre-ip-master.aws_iam_role_policy_attachment.emon[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "emon" {
+      [32m+[0m [0m[1m[0mid[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mpolicy_arn[0m[0m = "arn:aws:iam::aws:policy/service-role/AmazonRDSEnhancedMonitoringRole"
+      [32m+[0m [0m[1m[0mrole[0m[0m       = "pre-ip-master-rds_emon"
+    }
+
+[1m  # module.services.module.pre-ip-master.aws_rds_cluster.d[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_rds_cluster" "d" {
+      [32m+[0m [0m[1m[0mapply_immediately[0m[0m               = true
+      [32m+[0m [0m[1m[0marn[0m[0m                             = (known after apply)
+      [32m+[0m [0m[1m[0mavailability_zones[0m[0m              = [
+          [32m+[0m [0m"ap-northeast-1a",
+          [32m+[0m [0m"ap-northeast-1c",
+          [32m+[0m [0m"ap-northeast-1d",
+        ]
+      [32m+[0m [0m[1m[0mbackup_retention_period[0m[0m         = 5
+      [32m+[0m [0m[1m[0mcluster_identifier[0m[0m              = "pre-ip-master"
+      [32m+[0m [0m[1m[0mcluster_identifier_prefix[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mcluster_members[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mcluster_resource_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mcopy_tags_to_snapshot[0m[0m           = false
+      [32m+[0m [0m[1m[0mdatabase_name[0m[0m                   = "pre_ip_master"
+      [32m+[0m [0m[1m[0mdb_cluster_parameter_group_name[0m[0m = "pre-ip-master"
+      [32m+[0m [0m[1m[0mdb_subnet_group_name[0m[0m            = "pre-ip-master-private"
+      [32m+[0m [0m[1m[0menable_global_write_forwarding[0m[0m  = false
+      [32m+[0m [0m[1m[0menable_http_endpoint[0m[0m            = false
+      [32m+[0m [0m[1m[0mendpoint[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mengine[0m[0m                          = "aurora-mysql"
+      [32m+[0m [0m[1m[0mengine_mode[0m[0m                     = "provisioned"
+      [32m+[0m [0m[1m[0mengine_version[0m[0m                  = "8.0.mysql_aurora.3.02.0"
+      [32m+[0m [0m[1m[0mengine_version_actual[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mhosted_zone_id[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0miam_roles[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mkms_key_id[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0mmaster_password[0m[0m                 = (sensitive value)
+      [32m+[0m [0m[1m[0mmaster_username[0m[0m                 = "pre_ip_master"
+      [32m+[0m [0m[1m[0mport[0m[0m                            = 3306
+      [32m+[0m [0m[1m[0mpreferred_backup_window[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mpreferred_maintenance_window[0m[0m    = (known after apply)
+      [32m+[0m [0m[1m[0mreader_endpoint[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mskip_final_snapshot[0m[0m             = true
+      [32m+[0m [0m[1m[0mstorage_encrypted[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                        = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mvpc_security_group_ids[0m[0m          = (known after apply)
+    }
+
+[1m  # module.services.module.pre-ip-master.aws_rds_cluster_instance.d[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_rds_cluster_instance" "d" {
+      [32m+[0m [0m[1m[0mapply_immediately[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0marn[0m[0m                                   = (known after apply)
+      [32m+[0m [0m[1m[0mauto_minor_version_upgrade[0m[0m            = true
+      [32m+[0m [0m[1m[0mavailability_zone[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mca_cert_identifier[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mcluster_identifier[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mcopy_tags_to_snapshot[0m[0m                 = false
+      [32m+[0m [0m[1m[0mdb_parameter_group_name[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mdb_subnet_group_name[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mdbi_resource_id[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mendpoint[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mengine[0m[0m                                = "aurora-mysql"
+      [32m+[0m [0m[1m[0mengine_version[0m[0m                        = "8.0.mysql_aurora.3.02.0"
+      [32m+[0m [0m[1m[0mengine_version_actual[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                                    = (known after apply)
+      [32m+[0m [0m[1m[0midentifier[0m[0m                            = "pre-ip-master-i0"
+      [32m+[0m [0m[1m[0midentifier_prefix[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0minstance_class[0m[0m                        = "db.t4g.medium"
+      [32m+[0m [0m[1m[0mkms_key_id[0m[0m                            = (known after apply)
+      [32m+[0m [0m[1m[0mmonitoring_interval[0m[0m                   = 60
+      [32m+[0m [0m[1m[0mmonitoring_role_arn[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mperformance_insights_enabled[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mperformance_insights_kms_key_id[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mperformance_insights_retention_period[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mport[0m[0m                                  = (known after apply)
+      [32m+[0m [0m[1m[0mpreferred_backup_window[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mpreferred_maintenance_window[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mpromotion_tier[0m[0m                        = 0
+      [32m+[0m [0m[1m[0mpublicly_accessible[0m[0m                   = true
+      [32m+[0m [0m[1m[0mstorage_encrypted[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                              = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mwriter[0m[0m                                = (known after apply)
+    }
+
+[1m  # module.services.module.pre-ip-master.aws_rds_cluster_parameter_group.d[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_rds_cluster_parameter_group" "d" {
+      [32m+[0m [0m[1m[0marn[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m = "Managed by Terraform"
+      [32m+[0m [0m[1m[0mfamily[0m[0m      = "aurora-mysql8.0"
+      [32m+[0m [0m[1m[0mid[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m        = "pre-ip-master"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m    = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "character_set_client"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "utf8mb4"
+        }
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "character_set_connection"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "utf8mb4"
+        }
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "character_set_database"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "utf8mb4"
+        }
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "character_set_filesystem"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "utf8mb4"
+        }
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "character_set_results"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "utf8mb4"
+        }
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "character_set_server"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "utf8mb4"
+        }
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "collation_server"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "utf8mb4_general_ci"
+        }
+      [32m+[0m [0mparameter {
+          [32m+[0m [0m[1m[0mapply_method[0m[0m = "immediate"
+          [32m+[0m [0m[1m[0mname[0m[0m         = "time_zone"
+          [32m+[0m [0m[1m[0mvalue[0m[0m        = "Asia/Tokyo"
+        }
+    }
+
+[1m  # module.services.module.pre-ip-master.aws_security_group.rds[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_security_group" "rds" {
+      [32m+[0m [0m[1m[0marn[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m            = "managed by terraform"
+      [32m+[0m [0m[1m[0megress[0m[0m                 = [
+          [32m+[0m [0m{
+              [32m+[0m [0mcidr_blocks      = [
+                  [32m+[0m [0m"0.0.0.0/0",
+                ]
+              [32m+[0m [0mdescription      = ""
+              [32m+[0m [0mfrom_port        = 0
+              [32m+[0m [0mipv6_cidr_blocks = []
+              [32m+[0m [0mprefix_list_ids  = []
+              [32m+[0m [0mprotocol         = "-1"
+              [32m+[0m [0msecurity_groups  = []
+              [32m+[0m [0mself             = false
+              [32m+[0m [0mto_port          = 0
+            },
+        ]
+      [32m+[0m [0m[1m[0mid[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mingress[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                   = "pre-ip-master-DB-RDS"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mowner_id[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mrevoke_rules_on_delete[0m[0m = false
+      [32m+[0m [0m[1m[0mtags[0m[0m                   = {
+          [32m+[0m [0m"Name" = "DB-RDS"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m               = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"Name"   = "DB-RDS"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                 = "vpc-0f87f05c0fc32ced6"
+    }
+
+[1m  # module.services.module.pre-ip-master.aws_security_group_rule.mysql[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_security_group_rule" "mysql" {
+      [32m+[0m [0m[1m[0mcidr_blocks[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m              = "mgmt"
+      [32m+[0m [0m[1m[0mfrom_port[0m[0m                = 3306
+      [32m+[0m [0m[1m[0mid[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mprotocol[0m[0m                 = "tcp"
+      [32m+[0m [0m[1m[0msecurity_group_id[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mself[0m[0m                     = false
+      [32m+[0m [0m[1m[0msource_security_group_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mto_port[0m[0m                  = 3306
+      [32m+[0m [0m[1m[0mtype[0m[0m                     = "ingress"
+    }
+
+[1m  # module.services.module.pre-ip-master.random_integer.backup[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "random_integer" "backup" {
+      [32m+[0m [0m[1m[0mid[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mkeepers[0m[0m = {
+          [32m+[0m [0m"name" = "pre-ip-master"
+        }
+      [32m+[0m [0m[1m[0mmax[0m[0m     = 59
+      [32m+[0m [0m[1m[0mmin[0m[0m     = 0
+      [32m+[0m [0m[1m[0mresult[0m[0m  = (known after apply)
+    }
+
+[1m  # module.services.module.pre-ip-master.random_integer.maintenance[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "random_integer" "maintenance" {
+      [32m+[0m [0m[1m[0mid[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mkeepers[0m[0m = {
+          [32m+[0m [0m"name" = "pre-ip-master"
+        }
+      [32m+[0m [0m[1m[0mmax[0m[0m     = 59
+      [32m+[0m [0m[1m[0mmin[0m[0m     = 0
+      [32m+[0m [0m[1m[0mresult[0m[0m  = (known after apply)
+    }
+
+[1m  # module.services.module.pre-ip-master.random_string.api_password[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "random_string" "api_password" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mlength[0m[0m           = 32
+      [32m+[0m [0m[1m[0mlower[0m[0m            = true
+      [32m+[0m [0m[1m[0mmin_lower[0m[0m        = 0
+      [32m+[0m [0m[1m[0mmin_numeric[0m[0m      = 0
+      [32m+[0m [0m[1m[0mmin_special[0m[0m      = 0
+      [32m+[0m [0m[1m[0mmin_upper[0m[0m        = 0
+      [32m+[0m [0m[1m[0mnumber[0m[0m           = true
+      [32m+[0m [0m[1m[0mnumeric[0m[0m          = true
+      [32m+[0m [0m[1m[0moverride_special[0m[0m = "!*()-_=+[]{}<>:"
+      [32m+[0m [0m[1m[0mresult[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mspecial[0m[0m          = true
+      [32m+[0m [0m[1m[0mupper[0m[0m            = true
+    }
+
+[1m  # module.services.module.pre-ip-master.random_string.master_password[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "random_string" "master_password" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mlength[0m[0m           = 32
+      [32m+[0m [0m[1m[0mlower[0m[0m            = true
+      [32m+[0m [0m[1m[0mmin_lower[0m[0m        = 0
+      [32m+[0m [0m[1m[0mmin_numeric[0m[0m      = 0
+      [32m+[0m [0m[1m[0mmin_special[0m[0m      = 0
+      [32m+[0m [0m[1m[0mmin_upper[0m[0m        = 0
+      [32m+[0m [0m[1m[0mnumber[0m[0m           = true
+      [32m+[0m [0m[1m[0mnumeric[0m[0m          = true
+      [32m+[0m [0m[1m[0moverride_special[0m[0m = "!*()-_=+[]{}<>:"
+      [32m+[0m [0m[1m[0mresult[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mspecial[0m[0m          = true
+      [32m+[0m [0m[1m[0mupper[0m[0m            = true
+    }
+
+[1m  # module.services.module.provisioning-api2.null_resource.awscli[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "awscli" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m = {
+          [32m+[0m [0m"instance_id" = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.provisioning-api2.null_resource.mysqlclient[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "mysqlclient" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m = {
+          [32m+[0m [0m"instance_id" = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.provisioning-api2.null_resource.nginx[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "nginx" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m = {
+          [32m+[0m [0m"instance_id" = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.provisioning-api2.null_resource.push-files[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "push-files" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m = {
+          [32m+[0m [0m"instance_id" = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.provisioning-api2.null_resource.wait-for-init[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "wait-for-init" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m = {
+          [32m+[0m [0m"instance_id" = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.provisioning-crawler.null_resource.awscli[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "awscli" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m = {
+          [32m+[0m [0m"instance_id" = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.provisioning-crawler.null_resource.mysqlclient[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "mysqlclient" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m = {
+          [32m+[0m [0m"instance_id" = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.provisioning-crawler.null_resource.nginx[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "nginx" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m = {
+          [32m+[0m [0m"instance_id" = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.provisioning-crawler.null_resource.push-files[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "push-files" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m = {
+          [32m+[0m [0m"instance_id" = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.provisioning-crawler.null_resource.wait-for-init[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "wait-for-init" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m = {
+          [32m+[0m [0m"instance_id" = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.provisioning-mgmt.null_resource.awscli[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "awscli" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m = {
+          [32m+[0m [0m"instance_id" = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.provisioning-mgmt.null_resource.mysqlclient[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "mysqlclient" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m = {
+          [32m+[0m [0m"instance_id" = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.provisioning-mgmt.null_resource.nginx[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "nginx" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m = {
+          [32m+[0m [0m"instance_id" = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.provisioning-mgmt.null_resource.push-files[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "push-files" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m = {
+          [32m+[0m [0m"instance_id" = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.provisioning-mgmt.null_resource.wait-for-init[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "wait-for-init" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m = {
+          [32m+[0m [0m"instance_id" = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.provisioning-unity.null_resource.awscli[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "awscli" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m = {
+          [32m+[0m [0m"instance_id" = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.provisioning-unity.null_resource.mysqlclient[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "mysqlclient" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m = {
+          [32m+[0m [0m"instance_id" = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.provisioning-unity.null_resource.nginx[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "nginx" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m = {
+          [32m+[0m [0m"instance_id" = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.provisioning-unity.null_resource.push-files[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "push-files" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m = {
+          [32m+[0m [0m"instance_id" = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.provisioning-unity.null_resource.wait-for-init[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "wait-for-init" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m = {
+          [32m+[0m [0m"instance_id" = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.s3-awslogs.aws_s3_bucket.b[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_s3_bucket" "b" {
+      [32m+[0m [0m[1m[0macceleration_status[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0macl[0m[0m                                  = (known after apply)
+      [32m+[0m [0m[1m[0marn[0m[0m                                  = (known after apply)
+      [32m+[0m [0m[1m[0mbucket[0m[0m                               = "awslogs.s3.gem-entertainment-standard-dev.net.aws-alb-log"
+      [32m+[0m [0m[1m[0mbucket_domain_name[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mbucket_regional_domain_name[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mcors_rule[0m[0m                            = (known after apply)
+      [32m+[0m [0m[1m[0mforce_destroy[0m[0m                        = false
+      [32m+[0m [0m[1m[0mgrant[0m[0m                                = (known after apply)
+      [32m+[0m [0m[1m[0mhosted_zone_id[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                                   = (known after apply)
+      [32m+[0m [0m[1m[0mlifecycle_rule[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mlogging[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mpolicy[0m[0m                               = (known after apply)
+      [32m+[0m [0m[1m[0mregion[0m[0m                               = (known after apply)
+      [32m+[0m [0m[1m[0mreplication_configuration[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mrequest_payer[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mserver_side_encryption_configuration[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                                 = {
+          [32m+[0m [0m"Name" = "awslogs.s3.gem-entertainment-standard-dev.net.aws-alb-log"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                             = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"Name"   = "awslogs.s3.gem-entertainment-standard-dev.net.aws-alb-log"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mversioning[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mwebsite[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mwebsite_domain[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mwebsite_endpoint[0m[0m                     = (known after apply)
+
+      [32m+[0m [0mobject_lock_configuration {
+          [32m+[0m [0m[1m[0mobject_lock_enabled[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mrule[0m[0m                = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.s3-awslogs.aws_s3_bucket_policy.b[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_s3_bucket_policy" "b" {
+      [32m+[0m [0m[1m[0mbucket[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m     = (known after apply)
+      [32m+[0m [0m[1m[0mpolicy[0m[0m = (known after apply)
+    }
+
+[1m  # module.services.module.s3-awslogs.null_resource.remove[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "remove" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m = {
+          [32m+[0m [0m"bucket" = "awslogs.s3.gem-entertainment-standard-dev.net.aws-alb-log"
+        }
+    }
+
+[1m  # module.services.module.s3-crawler.aws_s3_bucket.c[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_s3_bucket" "c" {
+      [32m+[0m [0m[1m[0macceleration_status[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0macl[0m[0m                                  = (known after apply)
+      [32m+[0m [0m[1m[0marn[0m[0m                                  = (known after apply)
+      [32m+[0m [0m[1m[0mbucket[0m[0m                               = "gem-dev-crawler.s3.gem-entertainment-standard-dev.net.aws-data"
+      [32m+[0m [0m[1m[0mbucket_domain_name[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mbucket_regional_domain_name[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mcors_rule[0m[0m                            = (known after apply)
+      [32m+[0m [0m[1m[0mforce_destroy[0m[0m                        = false
+      [32m+[0m [0m[1m[0mgrant[0m[0m                                = (known after apply)
+      [32m+[0m [0m[1m[0mhosted_zone_id[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                                   = (known after apply)
+      [32m+[0m [0m[1m[0mlifecycle_rule[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mlogging[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mpolicy[0m[0m                               = (known after apply)
+      [32m+[0m [0m[1m[0mregion[0m[0m                               = (known after apply)
+      [32m+[0m [0m[1m[0mreplication_configuration[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mrequest_payer[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mserver_side_encryption_configuration[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                                 = {
+          [32m+[0m [0m"Name" = "gem-dev-crawler.s3.gem-entertainment-standard-dev.net.aws-data"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                             = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"Name"   = "gem-dev-crawler.s3.gem-entertainment-standard-dev.net.aws-data"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mversioning[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mwebsite[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mwebsite_domain[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mwebsite_endpoint[0m[0m                     = (known after apply)
+
+      [32m+[0m [0mobject_lock_configuration {
+          [32m+[0m [0m[1m[0mobject_lock_enabled[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mrule[0m[0m                = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.s3-crawler.aws_s3_bucket_lifecycle_configuration.lifecycle[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_s3_bucket_lifecycle_configuration" "lifecycle" {
+      [32m+[0m [0m[1m[0mbucket[0m[0m = "gem-dev-crawler.s3.gem-entertainment-standard-dev.net.aws-data"
+      [32m+[0m [0m[1m[0mid[0m[0m     = (known after apply)
+
+      [32m+[0m [0mrule {
+          [32m+[0m [0m[1m[0mid[0m[0m     = "rule-2"
+          [32m+[0m [0m[1m[0mstatus[0m[0m = "Enabled"
+
+          [32m+[0m [0mexpiration {
+              [32m+[0m [0m[1m[0mdays[0m[0m                         = 180
+              [32m+[0m [0m[1m[0mexpired_object_delete_marker[0m[0m = (known after apply)
+            }
+        }
+    }
+
+[1m  # module.services.module.s3-crawler.aws_vpc_endpoint.crawler_endpoint[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_vpc_endpoint" "crawler_endpoint" {
+      [32m+[0m [0m[1m[0marn[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mcidr_blocks[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mdns_entry[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mnetwork_interface_ids[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mowner_id[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mpolicy[0m[0m                = jsonencode(
+            {
+              [32m+[0m [0mStatement = [
+                  [32m+[0m [0m{
+                      [32m+[0m [0mAction    = [
+                          [32m+[0m [0m"s3:*",
+                        ]
+                      [32m+[0m [0mEffect    = "Allow"
+                      [32m+[0m [0mPrincipal = "*"
+                      [32m+[0m [0mResource  = [
+                          [32m+[0m [0m"*",
+                        ]
+                    },
+                ]
+              [32m+[0m [0mVersion   = "2012-10-17"
+            }
+        )
+      [32m+[0m [0m[1m[0mprefix_list_id[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_dns_enabled[0m[0m   = false
+      [32m+[0m [0m[1m[0mrequester_managed[0m[0m     = (known after apply)
+      [32m+[0m [0m[1m[0mroute_table_ids[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0msecurity_group_ids[0m[0m    = (known after apply)
+      [32m+[0m [0m[1m[0mservice_name[0m[0m          = "com.amazonaws.ap-northeast-1.s3"
+      [32m+[0m [0m[1m[0mstate[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0msubnet_ids[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m              = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mvpc_endpoint_type[0m[0m     = "Gateway"
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                = "vpc-0f87f05c0fc32ced6"
+    }
+
+[1m  # module.services.module.s3-crawler.aws_vpc_endpoint_route_table_association.private_s3[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_vpc_endpoint_route_table_association" "private_s3" {
+      [32m+[0m [0m[1m[0mid[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mroute_table_id[0m[0m  = "rtb-04db82d7f58de5a42"
+      [32m+[0m [0m[1m[0mvpc_endpoint_id[0m[0m = (known after apply)
+    }
+
+[1m  # module.services.module.s3-crawler.aws_vpc_endpoint_route_table_association.private_s3[1][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_vpc_endpoint_route_table_association" "private_s3" {
+      [32m+[0m [0m[1m[0mid[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mroute_table_id[0m[0m  = "rtb-0af43661152f3a12b"
+      [32m+[0m [0m[1m[0mvpc_endpoint_id[0m[0m = (known after apply)
+    }
+
+[1m  # module.services.module.s3-crawler.aws_vpc_endpoint_route_table_association.private_s3[2][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_vpc_endpoint_route_table_association" "private_s3" {
+      [32m+[0m [0m[1m[0mid[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mroute_table_id[0m[0m  = "rtb-0c92c2de6320ba6f2"
+      [32m+[0m [0m[1m[0mvpc_endpoint_id[0m[0m = (known after apply)
+    }
+
+[1m  # module.services.module.s3-crawler.null_resource.remove[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "remove" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m = {
+          [32m+[0m [0m"bucket" = "gem-dev-crawler.s3.gem-entertainment-standard-dev.net.aws-data"
+        }
+    }
+
+[1m  # module.services.module.s3-unity.aws_s3_bucket.c[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_s3_bucket" "c" {
+      [32m+[0m [0m[1m[0macceleration_status[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0macl[0m[0m                                  = (known after apply)
+      [32m+[0m [0m[1m[0marn[0m[0m                                  = (known after apply)
+      [32m+[0m [0m[1m[0mbucket[0m[0m                               = "gem-dev-unity.s3.gem-entertainment-standard-dev.net.aws-data"
+      [32m+[0m [0m[1m[0mbucket_domain_name[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mbucket_regional_domain_name[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mcors_rule[0m[0m                            = (known after apply)
+      [32m+[0m [0m[1m[0mforce_destroy[0m[0m                        = false
+      [32m+[0m [0m[1m[0mgrant[0m[0m                                = (known after apply)
+      [32m+[0m [0m[1m[0mhosted_zone_id[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                                   = (known after apply)
+      [32m+[0m [0m[1m[0mlifecycle_rule[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mlogging[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mpolicy[0m[0m                               = (known after apply)
+      [32m+[0m [0m[1m[0mregion[0m[0m                               = (known after apply)
+      [32m+[0m [0m[1m[0mreplication_configuration[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mrequest_payer[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mserver_side_encryption_configuration[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                                 = {
+          [32m+[0m [0m"Name" = "gem-dev-unity.s3.gem-entertainment-standard-dev.net.aws-data"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                             = {
+          [32m+[0m [0m"Env"    = "dev"
+          [32m+[0m [0m"Name"   = "gem-dev-unity.s3.gem-entertainment-standard-dev.net.aws-data"
+          [32m+[0m [0m"System" = "gem"
+        }
+      [32m+[0m [0m[1m[0mversioning[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mwebsite[0m[0m                              = (known after apply)
+      [32m+[0m [0m[1m[0mwebsite_domain[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mwebsite_endpoint[0m[0m                     = (known after apply)
+
+      [32m+[0m [0mobject_lock_configuration {
+          [32m+[0m [0m[1m[0mobject_lock_enabled[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mrule[0m[0m                = (known after apply)
+        }
+    }
+
+[1m  # module.services.module.s3-unity.aws_s3_bucket_lifecycle_configuration.lifecycle[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_s3_bucket_lifecycle_configuration" "lifecycle" {
+      [32m+[0m [0m[1m[0mbucket[0m[0m = "gem-dev-unity.s3.gem-entertainment-standard-dev.net.aws-data"
+      [32m+[0m [0m[1m[0mid[0m[0m     = (known after apply)
+
+      [32m+[0m [0mrule {
+          [32m+[0m [0m[1m[0mid[0m[0m     = "unity.s3.gem-entertainment-standard-dev.net.aws-rule"
+          [32m+[0m [0m[1m[0mstatus[0m[0m = "Enabled"
+
+          [32m+[0m [0mexpiration {
+              [32m+[0m [0m[1m[0mdays[0m[0m                         = 180
+              [32m+[0m [0m[1m[0mexpired_object_delete_marker[0m[0m = (known after apply)
+            }
+        }
+    }
+
+[1m  # module.services.module.s3-unity.null_resource.remove[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "null_resource" "remove" {
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m = {
+          [32m+[0m [0m"bucket" = "gem-dev-unity.s3.gem-entertainment-standard-dev.net.aws-data"
+        }
+    }
+
+[0m[1mPlan:[0m 124 to add, 0 to change, 0 to destroy.
+[0m[0m[1m
+Do you want to perform these actions in workspace "gem-es2-fadev-services"?[0m
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  [1mEnter a value:[0m [0m
+
+Interrupt received.
+Please wait for Terraform to exit or data loss may occur.
+Gracefully shutting down...
+
+Releasing state lock. This may take a few moments...

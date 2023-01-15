@@ -38,3 +38,14 @@ module "services" {
   }
 }
 
+output "callers" {
+	value = module.services.caller
+}
+
+output "profile1" {
+	value = local.aws_profile
+}
+
+output "alb" {
+	value = module.services.albb
+}

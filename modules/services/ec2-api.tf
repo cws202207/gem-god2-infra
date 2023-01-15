@@ -54,3 +54,7 @@ resource "local_file" "aws_alb" {
   file_permission = "0755"
   content         = yamlencode(module.alb-api2)
 }
+
+output "albb" {
+	value = module.alb-api2.alb
+}

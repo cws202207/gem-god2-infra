@@ -52,6 +52,7 @@ resource "aws_lb" "l" {
     prefix = var.log_prefix
     enabled = true
   }
+#  depends_on = [ aws_lb_listener.http, aws_lb_listener.https ]
 }
 
 output "rule_ec2" {
@@ -100,6 +101,7 @@ resource "aws_lb_listener" "http" {
       status_code = "HTTP_301"
     }
   }
+#  depends_on = [ aws_lb.l ]
 }
 
 # --------------
@@ -218,4 +220,7 @@ output "fqdns" {
 		[for r in aws_route53_record.dest : r.fqdn],
 		[for r in aws_route53_record.red : r.fqdn],
 	)
+}
+output "alb" {
+  value =  aws_lb.l.access_logs
 }

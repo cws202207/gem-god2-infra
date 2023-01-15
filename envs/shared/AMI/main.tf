@@ -9,7 +9,7 @@ terraform {
     organization = "gem-entertainment-standard"
 
     workspaces {
-      name = "gem-dev-shared"
+      name = "gem-es2-fadev-shared"
 
     }
   }

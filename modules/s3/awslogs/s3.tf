@@ -1,15 +1,15 @@
 variable "bucket" {}
 
 resource "aws_s3_bucket" "b" {
-  bucket = "${local.name_prefix}-${var.bucket}-alb-log"
+  bucket = "${var.bucket}-alb-log"
 
   tags = {
-    Name = "${local.name_prefix}-${var.bucket}-alb-log"
+    Name = "${var.bucket}-alb-log"
   }
 }
 
 #resource "aws_s3_bucket_server_side_encryption_configuration" "encyption" {
-#  bucket = "${local.name_prefix}-${var.bucket}-alb-log"
+#  bucket = "${var.bucket}-alb-log"
 #  rule {
 #    apply_server_side_encryption_by_default {
 #      sse_algorithm = "AES256"
@@ -17,32 +17,32 @@ resource "aws_s3_bucket" "b" {
 #  }
 #}
 
-resource "null_resource" "remove" {
-  triggers = {
-    bucket = aws_s3_bucket.b.bucket
-  }
-  depends_on = [
-    aws_s3_bucket.b
-  ]
-  provisioner "local-exec" {
-    when    = destroy
-    command = "aws s3 rm s3://${self.triggers.bucket} --recursive"
-  }
-}
+#resource "null_resource" "remove" {
+#  triggers = {
+#    bucket = aws_s3_bucket.b.bucket
+#  }
+#  depends_on = [
+#    aws_s3_bucket.b
+#  ]
+#  provisioner "local-exec" {
+#    when    = destroy
+#    command = "aws s3 rm s3://${self.triggers.bucket} --recursive"
+#  }
+#}
 
 
-resource "aws_s3_bucket_lifecycle_configuration" "lifecycle" {
-  bucket = "${local.name_prefix}-${var.bucket}-alb-log"
-  rule {
-    id = "rule-1"
-
-    expiration {
-      days = 90
-    }
-
-    status = "Enabled"
-  }
-}
+#resource "aws_s3_bucket_lifecycle_configuration" "lifecycle" {
+#  bucket = "${var.bucket}-alb-log"
+#  rule {
+#    id = "${var.bucket}"
+#
+#    expiration {
+#      days = 90
+#    }
+#
+#    status = "Enabled"
+#  }
+#}
 
 output "bucket" {
   value = aws_s3_bucket.b

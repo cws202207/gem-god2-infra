@@ -16,3 +16,7 @@ resource "local_file" "s3-awslogs" {
 output "bucket" {
   value = module.s3-awslogs.bucket.bucket
 }
+
+output "caller" {
+	value = module.s3-awslogs.bucket_policy
+}
