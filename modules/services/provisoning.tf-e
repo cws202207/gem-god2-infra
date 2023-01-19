@@ -102,7 +102,7 @@ module "provisioning-god-hand" {
 	  local_file.god_my_cnf,
 	  local_file.site-info_my_cnf,
 	]
-	instance_id = module.god-hand.god-hand_id
+	instance_id = module.ec2-god-hand.god-hand_id
 	dir_appconfig = "${local.appconfig}/etc"
 	ssh = {
 	  config = "${local.appconfig}/etc/ssh/god-hand/config"

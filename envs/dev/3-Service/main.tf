@@ -20,19 +20,21 @@ module "services" {
     production = false
     class      = "db.t4g.medium"
   }
-  ec2-api2 = {
+  god-api = {
     type = "t3a.small"
     size = 32
   }
-  ec2-crawler = {
+#  ec2-crawler = {
+#    type = "t3a.small"
+#    size = 32
+#  }
+   ec2-mgmt = {
+#   god-hand = {
     type = "t3a.small"
     size = 32
   }
-  ec2-mgmt = {
-    type = "t3a.small"
-    size = 32
-  }
-  ec2-unity = {
+   god-hand = {
+#   ec2-unity = {
     type = "t3a.small"
     size = 32
   }
@@ -46,6 +48,3 @@ output "profile1" {
 	value = local.aws_profile
 }
 
-output "alb" {
-	value = module.services.albb
-}

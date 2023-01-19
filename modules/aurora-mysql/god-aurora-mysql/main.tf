@@ -16,7 +16,7 @@ output "pertmit_ips" {
   value = var.permit_ips
 }
 
-resource "random_string" "api_password" {
+resource "random_string" "god_password" {
   length           = 32
   special          = true
   override_special = "!*()-_=+[]{}<>:"
@@ -28,10 +28,10 @@ locals {
     username = "master"
     password = random_string.master_password.id
   }
-  api2 = {
-    db       = "api2"
-    username = "api2"
-    password = random_string.api_password.id
+  god = {
+    db       = "god"
+    username = "god"
+    password = random_string.god_password.id
   }
 }
 
@@ -53,6 +53,6 @@ output "port" {
 output "master" {
   value = local.master
 }
-output "api2" {
-  value = local.api2
+output "god" {
+  value = local.god
 }

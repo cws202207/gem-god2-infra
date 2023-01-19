@@ -1,5 +1,5 @@
 locals {
-  aws_profile = "gem-entertainment-standard-fa-dev_mfa"
+  aws_profile = "gem-god-backend_mfa"
 }
 
 provider "aws" {
@@ -9,7 +9,7 @@ provider "aws" {
   default_tags {
     tags = {
       Env    = "dev"
-      System = "gem"
+      System = "gem-god-backend"
     }
   }
 }

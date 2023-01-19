@@ -1,11 +1,11 @@
 locals {
   security_group_ids = {
-    vpc     = var.vpc.security_groups.vpc
-    private = var.vpc.security_groups.private
-    web-alb = aws_security_group.web-alb.id
+    vpc      = var.vpc.security_groups.vpc
+    private  = var.vpc.security_groups.private
+    web-alb  = aws_security_group.web-alb.id
     web-alb2 = aws_security_group.web-alb2.id
-    alb-ec2 = aws_security_group.alb-ec2.id
-    web     = var.vpc.security_groups.web
+    alb-ec2  = aws_security_group.alb-ec2.id
+    web      = var.vpc.security_groups.web
   }
 }
 

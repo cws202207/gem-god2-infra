@@ -95,9 +95,9 @@ resource "aws_rds_cluster" "d" {
   engine                          = "aurora-mysql"
   engine_version                  = "8.0.mysql_aurora.3.02.0"
   availability_zones              = var.aurora.availability_zones
-  database_name                   = local.master.db
-  master_username                 = local.master.username
-  master_password                 = local.master.password
+  database_name                   = local.site-info.db
+  master_username                 = local.site-info.username
+  master_password                 = local.site-info.password
   port                            = 3306
   backup_retention_period         = 5
   preferred_backup_window         = local.backup_window

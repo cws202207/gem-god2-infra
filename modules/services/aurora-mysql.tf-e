@@ -15,8 +15,8 @@ module "site-info-aurora-mysql" {
     {
       #"module.ec2-crawler.crawler_private_ip"で囲むと文字列になってしまうので、気を付ける 囲んで渡すとlist of string required.
 
-      name = "god-hand"
-      ip   = module.god-hand.god-hand_private_ip
+      name = "mgmt"
+      ip   = module.ec2-mgmt.mgmt_private_ip
     },
     {
       name = "god-api"
@@ -47,12 +47,12 @@ module "god-aurora-mysql" {
   # アクセスを許可するローカルアドレス
   permit_ips = [
     {
-      name = "god-api"
-      ip   = module.god-api.god-api_private_ip #mgmtのみアクセス許可
+      name = "mgmt"
+      ip   = module.ec2-mgmt.mgmt_private_ip #mgmtのみアクセス許可
     },
     {
-      name = "god-hand"
-      ip   = module.god-hand.god-hand_private_ip
+      name = "unity"
+      ip   = module.god-hand.unity_private_ip
     }
 
   ]

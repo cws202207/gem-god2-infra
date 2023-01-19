@@ -13,18 +13,6 @@ locals {
   ports_uniq = distinct([for d in var.targets : d.port])
 }
 
-output "ports_uniq" {
- value = local.ports_uniq
-}
-
-output "ports_uniq_length" {
- value = length(local.ports_uniq)
-}
-
-output "var_targets_length" {
- value = length(var.targets)
-}
-
 # --------------
 # EC2で許可するポート
 # --------------
@@ -55,9 +43,9 @@ resource "aws_lb" "l" {
 #  depends_on = [ aws_lb_listener.http, aws_lb_listener.https ]
 }
 
-output "rule_ec2" {
-  value = aws_security_group_rule.ec2
-}
+#output "rule_ec2" {
+#  value = aws_security_group_rule.ec2
+#}
 
 # --------------
 # ターゲットグループ

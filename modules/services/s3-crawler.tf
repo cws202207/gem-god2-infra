@@ -12,8 +12,8 @@ module "s3-crawler" {
   ]
 
 }
- resource "local_file" "s3-crawler" {
-	content = yamlencode(module.s3-crawler)
-	filename = "${path.cwd}/s3-crawler.sh"
-	file_permission = 0644
+resource "local_file" "s3-crawler" {
+  content         = yamlencode(module.s3-crawler)
+  filename        = "${path.cwd}/s3-crawler.sh"
+  file_permission = 0644
 }

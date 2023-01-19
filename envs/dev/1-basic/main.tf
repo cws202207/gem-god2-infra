@@ -1,31 +1,31 @@
-terraform {
-  cloud {
-    organization = "gem-entertainment-standard"
-
-    workspaces {
-      name = "gem-es2-fadev-basic"
-
-    }
-  }
-}
-
 #terraform {
-#  backend "s3" {
-#    bucket = "gem-es2-fadev-basic-tfstate"
-#    key    = "gem/dev/basic/main_v1.0.0.tfstate"
-#    region = "ap-northeast-1"
+#  cloud {
+#    organization = "gem-god-backend"
+#
+#    workspaces {
+#      name = "gem-god-fadev-basic"
+#
+#    }
 #  }
 #}
 
+terraform {
+  backend "s3" {
+    bucket = "gem-god-backend-fadev-basic-tfstate"
+    key    = "gem/fadev/basic/main_v1.0.0.tfstate"
+    region = "ap-northeast-1"
+  }
+}
+
 data "aws_route53_zone" "z" {
-  name         = "gem-entertainment-standard-dev.net."
+  name         = "gem-god-backend.com."
   private_zone = false
 }
 
 # ドメイン
 resource "local_file" "route53" {
   content = yamlencode({
-    name : "gem-entertainment-standard-dev.net",
+    name : "gem-god-backend.com",
     zone_id : data.aws_route53_zone.z.id,
     name_servers : data.aws_route53_zone.z.name_servers,
   })

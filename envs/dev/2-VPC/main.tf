@@ -1,6 +1,6 @@
 locals {
   domain = yamldecode(file("${path.cwd}/../etc/tf-route53.yaml"))
-  name   = format("gem-es2-%s", file("../etc/awstype"))
+  name   = format("%s-gem-god-backend", file("../etc/awstype"))
 }
 
 # VPC

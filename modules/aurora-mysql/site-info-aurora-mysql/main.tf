@@ -16,7 +16,7 @@ output "pertmit_ips" {
   value = var.permit_ips
 }
 
-resource "random_string" "api_password" {
+resource "random_string" "site-info-password" {
   length           = 32
   special          = true
   override_special = "!*()-_=+[]{}<>:"
@@ -28,10 +28,10 @@ locals {
     username = "master"
     password = random_string.master_password.id
   }
-  ipmaster = {
-    db       = "ipmaster"
-    username = "ipmaster"
-    password = random_string.api_password.id
+  site-info = {
+    db       = "site_info"
+    username = "site_info"
+    password = random_string.site-info-password.id
   }
 }
 
@@ -53,6 +53,6 @@ output "port" {
 output "master" {
   value = local.master
 }
-output "ipmaster" {
-  value = local.ipmaster
+output "site-info" {
+  value = local.site-info
 }

@@ -1,0 +1,6 @@
+[client]
+host=god.cluster-c7l3iefcvxks.ap-northeast-1.rds.amazonaws.com
+port=3306
+database=god
+user=god
+password=:>QpP0{Zil+XN>dUTOLsX8rt=43zGTgy

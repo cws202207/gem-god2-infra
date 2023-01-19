@@ -27,8 +27,11 @@ resource "null_resource" "push-files" {
   provisioner "local-exec" {
     interpreter = ["bash", "-c"]
     command     = <<EOF
-cat "${var.dir_appconfig}/crawl-data.my.cnf" | ${local.ssh_cmd} "cat > /home/ubuntu/.my.cnf"
+cat "${var.dir_appconfig}/site-info.my.cnf" | ${local.ssh_cmd} "cat > /home/ubuntu/.my.cnf"
 ${local.ssh_cmd} "chmod 600 /home/ubuntu/.my.cnf"
+cat "${var.dir_appconfig}/god.my.cnf" | ${local.ssh_cmd} "cat > /home/ubuntu/.god.my.cnf"
+${local.ssh_cmd} "chmod 600 /home/ubuntu/.god.my.cnf"
+
 EOF
   }
 }

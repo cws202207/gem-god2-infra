@@ -27,10 +27,10 @@ resource "null_resource" "push-files" {
   provisioner "local-exec" {
     interpreter = ["bash", "-c"]
     command     = <<EOF
-cat "${var.dir_appconfig}/ip-master.my.cnf" | ${local.ssh_cmd} "cat > /home/ubuntu/.my.cnf"
+cat "${var.dir_appconfig}/site-info.my.cnf" | ${local.ssh_cmd} "cat > /home/ubuntu/.my.cnf"
 ${local.ssh_cmd} "chmod 600 /home/ubuntu/.my.cnf"
-cat "${var.dir_appconfig}/pre-ip-master.my.cnf" | ${local.ssh_cmd} "cat > /home/ubuntu/.pre-ip-master.cnf"
-${local.ssh_cmd} "chmod 600 /home/ubuntu/.pre-ip-master.cnf"
+cat "${var.dir_appconfig}/god.my.cnf" | ${local.ssh_cmd} "cat > /home/ubuntu/.god.cnf"
+${local.ssh_cmd} "chmod 600 /home/ubuntu/.god.cnf"
 
 EOF
   }

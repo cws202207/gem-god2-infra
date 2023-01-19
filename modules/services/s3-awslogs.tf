@@ -18,5 +18,5 @@ output "bucket" {
 }
 
 output "caller" {
-	value = module.s3-awslogs.bucket_policy
+  value = module.s3-awslogs.bucket_policy
 }

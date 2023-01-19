@@ -1,0 +1,26 @@
+"aws_iam_policy_s3c":
+  "arn": "arn:aws:iam::660506286494:policy/s3_custom_policy"
+  "description": ""
+  "id": "arn:aws:iam::660506286494:policy/s3_custom_policy"
+  "name": "s3_custom_policy"
+  "name_prefix": null
+  "path": "/"
+  "policy": "{\"Statement\":[{\"Action\":[\"s3:*\"],\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:s3:::gem-dev-crawler.s3.gem-god-backend.com.aws-data\",\"arn:aws:s3:::gem-dev-crawler.s3.gem-god-backend.com.aws-data/*\",\"arn:aws:s3:::gem-dev-unity.s3.gem-god-backend.com.aws-data\",\"arn:aws:s3:::gem-dev-unity.s3.gem-god-backend.com.aws-data/*\"]}],\"Version\":\"2012-10-17\"}"
+  "policy_id": "ANPAZTSJ6DGPDRNKRXYEF"
+  "tags": null
+  "tags_all":
+    "Env": "dev"
+    "System": "gem-god-backend"
+"instance-profile":
+  "arn": "arn:aws:iam::660506286494:instance-profile/StandardInstanceProfile"
+  "create_date": "2023-01-18T05:27:40Z"
+  "id": "StandardInstanceProfile"
+  "name": "StandardInstanceProfile"
+  "name_prefix": null
+  "path": "/"
+  "role": "StandardInstanceProfile"
+  "tags": null
+  "tags_all":
+    "Env": "dev"
+    "System": "gem-god-backend"
+  "unique_id": "AIPAZTSJ6DGPCKEDS5HKF"
