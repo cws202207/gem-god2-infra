@@ -1,8 +1,0 @@
-"god-hand":
-  "god-hand_ami": "ami-0a5866d87afdfdfd3"
-  "god-hand_availability_zone": "ap-northeast-1a"
-  "god-hand_id": "i-09f819c4feb6d20d0"
-  "god-hand_instance_type": "t3a.small"
-  "god-hand_name": "god-hand"
-  "god-hand_private_ip": "172.33.55.102"
-  "god-hand_root_volume_size": 32

@@ -1,8 +1,0 @@
-"ec2-mgmt":
-  "mgmt_ami": "ami-0a5866d87afdfdfd3"
-  "mgmt_availability_zone": "ap-northeast-1a"
-  "mgmt_id": "i-0f2e80d2238389f1d"
-  "mgmt_instance_type": "t3a.small"
-  "mgmt_name": "mgmt"
-  "mgmt_private_ip": "172.33.59.146"
-  "mgmt_root_volume_size": 32
