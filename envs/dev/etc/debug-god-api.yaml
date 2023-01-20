@@ -88,6 +88,7 @@
   - "subnet-002e2412ebc222b85"
   - "subnet-06e6fcd71e826019d"
   - "subnet-0e9afcc69aba21ea1"
+  "red_god_api": []
 "god-api":
   "god-api_ami": "ami-0a5866d87afdfdfd3"
   "god-api_availability_zone": "ap-northeast-1a"

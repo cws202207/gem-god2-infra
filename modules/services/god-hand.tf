@@ -16,7 +16,7 @@ module "god-hand" {
 }
 
 module "alb-god-hand" {
-  source = "../alb"
+  source = "../alb/god-hand"
   name   = "god-hand"
   vpc_id = var.vpc.vpc_id
   acm    = var.acm.aws_acm_certificate_arn

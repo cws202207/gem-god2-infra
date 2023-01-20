@@ -16,7 +16,7 @@ module "god-api" {
 }
 
 module "alb-god-api" {
-  source = "../alb"
+  source = "../alb/god-api"
   name   = "god-api"
   vpc_id = var.vpc.vpc_id
   acm    = var.acm.aws_acm_certificate_arn
@@ -47,4 +47,10 @@ resource "local_file" "rule" {
   filename        = "${path.cwd}/../etc/alb-god-api-rule.yaml"
   file_permission = "0755"
   content         = yamlencode(module.alb-god-api)
+}
+
+resource "local_file" "alb-god-api" {
+	content = yamlencode(module.alb-god-api)
+	filename = "${path.cwd}/../alb-god-api.sh"
+	file_permission = "0644"
 }
