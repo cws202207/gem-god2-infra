@@ -34,7 +34,7 @@ resource "local_file" "route53" {
 }
 
 resource "aws_key_pair" "sou" {
-  key_name = "sou@gem-ed25519-20221205_company_mac"
+  key_name = "sou@gem-ed25519-20221205"
   public_key = file("../../../public-keys/sou-20221201.pub")
 }
 

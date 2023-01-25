@@ -10,7 +10,7 @@ locals {
 module "services" {
   source              = "../../../modules/services"
   aws_type            = "fadev"
-  key_name            = "sou@gem-ed25519-20221205_company_mac"
+  key_name            = "sou@gem-ed25519-20221205"
   vpc                 = local.vpc
   route53             = local.route53
   aws_profile         = local.aws_profile # 多要素認証は無効　あとで
