@@ -55,9 +55,9 @@
 
 アクセスキーを使用した場合でも、MFAの認証が必要になります。 現在のアクセスキーを利用してMFA認証を行い、それが有効なセッションのアクセスキーを発行されるので、それを利用するという仕組みになります。 手作業で行うととても煩雑です。以下にサンプルを用意しましたので適宜実行ください。
 
-https://github.com/FrankArt/gem-god-infra/blob/4d45db4e87cb3d53c650394be551958864255360/appconfig/config_ssh.sh
+[config_ssh.sh](https://github.com/FrankArt/gem-god-infra/blob/4d45db4e87cb3d53c650394be551958864255360/appconfig/config_ssh.sh)
 
-gem-god-backend_mfaというプロファイルが作成されますので、以下コマンドにて設定してください。
+gem-god-backend_mfaというプロファイルが作成されますので、以下コマンドにてプロファイルに反映してください。
 
 export AWS_PROFILE=********
 
