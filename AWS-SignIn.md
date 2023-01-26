@@ -53,40 +53,13 @@
 
 ## アクセスキーを用いたMFA認証の実行
 
-アクセスキーを使用した場合でも、MFAの認証が必要になります。 現在のアクセスキーを利用してMFA認証を行い、それが有効なセッションのアクセスキーを発行されるので、それを利用するという仕組みになります。 手作業で行うととても煩雑ですが、 [go-aws-mfa](https://github.com/jdevelop/go-aws-mfa)などのツールを使うことで比較的簡単に利用できるようになります。
+アクセスキーを使用した場合でも、MFAの認証が必要になります。 現在のアクセスキーを利用してMFA認証を行い、それが有効なセッションのアクセスキーを発行されるので、それを利用するという仕組みになります。 手作業で行うととても煩雑です。以下にサンプルを用意しましたので適宜実行ください。
 
-### バイナリのビルド
+https://github.com/FrankArt/gem-god-infra/blob/4d45db4e87cb3d53c650394be551958864255360/appconfig/config_ssh.sh
 
-以下はDockerを使ったIntel man向けビルド例です。Golangの導入は不要ですが、Dockerの導入が必要です。
+# gem-god-backend_mfaというプロファイルが作成されますので、以下コマンドにて設定してください。
 
-	$ git clone https://github.com/jdevelop/go-aws-mfa.git
-	$ cd go-aws-mfa
-	$ docker run -d --name awsmfa golang:1.19.1-alpine3.16 sh -c 'while true; do sleep 10; done'
-	$ docker exec awsmfa mkdir -p /app
-	$ docker cp . awsmfa:/app/src
-	$ docker exec -w /app/src -e GOOS=darwin -e GOARCH=amd64 awsmfa go build -o ../aws-mfa .
-	$ docker cp awsmfa:/app/aws-mfa .
-	$ docker rm -f awsmfa
-
-`-e GOOS=darwin -e GOARCH=amd64` の部分を `-e GOOS=windoiws -e GOARCH=amd64` や `-e GOOS=linux -e GOARCH=arm64` などにするとそれぞれのOS(GOOS)やアーキテクチャ(GOARCH)に向けたバイナリをビルドできます。OSとアーキテクチャのリストはこのコマンドで参照できます(「GOOS/GOARCH」の形になっています)。 -jsonを付けるとJSONで出力されます。
-
-	$ docker run --rm golang:1.19.1-alpine3.16 go tool dist list
-
-ビルドが完了するとカレントフォルダに aws-mfa というバイナリができますので、それをパスの通った任意の場所にコピーしてください。
-
-[こちらのシェルスクリプト](./build-go-aws-mfa.sh) を利用すると、上記の処理を行い、カレントディレクトリにaws-mfaコマンドを生成します。(Windowsには対応していません。)
-
-### 利用例 
-
-「MFA後のプロファイル」には「MFA前のプロファイル_mfa」など、_mfaをつけたものにするとわかりやすいです。
-
-	$ aws-mfa -s MFA前のプロファイル -d MFA後のプロファイル
-
-これで
-
-	$ export AWS_DEFAULT_PROFILE=MFA後のプロファイル
-	
-とすると、MFA有効のawscliが利用できるようになります。
+# export AWS_PROFILE=********
 
 	$ aws s3 ls
 
