@@ -11,6 +11,7 @@ module "provisioning-god-api" {
   ]
   instance_id   = module.god-api.god-api_id
   dir_appconfig = "${local.appconfig}/etc"
+#  dir_source    = "${local.source}"
   ssh = {
     config = "${local.appconfig}/etc/ssh/god-api/config"
     host   = "auto.${local.host-ssh-god-api}"

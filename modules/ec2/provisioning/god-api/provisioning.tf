@@ -1,6 +1,7 @@
 variable "instance_id" {}
 variable "ssh" {}
 variable "dir_appconfig" {}
+# variable "dir_source" {}
 
 locals {
   ssh_cmd = "ssh -F ${var.ssh.config} ${var.ssh.host}"
@@ -27,6 +28,8 @@ resource "null_resource" "push-files" {
   provisioner "local-exec" {
     interpreter = ["bash", "-c"]
     command     = <<EOF
+cat "${var.dir_appconfig}/composer.sh" | ${local.ssh_cmd} "cat > /tmp/composer.sh"
+${local.ssh_cmd} "sudo chmod +x /tmp/composer.sh"
 cat "${var.dir_appconfig}/site-info.my.cnf" | ${local.ssh_cmd} "cat > /home/ubuntu/.my.cnf"
 ${local.ssh_cmd} "chmod 600 /home/ubuntu/.my.cnf"
 cat "${var.dir_appconfig}/god.my.cnf" | ${local.ssh_cmd} "cat > /home/ubuntu/.god.my.cnf"
@@ -36,18 +39,8 @@ EOF
   }
 }
 
-# Dockerをインストールする
 
-
-
-
-
-
-
-
-
-
-# nginxをインストールする
+# nginx/phpをインストールする
 resource "null_resource" "nginx" {
   triggers   = { instance_id = var.instance_id }
   depends_on = [null_resource.push-files]
@@ -56,9 +49,16 @@ resource "null_resource" "nginx" {
     command     = <<EOF
 sudo apt install -y nginx
 sudo touch /var/www/html/health_check.txt
+sudo apt install -y php php-fpm php-common php-mysql php-gd php-cli php-mbstring
+/tmp/composer.sh
+sudo mv ./composer.phar $(dirname $(which php))/composer && chmod +x "$_"
+composer --version
 EOF
   }
 }
+
+
+
 
 # aws cliをインストールる
 resource "null_resource" "awscli" {

@@ -18,4 +18,5 @@ locals {
   host-ssh-mgmt     = "dev.mgmt.${var.aws_type}"
   host-ssh-god-hand = "dev.god-hand.${var.aws_type}"
   appconfig         = "${path.cwd}/../../../appconfig/${var.aws_type}"
+#  source            = "${path.cwd}/../../../source"
 }

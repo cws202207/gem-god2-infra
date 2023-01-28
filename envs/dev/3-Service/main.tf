@@ -28,18 +28,17 @@ module "services" {
 #    type = "t3a.small"
 #    size = 32
 #  }
-   ec2-mgmt = {
-#   god-hand = {
-    type = "t3a.small"
-    size = 32
-  }
-   god-hand = {
-#   ec2-unity = {
+ec2-mgmt = {
+     type = "t3a.small"
+     size = 32
+   }
+ 
+
+god-hand = {
     type = "t3a.small"
     size = 32
   }
 }
-
 output "callers" {
 	value = module.services.caller
 }
