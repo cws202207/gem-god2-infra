@@ -28,10 +28,10 @@ module "services" {
 #    type = "t3a.small"
 #    size = 32
 #  }
-ec2-mgmt = {
-     type = "t3a.small"
-     size = 32
-   }
+# ec2-mgmt = {
+#     type = "t3a.small"
+#     size = 32
+#   }
  
 
 god-hand = {

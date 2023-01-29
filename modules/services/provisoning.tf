@@ -32,35 +32,35 @@ resource "local_file" "provisioning" {
 # 管理サーバ用のインスタンス作成
 # ------------------------------
 
-module "provisioning-mgmt" {
-  source = "../ec2/provisioning/mgmt"
-  depends_on = [
-    module.ec2-mgmt,
-    local_file.mgmt_ssh_config,
-    local_file.site-info_my_cnf,
-    local_file.god_my_cnf,
-  ]
-  instance_id   = module.ec2-mgmt.mgmt_id
-  dir_appconfig = "${local.appconfig}/etc"
-  ssh = {
-    config = "${local.appconfig}/etc/ssh/mgmt/config"
-    host   = "auto.${local.host-ssh-mgmt}"
-  }
-}
+#module "provisioning-mgmt" {
+#  source = "../ec2/provisioning/mgmt"
+#  depends_on = [
+#    module.ec2-mgmt,
+#    local_file.mgmt_ssh_config,
+#    local_file.site-info_my_cnf,
+#    local_file.god_my_cnf,
+#  ]
+#  instance_id   = module.ec2-mgmt.mgmt_id
+#  dir_appconfig = "${local.appconfig}/etc"
+#  ssh = {
+#    config = "${local.appconfig}/etc/ssh/mgmt/config"
+#    host   = "auto.${local.host-ssh-mgmt}"
+#  }
+#}
 
-output "provisioning_mgmt_ssh" {
-  value = module.provisioning-mgmt.ssh_cmd
-}
+#output "provisioning_mgmt_ssh" {
+#  value = module.provisioning-mgmt.ssh_cmd
+#}
 
 # -----------------------------------
 # 管理サーバ用のローカルファイル作成
 # -----------------------------------
 
-resource "local_file" "mgmt-provisioning" {
-  content         = yamlencode(module.provisioning-mgmt)
-  filename        = "${path.cwd}/../mgmt_ssh_cmd.sh"
-  file_permission = 0644
-}
+#resource "local_file" "mgmt-provisioning" {
+#  content         = yamlencode(module.provisioning-mgmt)
+#  filename        = "${path.cwd}/../mgmt_ssh_cmd.sh"
+#  file_permission = 0644
+#}
 
 # ------------------------------
 # クローラ用のインスタンス作成

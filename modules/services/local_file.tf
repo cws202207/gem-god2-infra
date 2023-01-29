@@ -7,13 +7,13 @@ resource "local_file" "debug-god-api" {
   })
 }
 
-resource "local_file" "debug-ec2-mgmt" {
-  filename        = "${path.cwd}/../etc/debug-ec2-mgmt.yaml"
-  file_permission = 0600
-  content = yamlencode({
-    ec2-mgmt = module.ec2-mgmt
-  })
-}
+# resource "local_file" "debug-ec2-mgmt" {
+#  filename        = "${path.cwd}/../etc/debug-ec2-mgmt.yaml"
+#  file_permission = 0600
+#  content = yamlencode({
+#    ec2-mgmt = module.ec2-mgmt
+#  })
+#}
 
 #resource "local_file" "debug-ec2-crawler" {
 #  filename        = "${path.cwd}/../etc/debug-ec2-crawler.yaml"
@@ -66,21 +66,21 @@ resource "local_file" "ssh_config" {
 EOF
 }
 
-resource "local_file" "mgmt_ssh_config" {
-  filename        = "${local.appconfig}/etc/ssh/mgmt/config"
-  file_permission = 0644
-  content         = <<EOF
-  Host ${local.host-ssh-mgmt}
-	User Ubuntu
-  ProxyCommand sh -c "aws ssm start-session --profile '${var.aws_profile}' --target ${module.ec2-mgmt.mgmt_id} --region ap-northeast-1 --document-name AWS StartSSHSession --parameters 'PortNumber=%p'"
-
-  Host auto.${local.host-ssh-mgmt}
-        User ubuntu
-        StrictHostKeyChecking no
-        UserKnownHostsFile ${local.appconfig}/etc/ssh/mgmt/known_hosts
-  ProxyCommand sh -c "aws ssm start-session --profile '${var.aws_profile}' --target ${module.ec2-mgmt.mgmt_id} --region ap-northeast-1 --document-name AWS-StartSSHSession --parameters 'portNumber=%p'"
-EOF
-}
+# resource "local_file" "mgmt_ssh_config" {
+#  filename        = "${local.appconfig}/etc/ssh/mgmt/config"
+#  file_permission = 0644
+#  content         = <<EOF
+#  Host ${local.host-ssh-mgmt}
+#	User Ubuntu
+#  ProxyCommand sh -c "aws ssm start-session --profile '${var.aws_profile}' --target ${module.ec2-mgmt.mgmt_id} --region ap-northeast-1 --document-name AWS StartSSHSession --parameters 'PortNumber=%p'"
+#
+#  Host auto.${local.host-ssh-mgmt}
+#        User ubuntu
+#        StrictHostKeyChecking no
+#        UserKnownHostsFile ${local.appconfig}/etc/ssh/mgmt/known_hosts
+#  ProxyCommand sh -c "aws ssm start-session --profile '${var.aws_profile}' --target ${module.ec2-mgmt.mgmt_id} --region ap-northeast-1 --document-name AWS-StartSSHSession --parameters 'portNumber=%p'"
+#EOF
+#}
 
 #resource "local_file" "crawler_ssh_config" {
 #  filename        = "${local.appconfig}/etc/ssh/crawler/config"
