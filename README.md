@@ -27,18 +27,18 @@ gem-god-backend.comインフラ構成サンプル
 
 * RDS
 
-cnf : .god.my.cnf
-port : 3306
-database : god
-user : god
-password : .god.my.cnfに記載
+1.cnf : .god.my.cnf
+2.port : 3306
+3.database : god
+4.user : god
+5.password : .god.my.cnfに記載
 
 
-cnf : .my.cnf
-port : 3306
-database : site_info
-user : site_info
-password : .my.cnfに記載
+1.cnf : .my.cnf
+2.port : 3306
+3.database : site_info
+4.user : site_info
+5.password : .my.cnfに記載
 
 # god-api
 ### SSH接続
@@ -49,8 +49,8 @@ password : .my.cnfに記載
 
 カレントディレクトリなどに任意の名前で上記スクリプトを保存
 
-* god-api    → $ ssh -F god-api auto.dev.god-api.fadev
-* god-hand   → $ ssh -F god-api auto.dev.god-api.fadev
+* god-api    → $ ssh -F [god-api] auto.dev.god-api.fadev
+* god-hand   → $ ssh -F [god-hand] auto.dev.god-api.fadev
 
 ### サーバの構成
 
