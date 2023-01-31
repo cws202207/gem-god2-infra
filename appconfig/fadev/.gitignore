@@ -1,3 +1,4 @@
 #/fadev/bin
 #/fadev/etc
 *.cnf
+composer.sh

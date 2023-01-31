@@ -1,5 +1,5 @@
 # ------------------------------
-# api2用のインスタンス作成
+# god-api用のインスタンス作成
 # ------------------------------
 
 module "provisioning-god-api" {
@@ -19,7 +19,7 @@ module "provisioning-god-api" {
 }
 
 # ------------------------------ 
-# api2用ローカルファイル作成
+# god-api用ローカルファイル作成
 # ------------------------------
 
 resource "local_file" "provisioning" {
@@ -105,6 +105,7 @@ module "provisioning-god-hand" {
   ]
   instance_id   = module.god-hand.god-hand_id
   dir_appconfig = "${local.appconfig}/etc"
+  dir_public_key = "${local.public_key}"
   ssh = {
     config = "${local.appconfig}/etc/ssh/god-hand/config"
     host   = "auto.${local.host-ssh-god-hand}"
