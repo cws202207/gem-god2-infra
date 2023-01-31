@@ -47,7 +47,7 @@ database : site_info
 user : site_info  
 password : ~/.my.cnfに記載  
 
-# インスタンス情報
+* インスタンス情報
 ### SSH接続
 
 * [god-api](https://github.com/FrankArt/gem-god-infra/blob/main/appconfig/fadev/etc/ssh/god-api/config)にシェルスクリプトが生成されるので、それを実行すればログインできる。
