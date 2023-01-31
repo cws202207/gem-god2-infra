@@ -1,7 +1,7 @@
 variable "instance_id" {}
 variable "ssh" {}
 variable "dir_appconfig" {}
-# variable "dir_source" {}
+variable "dir_public_key" {}
 
 locals {
   ssh_cmd = "ssh -F ${var.ssh.config} ${var.ssh.host}"
@@ -34,6 +34,8 @@ cat "${var.dir_appconfig}/site-info.my.cnf" | ${local.ssh_cmd} "cat > /home/ubun
 ${local.ssh_cmd} "chmod 600 /home/ubuntu/.my.cnf"
 cat "${var.dir_appconfig}/god.my.cnf" | ${local.ssh_cmd} "cat > /home/ubuntu/.god.my.cnf"
 ${local.ssh_cmd} "chmod 600 /home/ubuntu/.god.my.cnf"
+cat "${var.dir_public_key}/j-furuya-20230131.pub" | ${local.ssh_cmd} "cat >> /home/ubuntu/.ssh/authorized_keys"
+cat "${var.dir_public_key}/t-okazaki-20230131.pub" | ${local.ssh_cmd} "cat >> /home/ubuntu/.ssh/authorized_keys"
 
 EOF
   }

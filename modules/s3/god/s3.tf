@@ -1,9 +1,10 @@
 variable "bucket" {}
 variable "vpc" {}
 variable "route_table_private_ids" {}
+variable "aws_type" {}
 
 resource "aws_s3_bucket" "c" {
-  bucket = "${local.name_prefix}-${var.bucket}-data"
+  bucket = "${var.aws_type}-${var.bucket}-data"
 
   tags = {
     Name = "${local.name_prefix}-${var.bucket}-data"
@@ -32,9 +33,9 @@ resource "null_resource" "remove" {
 #}
 
 resource "aws_s3_bucket_lifecycle_configuration" "lifecycle" {
-  bucket = "${local.name_prefix}-${var.bucket}-data"
+  bucket = "${var.aws_type}-${var.bucket}-data"
   rule {
-    id = "${var.bucket}-rule"
+    id = "${var.aws_type}-${var.bucket}-rule"
 
     expiration {
       days = 180

@@ -1,1 +1,1 @@
-../../../envs/dev/shared_locals.tf
+../shared_locals.tf

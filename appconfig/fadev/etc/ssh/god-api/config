@@ -1,0 +1,9 @@
+  Host dev.god-api.fadev
+	User ubuntu
+  ProxyCommand sh -c "aws ssm start-session --profile 'gem-god-backend_mfa' --target i-0904b7d2f8686d981 --region ap-northeast-1 --document-name AWS StartSSHSession --parameters 'PortNumber=%p'"
+
+  Host auto.dev.god-api.fadev
+	User ubuntu
+	StrictHostKeyChecking no
+	UserKnownHostsFile /Users/rd-main01/gem-god-infra/envs/dev/3-Service/../../../appconfig/fadev/etc/ssh/known_hosts
+  ProxyCommand sh -c "aws ssm start-session --profile 'gem-god-backend_mfa' --target i-0904b7d2f8686d981 --region ap-northeast-1 --document-name AWS-StartSSHSession --parameters 'portNumber=%p'"

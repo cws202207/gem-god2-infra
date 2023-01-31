@@ -1,10 +1,11 @@
 # -------------------
-# crawler-data
+# sito-info
 # -------------------
-module "s3-unity" {
-  source = "../s3/unity"
-  bucket = format("unity.s3.%s", local.local_domain)
-  vpc    = var.vpc
+module "s3-sito-info" {
+  source = "../s3/site-info"
+  bucket = format("site-info.s3.%s", local.local_domain)
+  #  bucket = site-info.s3
+  vpc = var.vpc
   route_table_private_ids = [
     for s in var.vpc.route_table_private : s.id
   ]

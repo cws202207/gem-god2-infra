@@ -1,5 +1,6 @@
 variable "name" { default = "StandardInstanceProfile" }
 variable "domain_name" {}
+variable "aws_type" {}
 
 resource "aws_iam_role" "r" {
   name               = var.name
@@ -41,10 +42,10 @@ resource "aws_iam_policy" "s3c" {
 
         "Resource" : [
 #	"*"
-          "arn:aws:s3:::gem-dev-crawler.s3.${var.domain_name}.aws-data",
-          "arn:aws:s3:::gem-dev-crawler.s3.${var.domain_name}.aws-data/*",
-          "arn:aws:s3:::gem-dev-unity.s3.${var.domain_name}.aws-data",
-          "arn:aws:s3:::gem-dev-unity.s3.${var.domain_name}.aws-data/*"
+          "arn:aws:s3:::${var.aws_type}-god.s3.${var.domain_name}.aws-data",
+          "arn:aws:s3:::${var.aws_type}-god.s3.${var.domain_name}.aws-data/*",
+          "arn:aws:s3:::${var.aws_type}-site-info.s3.${var.domain_name}.aws-data",
+          "arn:aws:s3:::${var.aws_type}-site-info.s3.${var.domain_name}.aws-data/*"
         ]
       }
     ]

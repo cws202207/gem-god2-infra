@@ -1,6 +1,10 @@
 locals {
   domain = yamldecode(file("${path.cwd}/../etc/tf-route53.yaml"))
   name   = format("%s-gem-god-backend", file("../etc/awstype"))
+  aws_type = file("../etc/awstype")
+  key_pair = {
+	sou_key = file("../etc/sou_key.yaml"),
+	j-furuya_key = file("../etc/j-furuya.yml")
 }
 
 # VPC
@@ -34,6 +38,7 @@ module "instance-profile" {
   source = "../../../modules/ec2/instance-profile"
   name   = "StandardInstanceProfile"
   domain_name = local.domain.name
+  aws_type = local.aws_type
 }
 
 # instance-profile localfile create

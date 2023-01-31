@@ -1,11 +1,12 @@
 module "god-api" {
-  source      = "../ec2/instance/god-api"
-  name        = "god-api"
-  fqdn        = "god-api.${local.domain}"
-  type        = var.god-api.type
-  size        = var.god-api.size
-  ami         = local.ami
-  key_name    = var.key_name
+  source   = "../ec2/instance/god-api"
+  name     = "god-api"
+  fqdn     = "god-api.${local.domain}"
+  type     = var.god-api.type
+  size     = var.god-api.size
+  ami      = local.ami
+  key_name = var.key_name
+  #  key_names    = [ for s in var.key_name : s]
   subnet_id   = var.vpc.aws_subnet_private_a_id
   profile     = "StandardInstanceProfile"
   aws_profile = var.aws_profile
@@ -43,6 +44,8 @@ module "alb-god-api" {
   ]
 }
 
+
+
 resource "local_file" "rule" {
   filename        = "${path.cwd}/../etc/alb-god-api-rule.yaml"
   file_permission = "0755"
@@ -50,7 +53,7 @@ resource "local_file" "rule" {
 }
 
 resource "local_file" "alb-god-api" {
-	content = yamlencode(module.alb-god-api)
-	filename = "${path.cwd}/../alb-god-api.sh"
-	file_permission = "0644"
+  content         = yamlencode(module.alb-god-api)
+  filename        = "${path.cwd}/../alb-god-api.sh"
+  file_permission = "0644"
 }

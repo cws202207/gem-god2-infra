@@ -11,12 +11,12 @@ variable "god-api" {}
 variable "god-hand" {}
 
 locals {
-  domain            = var.route53.name
-  local_domain      = format("%s.aws", local.domain)
-  host-ssh-god-api  = "dev.god-api.${var.aws_type}"
-  host-ssh-crawler  = "dev.crawler.${var.aws_type}"
-#  host-ssh-mgmt     = "dev.mgmt.${var.aws_type}"
+  domain           = var.route53.name
+  local_domain     = format("%s.aws", local.domain)
+  host-ssh-god-api = "dev.god-api.${var.aws_type}"
+  host-ssh-crawler = "dev.crawler.${var.aws_type}"
+  #  host-ssh-mgmt     = "dev.mgmt.${var.aws_type}"
   host-ssh-god-hand = "dev.god-hand.${var.aws_type}"
   appconfig         = "${path.cwd}/../../../appconfig/${var.aws_type}"
-#  source            = "${path.cwd}/../../../source"
+  public_key        = "${path.cwd}/../../../public-keys"
 }

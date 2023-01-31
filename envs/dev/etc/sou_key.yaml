@@ -1,0 +1,12 @@
+"arn": "arn:aws:ec2:ap-northeast-1:660506286494:key-pair/sou@gem-ed25519-20221205"
+"fingerprint": "Mm1HlBQzO8uy2kI4J4HmN/81zKjBwV7PXIIhaoJJpSg="
+"id": "sou@gem-ed25519-20221205"
+"key_name": "sou@gem-ed25519-20221205"
+"key_name_prefix": ""
+"key_pair_id": "key-002d47f3e23ece22f"
+"public_key": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINlJu2ZssfgnOOzneWKwGUmfCmF1VXBXxEnR0/y2vAYQ
+  rd-main01@RD-main01noMacBook-Air.local"
+"tags": {}
+"tags_all":
+  "Env": "dev"
+  "System": "gem-god-backend"

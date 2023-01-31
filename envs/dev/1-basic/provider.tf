@@ -1,1 +1,1 @@
-../../../envs/dev/provider.tf
+../provider.tf

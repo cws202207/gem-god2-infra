@@ -1,0 +1,222 @@
+"accociation": "r-rtb-080da627a6b6a40bf1080289494"
+"availability_zone":
+- "ap-northeast-1a"
+- "ap-northeast-1c"
+- "ap-northeast-1d"
+"aws_subnet_private_a_id": "subnet-034c247f0519dcd86"
+"aws_subnet_private_c_id": "subnet-03fc0aede129b9fd3"
+"aws_subnet_private_d_id": "subnet-032fa3f9bb170208c"
+"aws_subnet_public_a_id": "subnet-0a66868c280090b3e"
+"private_subnet_cidr":
+- "172.33.48.0/20"
+- "172.33.64.0/20"
+- "172.33.80.0/20"
+"public_cidr_block":
+  "a":
+    "private_cidr": "172.33.48.0/20"
+    "public_cidr": "172.33.0.0/20"
+  "c":
+    "private_cidr": "172.33.64.0/20"
+    "public_cidr": "172.33.16.0/20"
+  "d":
+    "private_cidr": "172.33.80.0/20"
+    "public_cidr": "172.33.32.0/20"
+"public_subnet_cidr": "172.33.0.0/20"
+"region": "ap-northeast-1"
+"route_table_private":
+  "a":
+    "arn": "arn:aws:ec2:ap-northeast-1:660506286494:route-table/rtb-0bd0dcb0b9a8e6d80"
+    "id": "rtb-0bd0dcb0b9a8e6d80"
+    "owner_id": "660506286494"
+    "propagating_vgws": []
+    "route":
+    - "carrier_gateway_id": ""
+      "cidr_block": "0.0.0.0/0"
+      "destination_prefix_list_id": ""
+      "egress_only_gateway_id": ""
+      "gateway_id": ""
+      "instance_id": ""
+      "ipv6_cidr_block": ""
+      "local_gateway_id": ""
+      "nat_gateway_id": "nat-01d394c0192bb204d"
+      "network_interface_id": ""
+      "transit_gateway_id": ""
+      "vpc_endpoint_id": ""
+      "vpc_peering_connection_id": ""
+    "tags":
+      "Name": "fadev-gem-god-backend-private-a"
+    "tags_all":
+      "Env": "dev"
+      "Name": "fadev-gem-god-backend-private-a"
+      "System": "gem"
+    "timeouts": null
+    "vpc_id": "vpc-088bdc23c3dd530a8"
+  "c":
+    "arn": "arn:aws:ec2:ap-northeast-1:660506286494:route-table/rtb-06aff75d50d71c658"
+    "id": "rtb-06aff75d50d71c658"
+    "owner_id": "660506286494"
+    "propagating_vgws": []
+    "route":
+    - "carrier_gateway_id": ""
+      "cidr_block": "0.0.0.0/0"
+      "destination_prefix_list_id": ""
+      "egress_only_gateway_id": ""
+      "gateway_id": ""
+      "instance_id": ""
+      "ipv6_cidr_block": ""
+      "local_gateway_id": ""
+      "nat_gateway_id": "nat-01d394c0192bb204d"
+      "network_interface_id": ""
+      "transit_gateway_id": ""
+      "vpc_endpoint_id": ""
+      "vpc_peering_connection_id": ""
+    "tags":
+      "Name": "fadev-gem-god-backend-private-c"
+    "tags_all":
+      "Env": "dev"
+      "Name": "fadev-gem-god-backend-private-c"
+      "System": "gem"
+    "timeouts": null
+    "vpc_id": "vpc-088bdc23c3dd530a8"
+  "d":
+    "arn": "arn:aws:ec2:ap-northeast-1:660506286494:route-table/rtb-0489631cf8aa7e0f6"
+    "id": "rtb-0489631cf8aa7e0f6"
+    "owner_id": "660506286494"
+    "propagating_vgws": []
+    "route":
+    - "carrier_gateway_id": ""
+      "cidr_block": "0.0.0.0/0"
+      "destination_prefix_list_id": ""
+      "egress_only_gateway_id": ""
+      "gateway_id": ""
+      "instance_id": ""
+      "ipv6_cidr_block": ""
+      "local_gateway_id": ""
+      "nat_gateway_id": "nat-01d394c0192bb204d"
+      "network_interface_id": ""
+      "transit_gateway_id": ""
+      "vpc_endpoint_id": ""
+      "vpc_peering_connection_id": ""
+    "tags":
+      "Name": "fadev-gem-god-backend-private-d"
+    "tags_all":
+      "Env": "dev"
+      "Name": "fadev-gem-god-backend-private-d"
+      "System": "gem"
+    "timeouts": null
+    "vpc_id": "vpc-088bdc23c3dd530a8"
+"route_table_public":
+  "arn": "arn:aws:ec2:ap-northeast-1:660506286494:route-table/rtb-080da627a6b6a40bf"
+  "id": "rtb-080da627a6b6a40bf"
+  "owner_id": "660506286494"
+  "propagating_vgws": []
+  "route":
+  - "carrier_gateway_id": ""
+    "cidr_block": "0.0.0.0/0"
+    "destination_prefix_list_id": ""
+    "egress_only_gateway_id": ""
+    "gateway_id": "igw-0e3c5529f9bd2dcc4"
+    "instance_id": ""
+    "ipv6_cidr_block": ""
+    "local_gateway_id": ""
+    "nat_gateway_id": ""
+    "network_interface_id": ""
+    "transit_gateway_id": ""
+    "vpc_endpoint_id": ""
+    "vpc_peering_connection_id": ""
+  "tags":
+    "Name": "fadev-gem-god-backend-public"
+  "tags_all":
+    "Env": "dev"
+    "Name": "fadev-gem-god-backend-public"
+    "System": "gem"
+  "timeouts": null
+  "vpc_id": "vpc-088bdc23c3dd530a8"
+"security_groups":
+  "private": "sg-0d78b3a90c5d2abd2"
+  "vpc": "sg-0ae5cc0e5f85c286f"
+  "web": "sg-01f03a627dc5f4c50"
+"subnet_public":
+  "a":
+    "arn": "arn:aws:ec2:ap-northeast-1:660506286494:subnet/subnet-0a66868c280090b3e"
+    "assign_ipv6_address_on_creation": false
+    "availability_zone": "ap-northeast-1a"
+    "availability_zone_id": "apne1-az4"
+    "cidr_block": "172.33.0.0/20"
+    "customer_owned_ipv4_pool": ""
+    "enable_dns64": false
+    "enable_resource_name_dns_a_record_on_launch": false
+    "enable_resource_name_dns_aaaa_record_on_launch": false
+    "id": "subnet-0a66868c280090b3e"
+    "ipv6_cidr_block": ""
+    "ipv6_cidr_block_association_id": ""
+    "ipv6_native": false
+    "map_customer_owned_ip_on_launch": false
+    "map_public_ip_on_launch": true
+    "outpost_arn": ""
+    "owner_id": "660506286494"
+    "private_dns_hostname_type_on_launch": "ip-name"
+    "tags":
+      "Name": "fadev-gem-god-backend-public-a"
+    "tags_all":
+      "Env": "dev"
+      "Name": "fadev-gem-god-backend-public-a"
+      "System": "gem"
+    "timeouts": null
+    "vpc_id": "vpc-088bdc23c3dd530a8"
+  "c":
+    "arn": "arn:aws:ec2:ap-northeast-1:660506286494:subnet/subnet-0efaae9c4185adf09"
+    "assign_ipv6_address_on_creation": false
+    "availability_zone": "ap-northeast-1c"
+    "availability_zone_id": "apne1-az1"
+    "cidr_block": "172.33.16.0/20"
+    "customer_owned_ipv4_pool": ""
+    "enable_dns64": false
+    "enable_resource_name_dns_a_record_on_launch": false
+    "enable_resource_name_dns_aaaa_record_on_launch": false
+    "id": "subnet-0efaae9c4185adf09"
+    "ipv6_cidr_block": ""
+    "ipv6_cidr_block_association_id": ""
+    "ipv6_native": false
+    "map_customer_owned_ip_on_launch": false
+    "map_public_ip_on_launch": true
+    "outpost_arn": ""
+    "owner_id": "660506286494"
+    "private_dns_hostname_type_on_launch": "ip-name"
+    "tags":
+      "Name": "fadev-gem-god-backend-public-c"
+    "tags_all":
+      "Env": "dev"
+      "Name": "fadev-gem-god-backend-public-c"
+      "System": "gem"
+    "timeouts": null
+    "vpc_id": "vpc-088bdc23c3dd530a8"
+  "d":
+    "arn": "arn:aws:ec2:ap-northeast-1:660506286494:subnet/subnet-089675599cca222ad"
+    "assign_ipv6_address_on_creation": false
+    "availability_zone": "ap-northeast-1d"
+    "availability_zone_id": "apne1-az2"
+    "cidr_block": "172.33.32.0/20"
+    "customer_owned_ipv4_pool": ""
+    "enable_dns64": false
+    "enable_resource_name_dns_a_record_on_launch": false
+    "enable_resource_name_dns_aaaa_record_on_launch": false
+    "id": "subnet-089675599cca222ad"
+    "ipv6_cidr_block": ""
+    "ipv6_cidr_block_association_id": ""
+    "ipv6_native": false
+    "map_customer_owned_ip_on_launch": false
+    "map_public_ip_on_launch": true
+    "outpost_arn": ""
+    "owner_id": "660506286494"
+    "private_dns_hostname_type_on_launch": "ip-name"
+    "tags":
+      "Name": "fadev-gem-god-backend-public-d"
+    "tags_all":
+      "Env": "dev"
+      "Name": "fadev-gem-god-backend-public-d"
+      "System": "gem"
+    "timeouts": null
+    "vpc_id": "vpc-088bdc23c3dd530a8"
+"vpc_cidr": "172.33.0.0/16"
+"vpc_id": "vpc-088bdc23c3dd530a8"

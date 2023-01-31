@@ -1,0 +1,99 @@
+"alb-god-api":
+  "alb":
+  - "bucket": "awslogs.s3.gem-god-backend.com.aws-alb-log"
+    "enabled": true
+    "prefix": "god-api"
+  "aws_lb_l":
+    "access_logs":
+    - "bucket": "awslogs.s3.gem-god-backend.com.aws-alb-log"
+      "enabled": true
+      "prefix": "god-api"
+    "arn": "arn:aws:elasticloadbalancing:ap-northeast-1:660506286494:loadbalancer/app/god-api/4a85cf09c116c127"
+    "arn_suffix": "app/god-api/4a85cf09c116c127"
+    "customer_owned_ipv4_pool": ""
+    "desync_mitigation_mode": "defensive"
+    "dns_name": "god-api-1704489933.ap-northeast-1.elb.amazonaws.com"
+    "drop_invalid_header_fields": false
+    "enable_cross_zone_load_balancing": true
+    "enable_deletion_protection": false
+    "enable_http2": true
+    "enable_waf_fail_open": false
+    "id": "arn:aws:elasticloadbalancing:ap-northeast-1:660506286494:loadbalancer/app/god-api/4a85cf09c116c127"
+    "idle_timeout": 60
+    "internal": false
+    "ip_address_type": "ipv4"
+    "load_balancer_type": "application"
+    "name": "god-api"
+    "name_prefix": null
+    "security_groups":
+    - "sg-08d69209bad22ea17"
+    "subnet_mapping":
+    - "allocation_id": ""
+      "ipv6_address": ""
+      "outpost_id": ""
+      "private_ipv4_address": ""
+      "subnet_id": "subnet-089675599cca222ad"
+    - "allocation_id": ""
+      "ipv6_address": ""
+      "outpost_id": ""
+      "private_ipv4_address": ""
+      "subnet_id": "subnet-0a66868c280090b3e"
+    - "allocation_id": ""
+      "ipv6_address": ""
+      "outpost_id": ""
+      "private_ipv4_address": ""
+      "subnet_id": "subnet-0efaae9c4185adf09"
+    "subnets":
+    - "subnet-089675599cca222ad"
+    - "subnet-0a66868c280090b3e"
+    - "subnet-0efaae9c4185adf09"
+    "tags": {}
+    "tags_all":
+      "Env": "dev"
+      "System": "gem-god-backend"
+    "timeouts": null
+    "vpc_id": "vpc-088bdc23c3dd530a8"
+    "zone_id": "Z14GRHDCWA56QT"
+  "aws_lb_listener_rule_dest":
+  - "action":
+    - "authenticate_cognito": []
+      "authenticate_oidc": []
+      "fixed_response": []
+      "forward": []
+      "order": 1
+      "redirect": []
+      "target_group_arn": "arn:aws:elasticloadbalancing:ap-northeast-1:660506286494:targetgroup/god-api-god-api/b567e4646a8485e5"
+      "type": "forward"
+    "arn": "arn:aws:elasticloadbalancing:ap-northeast-1:660506286494:listener-rule/app/god-api/4a85cf09c116c127/e1be45863d66c088/893ccc203b98272e"
+    "condition":
+    - "host_header":
+      - "values":
+        - "dev.god-api.gem-god-backend.com"
+      "http_header": []
+      "http_request_method": []
+      "path_pattern": []
+      "query_string": []
+      "source_ip": []
+    "id": "arn:aws:elasticloadbalancing:ap-northeast-1:660506286494:listener-rule/app/god-api/4a85cf09c116c127/e1be45863d66c088/893ccc203b98272e"
+    "listener_arn": "arn:aws:elasticloadbalancing:ap-northeast-1:660506286494:listener/app/god-api/4a85cf09c116c127/e1be45863d66c088"
+    "priority": 60
+    "tags": {}
+    "tags_all":
+      "Env": "dev"
+      "System": "gem-god-backend"
+  "aws_lb_listener_rule_red": []
+  "fqdns":
+  - "dev.god-api.gem-god-backend.com"
+  "public_subnets":
+  - "subnet-089675599cca222ad"
+  - "subnet-0a66868c280090b3e"
+  - "subnet-0efaae9c4185adf09"
+  "red_god_api": []
+"god-api":
+  "god-api_ami": "ami-0a5866d87afdfdfd3"
+  "god-api_availability_zone": "ap-northeast-1a"
+  "god-api_id": "i-0904b7d2f8686d981"
+  "god-api_instance_type": "t3a.small"
+  "god-api_name": "god-api"
+  "god-api_private_ip": "172.33.57.243"
+  "god-api_root_volume_size": 32

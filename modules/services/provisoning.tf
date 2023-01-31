@@ -9,9 +9,9 @@ module "provisioning-god-api" {
     local_file.ssh_config,
     local_file.site-info_my_cnf
   ]
-  instance_id   = module.god-api.god-api_id
-  dir_appconfig = "${local.appconfig}/etc"
-#  dir_source    = "${local.source}"
+  instance_id    = module.god-api.god-api_id
+  dir_appconfig  = "${local.appconfig}/etc"
+  dir_public_key = "${local.public_key}"
   ssh = {
     config = "${local.appconfig}/etc/ssh/god-api/config"
     host   = "auto.${local.host-ssh-god-api}"
@@ -96,19 +96,19 @@ resource "local_file" "provisioning" {
 # ------------------------------
 
 module "provisioning-god-hand" {
-	source = "../ec2/provisioning/god-hand"
-	depends_on = [
-	  module.god-hand,
-	  local_file.god-hand_ssh_config,
-	  local_file.god_my_cnf,
-	  local_file.site-info_my_cnf,
-	]
-	instance_id = module.god-hand.god-hand_id
-	dir_appconfig = "${local.appconfig}/etc"
-	ssh = {
-	  config = "${local.appconfig}/etc/ssh/god-hand/config"
-	  host = "auto.${local.host-ssh-god-hand}"
-	}
+  source = "../ec2/provisioning/god-hand"
+  depends_on = [
+    module.god-hand,
+    local_file.god-hand_ssh_config,
+    local_file.god_my_cnf,
+    local_file.site-info_my_cnf,
+  ]
+  instance_id   = module.god-hand.god-hand_id
+  dir_appconfig = "${local.appconfig}/etc"
+  ssh = {
+    config = "${local.appconfig}/etc/ssh/god-hand/config"
+    host   = "auto.${local.host-ssh-god-hand}"
+  }
 }
 
 # -----------------------------------
