@@ -9,18 +9,18 @@ variable "size" { default = "8" }
 variable "profile" {}
 variable "aws_profile" {}
 
-module "mgmt-ubuntu" {
+module "god-api-ubuntu" {
 	source = "../../env-ec2"
 	new_hostname = var.fqdn
 	}
 
-resource "local_file" "mgmt-raw" {
-	filename = "${path.cwd}/mgmt_output.sh"
+resource "local_file" "god-api-raw" {
+	filename = "${path.cwd}/god-api_output.sh"
 	file_permission = "0755"
-	content = module.mgmt-ubuntu.raw
+	content = module.god-api-ubuntu.raw
 }
 
-resource "aws_instance" "mgmt" {
+resource "aws_instance" "god-api" {
 	ami = var.ami
 	instance_type = var.type
 	key_name = var.key_name
@@ -41,34 +41,34 @@ resource "aws_instance" "mgmt" {
 		cpu_credits = "unlimited"
 	}
 	iam_instance_profile = var.profile
-	user_data = module.mgmt-ubuntu.user_data
+	user_data = module.god-api-ubuntu.user_data
 }
 
-output "mgmt_id" {
-	value = aws_instance.mgmt.id
+output "god-api_id" {
+	value = aws_instance.god-api.id
 }
 
-output "mgmt_ami" {
-	value = aws_instance.mgmt.ami
+output "god-api_ami" {
+	value = aws_instance.god-api.ami
 }
 
-output "mgmt_private_ip" {
-	value = aws_instance.mgmt.private_ip
+output "god-api_private_ip" {
+	value = aws_instance.god-api.private_ip
 }
 
-output "mgmt_availability_zone" {
-	value = aws_instance.mgmt.availability_zone
+output "god-api_availability_zone" {
+	value = aws_instance.god-api.availability_zone
 }
 
-output "mgmt_instance_type" {
-	value = aws_instance.mgmt.instance_type
+output "god-api_instance_type" {
+	value = aws_instance.god-api.instance_type
 }
 
-output "mgmt_root_volume_size" {
-	value = aws_instance.mgmt.root_block_device[0].volume_size
+output "god-api_root_volume_size" {
+	value = aws_instance.god-api.root_block_device[0].volume_size
 }
 
-output "mgmt_name" {
-	value = aws_instance.mgmt.tags.Name
+output "god-api_name" {
+	value = aws_instance.god-api.tags.Name
 }
 

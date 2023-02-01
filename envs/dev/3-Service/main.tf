@@ -10,9 +10,7 @@ locals {
 module "services" {
   source              = "../../../modules/services"
   aws_type            = "fadev"
-#  key_name            = "sou@gem-ed25519-20221205"
   key_name            = "sou@gem-ed25519-20221205"
-#			"j-furuya@gem-ed25529-20230131"
   vpc                 = local.vpc
   route53             = local.route53
   aws_profile         = local.aws_profile # 多要素認証は無効　あとで
@@ -30,10 +28,10 @@ module "services" {
 #    type = "t3a.small"
 #    size = 32
 #  }
-# ec2-mgmt = {
-#     type = "t3a.small"
-#     size = 32
-#   }
+ god-batch = {
+     type = "t3a.small"
+     size = 32
+   }
  
 
 god-hand = {

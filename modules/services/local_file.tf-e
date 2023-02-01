@@ -7,11 +7,13 @@ resource "local_file" "debug-god-api" {
   })
 }
 
-resource "local_file" "debug-ec2-god-batch" {
-  filename        = "${path.cwd}/../etc/debug-god-batch.yaml"
-  file_permission = 0600
-  content         = yamlencode(module.god-batch)
-}
+# resource "local_file" "debug-ec2-mgmt" {
+#  filename        = "${path.cwd}/../etc/debug-ec2-mgmt.yaml"
+#  file_permission = 0600
+#  content = yamlencode({
+#    ec2-mgmt = module.ec2-mgmt
+#  })
+#}
 
 #resource "local_file" "debug-ec2-crawler" {
 #  filename        = "${path.cwd}/../etc/debug-ec2-crawler.yaml"
@@ -47,14 +49,6 @@ resource "local_file" "debug-god-aurora-mysql" {
   })
 }
 
-resource "local_file" "debug-god-pre-aurora-mysql" {
-  filename        = "${path.cwd}/../etc/debug-god-pre-aurora-mysql.yaml"
-  file_permission = 0600
-  content = yamlencode({
-    cluster  = module.god-pre-aurora-mysql.cluster
-    instance = module.god-pre-aurora-mysql.instance
-  })
-}
 
 resource "local_file" "ssh_config" {
   filename        = "${local.appconfig}/etc/ssh/god-api/config"
@@ -72,21 +66,21 @@ resource "local_file" "ssh_config" {
 EOF
 }
 
- resource "local_file" "god-batch_ssh_config" {
-  filename        = "${local.appconfig}/etc/ssh/god-batch/config"
-  file_permission = 0644
-  content         = <<EOF
-  Host ${local.host-ssh-god-batch}
-	User Ubuntu
-  ProxyCommand sh -c "aws ssm start-session --profile '${var.aws_profile}' --target ${module.god-batch.god-batch_id} --region ap-northeast-1 --document-name AWS StartSSHSession --parameters 'PortNumber=%p'"
-
-  Host auto.${local.host-ssh-god-batch}
-        User ubuntu
-        StrictHostKeyChecking no
-        UserKnownHostsFile ${local.appconfig}/etc/ssh/god-batch/known_hosts
-  ProxyCommand sh -c "aws ssm start-session --profile '${var.aws_profile}' --target ${module.god-batch.god-batch_id} --region ap-northeast-1 --document-name AWS-StartSSHSession --parameters 'portNumber=%p'"
-EOF
-}
+# resource "local_file" "mgmt_ssh_config" {
+#  filename        = "${local.appconfig}/etc/ssh/mgmt/config"
+#  file_permission = 0644
+#  content         = <<EOF
+#  Host ${local.host-ssh-mgmt}
+#	User Ubuntu
+#  ProxyCommand sh -c "aws ssm start-session --profile '${var.aws_profile}' --target ${module.ec2-mgmt.mgmt_id} --region ap-northeast-1 --document-name AWS StartSSHSession --parameters 'PortNumber=%p'"
+#
+#  Host auto.${local.host-ssh-mgmt}
+#        User ubuntu
+#        StrictHostKeyChecking no
+#        UserKnownHostsFile ${local.appconfig}/etc/ssh/mgmt/known_hosts
+#  ProxyCommand sh -c "aws ssm start-session --profile '${var.aws_profile}' --target ${module.ec2-mgmt.mgmt_id} --region ap-northeast-1 --document-name AWS-StartSSHSession --parameters 'portNumber=%p'"
+#EOF
+#}
 
 #resource "local_file" "crawler_ssh_config" {
 #  filename        = "${local.appconfig}/etc/ssh/crawler/config"
@@ -180,16 +174,17 @@ password=${module.god-aurora-mysql.god.password}
 EOF
 }
 
-resource "local_file" "god-pre_my_cnf" {
-  filename = "${local.appconfig}/etc/god-pre.my.cnf"
-  file_permission = "0600"
-  content = <<EOF
-[client]
-host=${module.god-pre-aurora-mysql.endpoint}
-port=${module.god-pre-aurora-mysql.port}
-database=${module.god-pre-aurora-mysql.god-pre.db}
-user=${module.god-pre-aurora-mysql.god-pre.username}
-password=${module.god-pre-aurora-mysql.god-pre.password}
-EOF
-}
+#resource "local_file" "pre-ip-master_my_cnf" {
+#  filename = "${local.appconfig}/etc/pre-ip-master.my.cnf"
+#  file_permission = "0600"
+#  content = <<EOF
+#[client]
+#host=${module.pre-ip-master.endpoint}
+#port=${module.pre-ip-master.port}
+#database=${module.pre-ip-master.pre-ip-master.db}
+#user=${module.pre-ip-master.pre-ip-master.username}
+#password=${module.pre-ip-master.pre-ip-master.password}
+#EOF
+#}
+
 

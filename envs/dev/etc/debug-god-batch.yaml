@@ -1,0 +1,7 @@
+"god-batch_ami": "ami-0a5866d87afdfdfd3"
+"god-batch_availability_zone": "ap-northeast-1a"
+"god-batch_id": "i-02f4dcfbdc19fd78a"
+"god-batch_instance_type": "t3a.small"
+"god-batch_name": "god-batch"
+"god-batch_private_ip": "172.33.57.79"
+"god-batch_root_volume_size": 32

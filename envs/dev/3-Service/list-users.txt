@@ -1,0 +1,118 @@
+{
+    "Users": [
+        {
+            "Path": "/",
+            "UserName": "ECR-FullAccess",
+            "UserId": "AIDAZTSJ6DGPEVMJSYK3N",
+            "Arn": "arn:aws:iam::660506286494:user/ECR-FullAccess",
+            "CreateDate": "2022-10-04T07:35:11+00:00"
+        },
+        {
+            "Path": "/",
+            "UserName": "ECR-PullOnly",
+            "UserId": "AIDAZTSJ6DGPP3IEINCYK",
+            "Arn": "arn:aws:iam::660506286494:user/ECR-PullOnly",
+            "CreateDate": "2022-10-04T07:33:57+00:00"
+        },
+        {
+            "Path": "/",
+            "UserName": "hashimoto",
+            "UserId": "AIDAZTSJ6DGPOONA63X2Q",
+            "Arn": "arn:aws:iam::660506286494:user/hashimoto",
+            "CreateDate": "2022-09-27T08:29:43+00:00"
+        },
+        {
+            "Path": "/",
+            "UserName": "initial-admin-user-660506286494",
+            "UserId": "AIDAZTSJ6DGPP7GHA75II",
+            "Arn": "arn:aws:iam::660506286494:user/initial-admin-user-660506286494",
+            "CreateDate": "2022-09-20T04:45:51+00:00",
+            "PasswordLastUsed": "2022-09-21T00:50:40+00:00"
+        },
+        {
+            "Path": "/",
+            "UserName": "J-furuya",
+            "UserId": "AIDAZTSJ6DGPG3S52C4UK",
+            "Arn": "arn:aws:iam::660506286494:user/J-furuya",
+            "CreateDate": "2023-01-26T04:35:46+00:00",
+            "PasswordLastUsed": "2023-01-31T04:16:09+00:00"
+        },
+        {
+            "Path": "/",
+            "UserName": "j-yamaguchi",
+            "UserId": "AIDAZTSJ6DGPBZ5JQEONU",
+            "Arn": "arn:aws:iam::660506286494:user/j-yamaguchi",
+            "CreateDate": "2023-02-01T01:14:08+00:00"
+        },
+        {
+            "Path": "/",
+            "UserName": "K-Sugimoto",
+            "UserId": "AIDAZTSJ6DGPH6I3PGCU7",
+            "Arn": "arn:aws:iam::660506286494:user/K-Sugimoto",
+            "CreateDate": "2022-10-31T05:40:22+00:00",
+            "PasswordLastUsed": "2022-11-01T01:11:39+00:00"
+        },
+        {
+            "Path": "/",
+            "UserName": "kai",
+            "UserId": "AIDAZTSJ6DGPD75ID6HIC",
+            "Arn": "arn:aws:iam::660506286494:user/kai",
+            "CreateDate": "2022-09-27T08:29:43+00:00",
+            "PasswordLastUsed": "2022-09-27T09:20:54+00:00"
+        },
+        {
+            "Path": "/",
+            "UserName": "m-kishikawa",
+            "UserId": "AIDAZTSJ6DGPABXEIIUS3",
+            "Arn": "arn:aws:iam::660506286494:user/m-kishikawa",
+            "CreateDate": "2023-02-01T01:15:08+00:00"
+        },
+        {
+            "Path": "/",
+            "UserName": "show",
+            "UserId": "AIDAZTSJ6DGPFCC66TJYN",
+            "Arn": "arn:aws:iam::660506286494:user/show",
+            "CreateDate": "2022-09-21T00:57:43+00:00",
+            "PasswordLastUsed": "2023-01-18T02:23:40+00:00"
+        },
+        {
+            "Path": "/",
+            "UserName": "t-okazaki",
+            "UserId": "AIDAZTSJ6DGPJWBXKVDDV",
+            "Arn": "arn:aws:iam::660506286494:user/t-okazaki",
+            "CreateDate": "2023-01-26T04:36:59+00:00",
+            "PasswordLastUsed": "2023-01-27T06:37:56+00:00"
+        },
+        {
+            "Path": "/",
+            "UserName": "t-saito",
+            "UserId": "AIDAZTSJ6DGPHAYQD7RFJ",
+            "Arn": "arn:aws:iam::660506286494:user/t-saito",
+            "CreateDate": "2022-10-05T03:56:02+00:00",
+            "PasswordLastUsed": "2023-02-01T00:54:36+00:00"
+        },
+        {
+            "Path": "/",
+            "UserName": "terraform-dev",
+            "UserId": "AIDAZTSJ6DGPGZVSAAWP6",
+            "Arn": "arn:aws:iam::660506286494:user/terraform-dev",
+            "CreateDate": "2023-01-11T12:21:01+00:00"
+        },
+        {
+            "Path": "/",
+            "UserName": "test1",
+            "UserId": "AIDAZTSJ6DGPA6D6H4B7Q",
+            "Arn": "arn:aws:iam::660506286494:user/test1",
+            "CreateDate": "2023-01-20T04:23:03+00:00",
+            "PasswordLastUsed": "2023-01-20T04:23:26+00:00"
+        },
+        {
+            "Path": "/",
+            "UserName": "test2",
+            "UserId": "AIDAZTSJ6DGPN4JLIOD3T",
+            "Arn": "arn:aws:iam::660506286494:user/test2",
+            "CreateDate": "2023-01-27T04:46:07+00:00",
+            "PasswordLastUsed": "2023-02-01T00:55:35+00:00"
+        }
+    ]
+}

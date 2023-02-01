@@ -11,7 +11,7 @@ module "provisioning-god-api" {
   ]
   instance_id    = module.god-api.god-api_id
   dir_appconfig  = "${local.appconfig}/etc"
-  dir_public_key = "${local.public_key}"
+  dir_public_key = local.public_key
   ssh = {
     config = "${local.appconfig}/etc/ssh/god-api/config"
     host   = "auto.${local.host-ssh-god-api}"
@@ -29,38 +29,39 @@ resource "local_file" "provisioning" {
 }
 
 # ------------------------------ 
-# 管理サーバ用のインスタンス作成
+# サイト集計システム用のインスタンス作成
 # ------------------------------
 
-#module "provisioning-mgmt" {
-#  source = "../ec2/provisioning/mgmt"
-#  depends_on = [
-#    module.ec2-mgmt,
-#    local_file.mgmt_ssh_config,
-#    local_file.site-info_my_cnf,
-#    local_file.god_my_cnf,
-#  ]
-#  instance_id   = module.ec2-mgmt.mgmt_id
-#  dir_appconfig = "${local.appconfig}/etc"
-#  ssh = {
-#    config = "${local.appconfig}/etc/ssh/mgmt/config"
-#    host   = "auto.${local.host-ssh-mgmt}"
-#  }
-#}
+module "provisioning-god-batch" {
+  source = "../ec2/provisioning/god-batch"
+  depends_on = [
+    module.god-batch,
+    local_file.god-batch_ssh_config,
+    local_file.site-info_my_cnf,
+    #    local_file.god_my_cnf,
+  ]
+  instance_id   = module.god-batch.god-batch_id
+  dir_appconfig = "${local.appconfig}/etc"
+  dir_public_key = local.public_key
+  ssh = {
+    config = "${local.appconfig}/etc/ssh/god-batch/config"
+    host   = "auto.${local.host-ssh-god-batch}"
+  }
+}
 
-#output "provisioning_mgmt_ssh" {
-#  value = module.provisioning-mgmt.ssh_cmd
-#}
+output "provisioning_god-batch_ssh" {
+  value = module.provisioning-god-batch.ssh_cmd
+}
 
 # -----------------------------------
-# 管理サーバ用のローカルファイル作成
+# サイト集計システム用のローカルファイル作成
 # -----------------------------------
 
-#resource "local_file" "mgmt-provisioning" {
-#  content         = yamlencode(module.provisioning-mgmt)
-#  filename        = "${path.cwd}/../mgmt_ssh_cmd.sh"
-#  file_permission = 0644
-#}
+resource "local_file" "god-batch-provisioning" {
+  content         = yamlencode(module.provisioning-god-batch)
+  filename        = "${path.cwd}/../god-batch_ssh_cmd.sh"
+  file_permission = 0644
+}
 
 # ------------------------------
 # クローラ用のインスタンス作成
@@ -103,9 +104,9 @@ module "provisioning-god-hand" {
     local_file.god_my_cnf,
     local_file.site-info_my_cnf,
   ]
-  instance_id   = module.god-hand.god-hand_id
-  dir_appconfig = "${local.appconfig}/etc"
-  dir_public_key = "${local.public_key}"
+  instance_id    = module.god-hand.god-hand_id
+  dir_appconfig  = "${local.appconfig}/etc"
+  dir_public_key = local.public_key
   ssh = {
     config = "${local.appconfig}/etc/ssh/god-hand/config"
     host   = "auto.${local.host-ssh-god-hand}"
