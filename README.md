@@ -45,7 +45,7 @@ mysql  Ver 8.0.32
 >> database : god_pre  
 >> user : god_pre  
 >> password : ~/.god-pre.my.cnfに記載  
-  
+***
   
 - [ ] god-batch  
 - [x] god-hand  
