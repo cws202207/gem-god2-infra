@@ -18,13 +18,15 @@ gem-god-backend.comインフラ構成サンプル
 
 
 # 構築情報
-Ubuntu 20.04.5 LTS  
+---
+* Ubuntu 20.04.5 LTS  
   
-PHP 7.4.3  
+* PHP 7.4.3  
   
-Composer 2.5.1  
+* Composer 2.5.1  
   
-mysql  Ver 8.0.32  
+* mysql  Ver 8.0.32  
+---
   
 以下、特記のないものは、fadev環境の例
 
@@ -85,8 +87,9 @@ mysql  Ver 8.0.32
 
 カレントディレクトリなどに任意の名前で上記スクリプトを保存
 
-* god-api    → $ ssh -F [god-api] auto.dev.god-api.fadev
-* god-hand   → $ ssh -F [god-hand] auto.dev.god-api.fadev
+* god-api     → $ ssh -F ./[god-api] auto.dev.god-api.fadev
+* god-hand    → $ ssh -F ./[god-hand] auto.dev.god-api.fadev
+* god-batch   → $ ssh -F ./[god-hand] auto.dev.god-api.fadev
 
 ### サーバの構成
 
