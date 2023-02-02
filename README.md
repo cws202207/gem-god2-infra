@@ -34,7 +34,10 @@ mysql  Ver 8.0.32
 
 ### データベース情報
 
-* god-batch / god-hand  
+- [x] god-batch  
+- [x] god-hand  
+- [ ] god-api  
+    
 .cnf : ~/.god-pre.my.cnf  
 port : 3306  
 database : god_pre  
