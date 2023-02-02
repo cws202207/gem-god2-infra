@@ -95,7 +95,7 @@ gem-god-backend.com インフラ構成
 * god-hand    → $ ssh -F ./[god-hand] auto.dev.god-api.fadev
 * god-batch   → $ ssh -F ./[god-hand] auto.dev.god-api.fadev
 
-### サーバの構成
+## サーバの構成
 
 * Ubuntu 20.04.5 LTS
 * SSMエージェントなど基本的な設定が行われる。
