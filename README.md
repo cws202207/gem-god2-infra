@@ -13,7 +13,7 @@ gem-god-backend.comインフラ構成サンプル
 
 # 実行前の注意点
    
-[こちら](https://github.com/FrankArt/gem-god-infra/blob/main/AWS-SignIn.md)を参考にして以下を実施しておくこと  
+[こちら](https://github.com/FrankArt/gem-god-infra/blob/main/AWS-SignIn.md)を参考にして以下を実施してください  
   
 * 実行前にMFA認証を通過しておくこと
 * ssh-agentにSSH秘密鍵を読み込んでおくこと
