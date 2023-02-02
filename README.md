@@ -33,7 +33,8 @@ mysql  Ver 8.0.32
 * Aurora MySQLなどの接続情報は EC2インスタンスのgod-api / god-hand / god-batchのカレントディレクトリに保存されている
 
 ### **データベース情報**
-
+* dev.god-pre  
+---
 - [x] god-batch  
 - [x] god-hand  
 - [ ] god-api  
