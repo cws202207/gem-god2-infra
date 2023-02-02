@@ -15,6 +15,8 @@ gem-god-backend.comインフラ構成サンプル
 
 * 実行前にMFA認証を通過しておくこと
 * ssh-agentにSSH秘密鍵を読み込んでおくこと
+* AWS-CLIをインストールしておくこと  
+* SSM-Agentをインストールしておくこと  
 
 
 # 構築情報
