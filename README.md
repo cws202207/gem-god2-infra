@@ -34,7 +34,7 @@ gem-god-backend.com インフラ構成
   
 以下、特記のないものは、fadev環境の例
 
-## AWS情報
+# AWS情報
 
 * Aurora MySQLなどの接続情報は EC2インスタンスのgod-api / god-hand / god-batchのカレントディレクトリに保存されている
 
