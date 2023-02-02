@@ -96,6 +96,8 @@ gem-god-backend.comインフラ構成サンプル
 * Ubuntu 20.04.5 LTS
 * SSMエージェントなど基本的な設定が行われる。
 * provisioningによってMySQLクライアント、phpなどがインストールされる
-* ubuntuユーザは `mysql` と実行するだけで Aurora MySQLのsite_infoデータベースに接続することができる。
-* ubuntuユーザは `mysql --defaults-file=.god.my.cnf` と実行するだけで Aurora MySQLのgodデータベースに接続することができる
+* ubuntuユーザは `mysql` と実すると、デフォルトのDBへ接続できる   
+  
+* dev.godへ接続する場合  
+* ubuntuユーザは `mysql --defaults-file=.god.my.cnf` と実行すると、 Aurora MySQLのgodデータベースに接続することができる
 
