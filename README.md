@@ -1,6 +1,6 @@
 # gem-god-infra
 
-gem-god-backend.comインフラ構成サンプル
+gem-god-backend.com インフラ構成
 
 # 大枠の流れ
 
