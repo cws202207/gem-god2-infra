@@ -38,7 +38,7 @@ gem-god-backend.com インフラ構成
 
 * Aurora MySQLなどの接続情報は EC2インスタンスのgod-api / god-hand / god-batchのカレントディレクトリに保存されている
 
-### **データベース情報**
+## **データベース情報**
 ---
 * dev.god-pre  
   
@@ -80,7 +80,7 @@ gem-god-backend.com インフラ構成
 >> password : ~/.my.cnfに記載  
 ---
   
-### インスタンス情報
+## インスタンス情報
 ### SSH接続
   
 * [god-api](https://github.com/FrankArt/gem-god-infra/blob/main/appconfig/fadev/etc/ssh/god-api/config)にシェルスクリプトが生成されるので、それを実行すればログインできる。
