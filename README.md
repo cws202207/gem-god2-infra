@@ -12,7 +12,9 @@ gem-god-backend.comインフラ構成サンプル
 7. [env/[AWS環境名]/3-Services](env/dev/3-Services) の適用
 
 # 実行前の注意点
-
+   
+[こちら](https://github.com/FrankArt/gem-god-infra/blob/main/AWS-SignIn.md)を参考にしていかを実施しておくこと  
+  
 * 実行前にMFA認証を通過しておくこと
 * ssh-agentにSSH秘密鍵を読み込んでおくこと
 * AWS-CLIをインストールしておくこと  
