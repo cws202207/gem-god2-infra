@@ -98,6 +98,7 @@ gem-god-backend.comインフラ構成サンプル
 * provisioningによってMySQLクライアント、phpなどがインストールされる
 * ubuntuユーザは `mysql` と実すると、デフォルトのDBへ接続できる   
   
-* dev.godへ接続する場合  
+**dev.godへ接続する場合**  
+  
 * ubuntuユーザは `mysql --defaults-file=.god.my.cnf` と実行すると、 Aurora MySQLのgodデータベースに接続することができる
 
