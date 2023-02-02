@@ -32,11 +32,12 @@ mysql  Ver 8.0.32
 
 * Aurora MySQLなどの接続情報は EC2インスタンスのgod-api / god-hand / god-batchのカレントディレクトリに保存されている
 
-### データベース情報
+### **データベース情報**
 
 - [x] god-batch  
 - [x] god-hand  
 - [ ] god-api  
+- [ ] god-crawler
     
 .cnf : ~/.god-pre.my.cnf  
 port : 3306  
@@ -44,14 +45,22 @@ database : god_pre
 user : god_pre  
 password : ~/.god-pre.my.cnfに記載  
   
-* god-api / god-hand
+- [ ] god-batch  
+- [x] god-hand  
+- [x] god-api  
+- [ ] god-crawler
+  
 .cnf : ~/.god.my.cnf  
 port : 3306  
 database : god  
 user : god  
 password : ~/.god.my.cnfに記載  
-
-* god-crawler  
+  
+- [ ] god-batch  
+- [ ] god-hand  
+- [ ] god-api  
+- [x] god-crawler  
+  
 .cnf : ~/.my.cnf  
 port : 3306  
 database : site_info  
