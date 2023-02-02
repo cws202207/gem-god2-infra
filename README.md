@@ -38,8 +38,7 @@ mysql  Ver 8.0.32
 - [x] god-hand  
 - [ ] god-api  
 - [ ] god-crawler
-  
-  
+    
 >> .cnf : ~/.god-pre.my.cnf  
 >> port : 3306  
 >> database : god_pre  
@@ -52,26 +51,24 @@ mysql  Ver 8.0.32
 - [x] god-api  
 - [ ] god-crawler
   
-  
 >> .cnf : ~/.god.my.cnf  
 >> port : 3306  
 >> database : god  
 >> user : god  
 >> password : ~/.god.my.cnfに記載  
-  
+***
   
 - [ ] god-batch  
 - [ ] god-hand  
 - [ ] god-api  
 - [x] god-crawler  
   
-  
 >> .cnf : ~/.my.cnf  
 >> port : 3306  
 >> database : site_info  
 >> user : site_info  
 >> password : ~/.my.cnfに記載  
-  
+***
   
 ### インスタンス情報
 ### SSH接続
