@@ -30,29 +30,39 @@ mysql  Ver 8.0.32
 
 ## AWS情報
 
-* Aurora MySQLなどの接続情報は EC2インスタンスのgod-api / god-handのカレントディレクトリに保存されている
+* Aurora MySQLなどの接続情報は EC2インスタンスのgod-api / god-hand / god-batchのカレントディレクトリに保存されている
 
 ### データベース情報
 
+* god-batch / god-hand  
+.cnf : ~/.god-pre.my.cnf  
+port : 3306  
+database : god_pre  
+user : god_pre  
+password : ~/.god-pre.my.cnfに記載  
+  
+* god-api / god-hand
 .cnf : ~/.god.my.cnf  
 port : 3306  
 database : god  
 user : god  
 password : ~/.god.my.cnfに記載  
 
-
+* god-crawler  
 .cnf : ~/.my.cnf  
 port : 3306  
 database : site_info  
 user : site_info  
 password : ~/.my.cnfに記載  
-
+  
 ### インスタンス情報
 ### SSH接続
-
+  
 * [god-api](https://github.com/FrankArt/gem-god-infra/blob/main/appconfig/fadev/etc/ssh/god-api/config)にシェルスクリプトが生成されるので、それを実行すればログインできる。
-
+  
 * [god-hand](https://github.com/FrankArt/gem-god-infra/blob/main/appconfig/fadev/etc/ssh/god-hand/config)にシェルスクリプトが生成されるので、それを実行すればログインできる。
+  
+* [god-batch](https://github.com/FrankArt/gem-god-infra/blob/main/appconfig/fadev/etc/ssh/god-batch/config)にシェルスクリプトが生成されるので、それを実行すればログインでき>る。
 
 カレントディレクトリなどに任意の名前で上記スクリプトを保存
 
