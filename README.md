@@ -79,6 +79,11 @@ gem-god-backend.com インフラ構成
 >> user : site_info  
 >> password : ~/.my.cnfに記載  
 ---
+
+## S3 ##
+
+To Be
+---
   
 ## インスタンス情報
 ### SSH接続
