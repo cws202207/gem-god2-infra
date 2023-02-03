@@ -5,7 +5,7 @@
   "name": "s3_custom_policy"
   "name_prefix": null
   "path": "/"
-  "policy": "{\"Statement\":[{\"Action\":[\"s3:*\"],\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:s3:::fadev-god.s3.gem-god-backend.com.aws-data\",\"arn:aws:s3:::fadev-god.s3.gem-god-backend.com.aws-data/*\",\"arn:aws:s3:::fadev-site-info.s3.gem-god-backend.com.aws-data\",\"arn:aws:s3:::fadev-site-info.s3.gem-god-backend.com.aws-data/*\"]}],\"Version\":\"2012-10-17\"}"
+  "policy": "{\"Statement\":[{\"Action\":[\"s3:PutObject\",\"s3:GetObject\",\"s3:DeleteObject\",\"s3:RutObjectAcl\",\"s3:ListObject\",\"s3:ListBucket\"],\"Effect\":\"Allow\",\"Resource\":[\"arn:aws:s3:::fadev-god.s3.gem-god-backend.com.aws-data\",\"arn:aws:s3:::fadev-god.s3.gem-god-backend.com.aws-data/*\",\"arn:aws:s3:::fadev-site-info.s3.gem-god-backend.com.aws-data\",\"arn:aws:s3:::fadev-site-info.s3.gem-god-backend.com.aws-data/*\",\"arn:aws:s3:::fadev-crawler.s3.gem-god-backend.com.aws-data\",\"arn:aws:s3:::fadev-crawler.s3.gem-god-backend.com.aws-data/*\"]}],\"Version\":\"2012-10-17\"}"
   "policy_id": "ANPAZTSJ6DGPOJQLIHZGN"
   "tags": {}
   "tags_all":

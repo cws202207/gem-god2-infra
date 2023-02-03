@@ -13,7 +13,7 @@ resource "aws_s3_bucket_policy" "b" {
           "AWS" : "arn:aws:iam::${data.aws_elb_service_account.current.id}:root" },
           "Action" : "s3:PutObject",
           "Resource" : "arn:aws:s3:::${aws_s3_bucket.b.id}/*"
-#          "Resource" : "arn:aws:s3:::${aws_s3_bucket.b.id}/AWSLogs/${data.aws_caller_identity.self.account_id}/*"
+          #          "Resource" : "arn:aws:s3:::${aws_s3_bucket.b.id}/AWSLogs/${data.aws_caller_identity.self.account_id}/*"
         },
         {
           "Effect" : "Allow",
@@ -22,7 +22,7 @@ resource "aws_s3_bucket_policy" "b" {
           },
           "Action" : "s3:PutObject",
           "Resource" : "arn:aws:s3:::${aws_s3_bucket.b.id}/*",
-#          "Resource" : "arn:aws:s3:::${aws_s3_bucket.b.id}/AWSLogs/${data.aws_caller_identity.self.account_id}/*"
+          #          "Resource" : "arn:aws:s3:::${aws_s3_bucket.b.id}/AWSLogs/${data.aws_caller_identity.self.account_id}/*"
           "Condition" : {
             "StringEquals" : {
               "s3:x-amz-acl" : "bucket-owner-full-control"
@@ -43,5 +43,5 @@ resource "aws_s3_bucket_policy" "b" {
 }
 
 output "bucket_policy" {
-	value = aws_s3_bucket_policy.b
+  value = aws_s3_bucket_policy.b
 }

@@ -89,11 +89,14 @@ gem-god-backend.com インフラ構成
   
 * [god-batch](https://github.com/FrankArt/gem-god-infra/blob/main/appconfig/fadev/etc/ssh/god-batch/config)にシェルスクリプトが生成されるので、それを実行すればログインでき>る。
 
+* [God-crawler](https://github.com/FrankArt/gem-god-infra/blob/main/appconfig/fadev/etc/ssh/god-crawler/config)にシェルスクリプトが生成されるので、それを実行すればログインで>き>る
+
 カレントディレクトリなどに任意の名前で上記スクリプトを保存
 
-* god-api     → $ ssh -F ./[god-api] auto.dev.god-api.fadev
-* god-hand    → $ ssh -F ./[god-hand] auto.dev.god-api.fadev
-* god-batch   → $ ssh -F ./[god-hand] auto.dev.god-api.fadev
+* god-api          →   $ ssh -F ./[god-api] auto.dev.god-api.fadev
+* god-hand         →   $ ssh -F ./[god-hand] auto.dev.god-api.fadev
+* god-batch        →   $ ssh -F ./[god-batch] auto.dev.god-api.fadev
+* god-crawler      →   $ ssh -F ./[god-crawler] auto.dev.god-api.fadev
 
 ## サーバの構成
 

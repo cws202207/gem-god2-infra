@@ -29,13 +29,18 @@ resource "null_resource" "push-files" {
     interpreter = ["bash", "-c"]
     command     = <<EOF
 cat "${var.dir_appconfig}/composer.sh" | ${local.ssh_cmd} "cat > /tmp/composer.sh"
+
 ${local.ssh_cmd} "sudo chmod +x /tmp/composer.sh"
-#cat "${var.dir_appconfig}/site-info.my.cnf" | ${local.ssh_cmd} "cat > /home/ubuntu/.my.cnf"
+
+cat "${var.dir_appconfig}/site-info.my.cnf" | ${local.ssh_cmd} "cat > /home/ubuntu/.my.cnf"
+${local.ssh_cmd} "chmod 600 /home/ubuntu/.my.cnf"
+
+#cat "${var.dir_appconfig}/god-pre.my.cnf" | ${local.ssh_cmd} "cat > /home/ubuntu/.god-pre.my.cnf"
 #${local.ssh_cmd} "chmod 600 /home/ubuntu/.my.cnf"
-cat "${var.dir_appconfig}/god-pre.my.cnf" | ${local.ssh_cmd} "cat > /home/ubuntu/.god.my.cnf"
-${local.ssh_cmd} "chmod 600 /home/ubuntu/..my.cnf"
-cat "${var.dir_appconfig}/god.my.cnf" | ${local.ssh_cmd} "cat > /home/ubuntu/.god.my.cnf"
-${local.ssh_cmd} "chmod 600 /home/ubuntu/.god.my.cnf"
+
+#cat "${var.dir_appconfig}/god.my.cnf" | ${local.ssh_cmd} "cat > /home/ubuntu/.god.my.cnf"
+
+#${local.ssh_cmd} "chmod 600 /home/ubuntu/.god.my.cnf"
 
 cat "${var.dir_public_key}/j-furuya-20230131.pub" | ${local.ssh_cmd} "cat >> /home/ubuntu/.ssh/authorized_keys"
 cat "${var.dir_public_key}/t-okazaki-20230131.pub" | ${local.ssh_cmd} "cat >> /home/ubuntu/.ssh/authorized_keys"
@@ -61,9 +66,6 @@ composer --version
 EOF
   }
 }
-
-
-
 
 # aws cliをインストールる
 resource "null_resource" "awscli" {

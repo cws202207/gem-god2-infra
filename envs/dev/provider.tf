@@ -3,7 +3,7 @@ locals {
 }
 
 provider "aws" {
-  region = "ap-northeast-1"
+  region  = "ap-northeast-1"
   profile = local.aws_profile
 
   default_tags {

@@ -53,40 +53,40 @@ resource "aws_security_group" "vpc" {
   }
 }
 
- resource "aws_security_group" "private" {
-	vpc_id = aws_vpc.this.id
-	name = "${aws_vpc.this.tags.Name}-private"
-	description = "managed by terraform"
-	
-	tags = {
-	  Name = "${aws_vpc.this.tags.Name}-private"
-}
+resource "aws_security_group" "private" {
+  vpc_id      = aws_vpc.this.id
+  name        = "${aws_vpc.this.tags.Name}-private"
+  description = "managed by terraform"
 
-	egress {
-		from_port = 0
-		to_port = 0
-		protocol = "-1"
-		cidr_blocks = [
-		  "0.0.0.0/0",
-	]
-}
+  tags = {
+    Name = "${aws_vpc.this.tags.Name}-private"
+  }
 
-	ingress {
-		from_port = 0
-		to_port = 0
-		protocol = "-1"
-	cidr_blocks = [
-	var.azs.a.private_cidr,
-	var.azs.c.private_cidr,
-	var.azs.d.private_cidr,
-	]
-}
+  egress {
+    from_port = 0
+    to_port   = 0
+    protocol  = "-1"
+    cidr_blocks = [
+      "0.0.0.0/0",
+    ]
+  }
+
+  ingress {
+    from_port = 0
+    to_port   = 0
+    protocol  = "-1"
+    cidr_blocks = [
+      var.azs.a.private_cidr,
+      var.azs.c.private_cidr,
+      var.azs.d.private_cidr,
+    ]
+  }
 }
 
 output "security_groups" {
-	value = {
-		web = aws_security_group.web.id
-		private = aws_security_group.private.id
-		vpc = aws_security_group.vpc.id
-}
+  value = {
+    web     = aws_security_group.web.id
+    private = aws_security_group.private.id
+    vpc     = aws_security_group.vpc.id
+  }
 }

@@ -21,12 +21,12 @@ resource "aws_security_group" "rds" {
 
 # 許可するIPアドレスの追加
 resource "aws_security_group_rule" "mysql" {
-  count       = length(var.permit_ips)
-  type        = "ingress"
-  from_port   = 3306
-  to_port     = 3306
-  protocol    = "tcp"
-  cidr_blocks = [format("%s/32", var.permit_ips[count.index].ip)]
+  count             = length(var.permit_ips)
+  type              = "ingress"
+  from_port         = 3306
+  to_port           = 3306
+  protocol          = "tcp"
+  cidr_blocks       = [format("%s/32", var.permit_ips[count.index].ip)]
   description       = var.permit_ips[count.index].name
   security_group_id = aws_security_group.rds.id
 }
@@ -40,5 +40,5 @@ output "permit_ip" {
 }
 
 output "aws_security_group_rds" {
-	value = aws_security_group.rds
+  value = aws_security_group.rds
 }

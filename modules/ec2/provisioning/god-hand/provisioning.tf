@@ -76,15 +76,15 @@ EOF
 
 # mysqlをインストールする
 resource "null_resource" "mysqlclient" {
-	triggers = { instance_id = var.instance_id }
-	depends_on = [ null_resource.awscli ]
-	provisioner "local-exec" {
-		interpreter = ["ssh", "-F", var.ssh.config, var.ssh.host]
-		command = <<EOF
+  triggers   = { instance_id = var.instance_id }
+  depends_on = [null_resource.awscli]
+  provisioner "local-exec" {
+    interpreter = ["ssh", "-F", var.ssh.config, var.ssh.host]
+    command     = <<EOF
 export DEBIAN_FRONTEND=noninteractive
 sudo apt-get install -y default-mysql-client
 EOF
-	}
+  }
 }
 
 output "dir_appconfig" {

@@ -24,17 +24,15 @@ module "services" {
     type = "t3a.small"
     size = 32
   }
-#  ec2-crawler = {
-#    type = "t3a.small"
-#    size = 32
-#  }
- god-batch = {
-     type = "t3a.small"
-     size = 32
-   }
- 
-
-god-hand = {
+  god-crawler = {
+    type = "t3a.small"
+    size = 32
+  }
+  god-batch = {
+    type = "t3a.small"
+    size = 32
+  }
+  god-hand = {
     type = "t3a.small"
     size = 32
   }

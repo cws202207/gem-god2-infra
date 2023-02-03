@@ -2,8 +2,8 @@ variable "domain_name" {}
 variable "domain_zone_id" {}
 
 locals {
-	domain_name = var.domain_name
-	hosted_zone_id = var.domain_zone_id
+  domain_name    = var.domain_name
+  hosted_zone_id = var.domain_zone_id
 }
 
 resource "aws_acm_certificate" "root" {
@@ -25,13 +25,13 @@ resource "aws_acm_certificate_validation" "root" {
 }
 
 output "domain_name" {
-	value = local.domain_name
+  value = local.domain_name
 }
 
 output "hosted_zone_id" {
-	value = local.hosted_zone_id
+  value = local.hosted_zone_id
 }
 
 output "aws_acm_certificate_arn" {
-	value = aws_acm_certificate.root.arn
+  value = aws_acm_certificate.root.arn
 }
