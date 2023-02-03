@@ -15,13 +15,9 @@ module "site-info-aurora-mysql" {
     {
       #"module.ec2-crawler.crawler_private_ip"で囲むと文字列になってしまうので、気を付ける 囲んで渡すとlist of string required.
 
-      name = "god-hand"
-      ip   = module.god-hand.god-hand_private_ip
+      name = "god-crawler"
+      ip   = module.god-crawler.god-crawler_private_ip
     },
-    {
-      name = "god-api"
-      ip   = module.god-api.god-api_private_ip
-    }
   ]
   aurora = {
     availability_zones = [
@@ -111,7 +107,7 @@ resource "local_file" "god-aurora-mysql" {
 }
 
 resource "local_file" "god-pre-aurora-mysql" {
-  content = yamlencode(module.god-pre-aurora-mysql)
-  filename = "${path.cwd}/../etc/god-pre.aurora-mysql.sh"
+  content         = yamlencode(module.god-pre-aurora-mysql)
+  filename        = "${path.cwd}/../etc/god-pre.aurora-mysql.sh"
   file_permission = "0644"
 }

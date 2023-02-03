@@ -40,8 +40,8 @@ module "provisioning-god-batch" {
     local_file.site-info_my_cnf,
     #    local_file.god_my_cnf,
   ]
-  instance_id   = module.god-batch.god-batch_id
-  dir_appconfig = "${local.appconfig}/etc"
+  instance_id    = module.god-batch.god-batch_id
+  dir_appconfig  = "${local.appconfig}/etc"
   dir_public_key = local.public_key
   ssh = {
     config = "${local.appconfig}/etc/ssh/god-batch/config"
@@ -63,34 +63,7 @@ resource "local_file" "god-batch-provisioning" {
   file_permission = 0644
 }
 
-# ------------------------------
-# クローラ用のインスタンス作成
-# ------------------------------
 
-#module "provisioning-crawler" {
-#  source = "../ec2/provisioning/crawler"
-#  depends_on = [
-#    module.ec2-crawler,
-#    local_file.crawler_ssh_config,
-#    local_file.site-info_my_cnf
-#  ]
-#  instance_id   = module.ec2-crawler.crawler_id
-#  dir_appconfig = "${local.appconfig}/etc"
-#  ssh = {
-#    config = "${local.appconfig}/etc/ssh/crawler/config"
-#    host   = "auto.${local.host-ssh-crawler}"
-#  }
-#}
-
-# -----------------------------------
-# クローラ用のローカルファイル作成
-# -----------------------------------
-
-#resource "local_file" "crawler-provisioning" {
-#  content         = yamlencode(module.provisioning-crawler)
-#  filename        = "${path.cwd}/../crawler_ssh_cmd.sh"
-#  file_permission = 0644
-#}
 
 # ------------------------------
 # GOD-HAND用のインスタンス作成
@@ -120,5 +93,35 @@ module "provisioning-god-hand" {
 resource "local_file" "god-hand-provisioning" {
   content         = yamlencode(module.provisioning-god-hand)
   filename        = "${path.cwd}/../god-hand_ssh_cmd.sh"
+  file_permission = 0644
+}
+
+# ------------------------------
+# GOD-crawler用のインスタンス作成
+# ------------------------------
+
+module "provisioning-god-crawler" {
+  source = "../ec2/provisioning/god-crawler"
+  depends_on = [
+    module.god-crawler,
+    local_file.god-crawler_ssh_config,
+    local_file.site-info_my_cnf,
+  ]
+  instance_id    = module.god-crawler.god-crawler_id
+  dir_appconfig  = "${local.appconfig}/etc"
+  dir_public_key = local.public_key
+  ssh = {
+    config = "${local.appconfig}/etc/ssh/god-crawler/config"
+    host   = "auto.${local.host-ssh-god-crawler}"
+  }
+}
+
+# -----------------------------------
+# GOD-crawler用のローカルファイル作成
+# -----------------------------------
+
+resource "local_file" "god-crawler-provisioning" {
+  content         = yamlencode(module.provisioning-god-crawler)
+  filename        = "${path.cwd}/../god-crawler_ssh_cmd.sh"
   file_permission = 0644
 }
