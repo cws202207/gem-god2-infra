@@ -1,8 +1,8 @@
-variable  "key_name" {
-	default = {
-       yoyogi =    "yoyogi"
-       shinagawa =    "shinagawa"
-  }  
+variable "key_name" {
+  default = {
+    yoyogi    = "yoyogi"
+    shinagawa = "shinagawa"
+  }
 }
 
 module "another" {

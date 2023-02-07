@@ -34,7 +34,7 @@ output "master_password" {
 }
 
 output "api_password" {
-	value = random_string.api_password
+  value = random_string.api_password
 }
 
 # パラメータグループ

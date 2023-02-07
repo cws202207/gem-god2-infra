@@ -4,5 +4,5 @@ data "aws_route53_zone" "z" {
 }
 
 output "name" {
-	value = data.aws_route53_zone.z.name
+  value = data.aws_route53_zone.z.name
 }

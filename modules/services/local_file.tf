@@ -13,13 +13,12 @@ resource "local_file" "debug-ec2-god-batch" {
   content         = yamlencode(module.god-batch)
 }
 
-#resource "local_file" "debug-ec2-crawler" {
-#  filename        = "${path.cwd}/../etc/debug-ec2-crawler.yaml"
-#  file_permission = 0600
-#  content = yamlencode({
-#    ec2-crawler = module.ec2-crawler
-#  })
-#}
+resource "local_file" "debug-ec2-god-crawler" {
+  filename        = "${path.cwd}/../etc/debug-god-crawler.yaml"
+  file_permission = 0600
+  content         = yamlencode(module.god-crawler)
+}
+
 
 resource "local_file" "debug-god-hand" {
   filename        = "${path.cwd}/../etc/debug-god-hand.yaml"
@@ -72,7 +71,7 @@ resource "local_file" "ssh_config" {
 EOF
 }
 
- resource "local_file" "god-batch_ssh_config" {
+resource "local_file" "god-batch_ssh_config" {
   filename        = "${local.appconfig}/etc/ssh/god-batch/config"
   file_permission = 0644
   content         = <<EOF
@@ -88,21 +87,21 @@ EOF
 EOF
 }
 
-#resource "local_file" "crawler_ssh_config" {
-#  filename        = "${local.appconfig}/etc/ssh/crawler/config"
-#  file_permission = 0644
-#  content         = <<EOF
-#  Host ${local.host-ssh-crawler}
-#        User Ubuntu
-#  ProxyCommand sh -c "aws ssm start-session --profile '${var.aws_profile}' --target ${module.ec2-crawler.crawler_id} --region ap-northeast-1 --document-name AWS StartSSHSession --parameters 'PortNumber=%p'"
-#
-#  Host auto.${local.host-ssh-crawler}
-#        User ubuntu
-#        StrictHostKeyChecking no
-#        UserKnownHostsFile ${local.appconfig}/etc/ssh/crawker/known_hosts
-#  ProxyCommand sh -c "aws ssm start-session --profile '${var.aws_profile}' --target ${module.ec2-crawler.crawler_id} --region ap-northeast-1 --document-name AWS-StartSSHSession --parameters 'portNumber=%p'"
-#EOF
-#}
+resource "local_file" "god-crawler_ssh_config" {
+  filename        = "${local.appconfig}/etc/ssh/god-crawler/config"
+  file_permission = 0644
+  content         = <<EOF
+  Host ${local.host-ssh-god-crawler}
+        User Ubuntu
+  ProxyCommand sh -c "aws ssm start-session --profile '${var.aws_profile}' --target ${module.god-crawler.god-crawler_id} --region ap-northeast-1 --document-name AWS StartSSHSession --parameters 'PortNumber=%p'"
+
+  Host auto.${local.host-ssh-god-crawler}
+        User ubuntu
+        StrictHostKeyChecking no
+        UserKnownHostsFile ${local.appconfig}/etc/ssh/god-crawler/known_hosts
+  ProxyCommand sh -c "aws ssm start-session --profile '${var.aws_profile}' --target ${module.god-crawler.god-crawler_id} --region ap-northeast-1 --document-name AWS-StartSSHSession --parameters 'portNumber=%p'"
+EOF
+}
 
 resource "local_file" "god-hand_ssh_config" {
   filename        = "${local.appconfig}/etc/ssh/god-hand/config"
@@ -181,9 +180,9 @@ EOF
 }
 
 resource "local_file" "god-pre_my_cnf" {
-  filename = "${local.appconfig}/etc/god-pre.my.cnf"
+  filename        = "${local.appconfig}/etc/god-pre.my.cnf"
   file_permission = "0600"
-  content = <<EOF
+  content         = <<EOF
 [client]
 host=${module.god-pre-aurora-mysql.endpoint}
 port=${module.god-pre-aurora-mysql.port}

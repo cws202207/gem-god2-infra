@@ -30,22 +30,24 @@ resource "aws_iam_policy" "s3c" {
     "Statement" : [
       {
         "Effect" : "Allow",
-			"Action": [
-		"s3:*"
-#				"s3:PutObject",
-#				"s3:GetObject",
-#				"s3:DeleteObject",
-#				"s3:RutObjectAcl",
-#				"s3:ListObject",
-#				"s3:ListBucket"
-			],
+        "Action" : [
+#          "s3:*"
+          				"s3:PutObject",
+          				"s3:GetObject",
+          				"s3:DeleteObject",
+          				"s3:RutObjectAcl",
+          				"s3:ListObject",
+          				"s3:ListBucket"
+        ],
 
         "Resource" : [
-#	"*"
+          #	"*"
           "arn:aws:s3:::${var.aws_type}-god.s3.${var.domain_name}.aws-data",
           "arn:aws:s3:::${var.aws_type}-god.s3.${var.domain_name}.aws-data/*",
           "arn:aws:s3:::${var.aws_type}-site-info.s3.${var.domain_name}.aws-data",
-          "arn:aws:s3:::${var.aws_type}-site-info.s3.${var.domain_name}.aws-data/*"
+          "arn:aws:s3:::${var.aws_type}-site-info.s3.${var.domain_name}.aws-data/*",
+          "arn:aws:s3:::${var.aws_type}-crawler.s3.${var.domain_name}.aws-data",
+          "arn:aws:s3:::${var.aws_type}-crawler.s3.${var.domain_name}.aws-data/*"
         ]
       }
     ]
@@ -53,7 +55,7 @@ resource "aws_iam_policy" "s3c" {
 }
 
 output "aws_iam_policy_s3c" {
-	value = aws_iam_policy.s3c
+  value = aws_iam_policy.s3c
 }
 
 resource "aws_iam_instance_profile" "p" {

@@ -58,18 +58,8 @@
   "id": "sg-0dbd964ba78e20059"
   "ingress":
   - "cidr_blocks":
-    - "172.33.57.243/32"
-    "description": "god-api"
-    "from_port": 3306
-    "ipv6_cidr_blocks": []
-    "prefix_list_ids": []
-    "protocol": "tcp"
-    "security_groups": []
-    "self": false
-    "to_port": 3306
-  - "cidr_blocks":
-    - "172.33.58.107/32"
-    "description": "god-hand"
+    - "172.33.57.20/32"
+    "description": "god-crawler"
     "from_port": 3306
     "ipv6_cidr_blocks": []
     "prefix_list_ids": []
@@ -226,23 +216,10 @@
   "upper": true
 "mysql_security_rule":
 - "cidr_blocks":
-  - "172.33.58.107/32"
-  "description": "god-hand"
+  - "172.33.57.20/32"
+  "description": "god-crawler"
   "from_port": 3306
-  "id": "sgrule-392864448"
-  "ipv6_cidr_blocks": []
-  "prefix_list_ids": []
-  "protocol": "tcp"
-  "security_group_id": "sg-0dbd964ba78e20059"
-  "self": false
-  "source_security_group_id": null
-  "to_port": 3306
-  "type": "ingress"
-- "cidr_blocks":
-  - "172.33.57.243/32"
-  "description": "god-api"
-  "from_port": 3306
-  "id": "sgrule-2536149850"
+  "id": "sgrule-2571143751"
   "ipv6_cidr_blocks": []
   "prefix_list_ids": []
   "protocol": "tcp"
@@ -252,15 +229,11 @@
   "to_port": 3306
   "type": "ingress"
 "permit_ip":
-- "ip": "172.33.58.107"
-  "name": "god-hand"
-- "ip": "172.33.57.243"
-  "name": "god-api"
+- "ip": "172.33.57.20"
+  "name": "god-crawler"
 "pertmit_ips":
-- "ip": "172.33.58.107"
-  "name": "god-hand"
-- "ip": "172.33.57.243"
-  "name": "god-api"
+- "ip": "172.33.57.20"
+  "name": "god-crawler"
 "port": 3306
 "reader_endpoint": "site-info.cluster-ro-c7l3iefcvxks.ap-northeast-1.rds.amazonaws.com"
 "site-info":

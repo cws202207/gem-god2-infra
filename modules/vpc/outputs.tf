@@ -27,7 +27,7 @@ output "public_cidr_block" {
 }
 
 output "vpc_id" {
-	value = aws_vpc.this.id
+  value = aws_vpc.this.id
 }
 
 output "public_subnet_cidr" {
@@ -48,13 +48,13 @@ output "vpc_cidr" {
 }
 
 output "route_table_public" {
-	value = aws_route_table.public
+  value = aws_route_table.public
 }
 
 output "route_table_private" {
-	value = aws_route_table.private
+  value = aws_route_table.private
 }
 
 output "availability_zone" {
-	value = [for s in aws_subnet.public : s.availability_zone]
+  value = [for s in aws_subnet.public : s.availability_zone]
 }

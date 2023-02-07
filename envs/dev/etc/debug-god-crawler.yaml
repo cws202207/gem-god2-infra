@@ -1,0 +1,7 @@
+"god-crawler_ami": "ami-0a5866d87afdfdfd3"
+"god-crawler_availability_zone": "ap-northeast-1a"
+"god-crawler_id": "i-040bf9d0488249c06"
+"god-crawler_instance_type": "t3a.small"
+"god-crawler_name": "god-crawler"
+"god-crawler_private_ip": "172.33.57.20"
+"god-crawler_root_volume_size": 32

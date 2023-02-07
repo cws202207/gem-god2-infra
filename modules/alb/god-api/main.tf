@@ -215,5 +215,5 @@ output "alb" {
 }
 
 output "red_god_api" {
-	value = aws_route53_record.red
+  value = aws_route53_record.red
 }
