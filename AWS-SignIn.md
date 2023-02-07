@@ -74,7 +74,7 @@ export AWS_PROFILE=********
 
 1. C:\User\******> aws confiugre --profile gem-god-backend_mfa  
   
-### プロファイル名を「gem-god-backend_mfa」にしないとSSH接続はできません  
+### GEM環境では、プロファイル名を「gem-god-backend_mfa」にしないとSSH接続はできません  
   
 2. C:\User\******> aws sts get-caller-identity  
   
