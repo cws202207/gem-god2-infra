@@ -70,17 +70,35 @@ export AWS_PROFILE=********
 
 ## Windows
 
- 59 アクセスキーを使用した場合でも、MFAの認証が必要になります。 現在のアクセスキーを利用してMFA認証を行い、それが有効なセッションのアクセスキーを発行されるので>    、それを利用するという仕組みになります。 手作業で行うととても煩雑です。以下にサンプルを用意しましたので適宜実行ください。
+ アクセスキーを使用した場合でも、MFAの認証が必要になります。 現在のアクセスキーを利用してMFA認証を行い、それが有効なセッションのアクセスキーを発行されるので>    、それを利用するという仕組みになります。 手作業で行うととても煩雑です。以下にサンプルを用意しましたので適宜実行ください。
 
-[windows_mfa_gettoken.bat](https://github.com/FrankArt/gem-god-infra/blob/main/appconfig/fadev/etc/windows_mfa_gettoken.bat)
-    
-8行目の「~~~~660506286494:user/*******  
+1. C:\User\******> aws confiugre --profile gem-god-backend_mfa  
   
- *******を自身のアカウント名に変更してください。  
+### プロファイル名を「gem-god-backend_mfa」にしないとSSH接続はできません  
   
-例　aws sts get-session-token --duration-seconds 86400 --serial-number arn:arn:aws:iam::660506286494:user/**t-hogehoge**
+2. C:\User\******> aws sts get-caller-identity  
   
- $ aws s3 ls  
+下記情報が取得が取得できない場合は、もう一度手順を見直してください。  
   
- などを実行して Access Denied がでなければ成功です。  
+3. C:\User\******> [こちら](https://github.com/FrankArt/gem-god-infra/blob/main/appconfig/fadev/etc/windows_mfa_gettoken.bat)を取得してローカルの任意のフォルダに保管してください。  
+  
+4. C:\User\******> 8行目あたりの以下「*******」を自身のアカウント名に変更してください。  
+  
+--serial-number arn:arn:aws:iam::660506286494:user/*******  
+  
+5.C:\User\******> windows_mfa_gettoken.bat  
+  
+Refresh token? (y/n):y  
+  
+Please enter MFA One-Time-Password: 取得した６桁のトークンを入力
+     
+エラーが表示されず、以下のメッセージが表示されることを確認する  
+  
+Token has been set into environment variables. 
+  
+6. C:\User\******> aws s3 ls  
+  
+を実行して Access Denied がでなければ成功です。  
+  
+
 
