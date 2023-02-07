@@ -86,7 +86,9 @@ export AWS_PROFILE=********
   
 --serial-number arn:arn:aws:iam::660506286494:user/*******  
   
-5.C:\User\******> windows_mfa_gettoken.bat  
+5.保管したbatファイルを実行
+  
+C:\User\******> windows_mfa_gettoken.bat  
   
 Refresh token? (y/n):y  
   
@@ -98,7 +100,8 @@ Token has been set into environment variables.
   
 6. C:\User\******> aws s3 ls  
   
-を実行して Access Denied がでなければ成功です。  
+実行して S3のリストが表示されれば成功です。  
+  
   
 
 
