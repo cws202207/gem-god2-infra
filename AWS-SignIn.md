@@ -78,7 +78,7 @@ export AWS_PROFILE=********
   
  *******を自身のアカウント名に変更してください。  
   
-例　aws sts get-session-token --duration-seconds 86400 --serial-number arn:arn:aws:iam::660506286494:user/<t-hogehoge>  
+例　aws sts get-session-token --duration-seconds 86400 --serial-number arn:arn:aws:iam::660506286494:user/`t-hogehoge(255.0,0)`
   
  $ aws s3 ls  
   
