@@ -99,7 +99,8 @@ $ aws sts get-caller-identity
 }  
   
   
-3. C:\User\******> [こちら](https://github.com/FrankArt/gem-god-infra/blob/main/appconfig/fadev/etc/windows_mfa_gettoken.bat)を取得してローカルの任意のフォルダに保管してください。  
+3. C:\User\******> [こちら](https://github.com/FrankArt/gem-god-infra/blob/main/appconfig/fadev/etc/windows_mfa_gettoken.bat)を取得してローカルの任意のフォルダに保管してください。ここでは「windows_mfa_gettoken.bat」としています  
+  
   
 4. C:\User\******> 8行目あたりの以下「*******」を自身のアカウント名に変更してください。  
   
