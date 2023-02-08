@@ -37,6 +37,10 @@
 	AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 	Default region name [None]: ap-northeast-1
 	Default output format [None]:
+  
+## MAC  
+  
+  
 
 プロファイル付きで設定した場合、環境変数を設定することで、そのプロファイルが利用できるようになります。
 
@@ -53,7 +57,7 @@
 
 アクセスキーを用いたMFA認証の実行
   
-## MAC
+  
 
 
 アクセスキーを使用した場合でも、MFAの認証が必要になります。 現在のアクセスキーを利用してMFA認証を行い、それが有効なセッションのアクセスキーを発行されるので、それを利用するという仕組みになります。 手作業で行うととても煩雑です。以下にサンプルを用意しましたので適宜実行ください。
