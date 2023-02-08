@@ -27,7 +27,9 @@
 [こちらのサイト](https://aws.amazon.com/jp/cli/)を参考にして、awscliを導入してください。
 
 初期設定
-
+  
+## MAC  
+  
 プロファイル付きで設定を行います。以下を参考に設定してください。
 プロファイル名は任意に決めて下さい。おすすめはアカウントエイリアス名です。
 ここではexampleとしてあります。
@@ -37,9 +39,6 @@
 	AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 	Default region name [None]: ap-northeast-1
 	Default output format [None]:
-  
-## MAC  
-  
   
 
 プロファイル付きで設定した場合、環境変数を設定することで、そのプロファイルが利用できるようになります。
@@ -78,11 +77,27 @@ export AWS_PROFILE=********
 
 1. C:\User\******> aws confiugre --profile gem-god-backend_mfa  
   
+AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE  
+AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY  
+Default region name [None]: ap-northeast-1  
+Default output format [None]:  
+  
+  
 ### GEM環境では、プロファイル名を「gem-god-backend_mfa」にしないとSSM接続はできません  
   
 2. C:\User\******> aws sts get-caller-identity  
   
 下記情報が取得が取得できない場合は、もう一度手順を見直してください。  
+  
+以下のコマンドが実行できれば、設定できています。  
+  
+$ aws sts get-caller-identity  
+{  
+    "UserId": "AKIAIOSFODNN7EXAMPLE",  
+    "Account": "123456789012",  
+    "Arn": "arn:aws:iam::123456789012:user/userid"  
+}  
+  
   
 3. C:\User\******> [こちら](https://github.com/FrankArt/gem-god-infra/blob/main/appconfig/fadev/etc/windows_mfa_gettoken.bat)を取得してローカルの任意のフォルダに保管してください。  
   
