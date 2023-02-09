@@ -1,0 +1,20 @@
+Host dev.god-api.fadev
+User ubuntu
+ ProxyCommand C:\Program Files\Amazon\AWSCLI\bin\aws.exe ssm start-session --target i-0904b7d2f8686d981 --document-name AWS-StartSSHSession --parameters "portNumber=%p"
+
+
+ Host dev.god-hand.fadev
+User ubuntu
+ ProxyCommand C:\Program Files\Amazon\AWSCLI\bin\aws.exe ssm start-session --target i-05c64fe95557493de --document-name AWS-StartSSHSession --parameters "portNumber=%p"
+
+
+
+ Host dev.god-batch.fadev
+User ubuntu
+ ProxyCommand C:\Program Files\Amazon\AWSCLI\bin\aws.exe ssm start-session --target i-02f4dcfbdc19fd78a --document-name AWS-StartSSHSession --parameters "portNumber=%p"
+
+
+
+ Host dev.god-crawler.fadev
+User ubuntu
+ ProxyCommand C:\Program Files\Amazon\AWSCLI\bin\aws.exe ssm start-session --target i-040bf9d0488249c06 --document-name AWS-StartSSHSession --parameters "portNumber=%p"

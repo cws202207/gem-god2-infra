@@ -87,6 +87,8 @@ gem-god-backend.com インフラ構成
 ## インスタンス情報
 ### SSH接続
   
+## MAC  
+    
 * [god-api](https://github.com/FrankArt/gem-god-infra/blob/main/appconfig/fadev/etc/ssh/god-api/config)にシェルスクリプトが生成されるので、それを実行すればログインできる。
   
 * [god-hand](https://github.com/FrankArt/gem-god-infra/blob/main/appconfig/fadev/etc/ssh/god-hand/config)にシェルスクリプトが生成されるので、それを実行すればログインできる。
@@ -101,7 +103,10 @@ gem-god-backend.com インフラ構成
 * god-hand         →   $ ssh -F ./[god-hand] auto.dev.god-api.fadev
 * god-batch        →   $ ssh -F ./[god-batch] auto.dev.god-api.fadev
 * god-crawler      →   $ ssh -F ./[god-crawler] auto.dev.god-api.fadev
-
+  
+## Windows  
+  
+[こちら]()
 ## サーバの構成
 
 * Ubuntu 20.04.5 LTS
